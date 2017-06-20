@@ -6,6 +6,7 @@
   <packaging>war</packaging>
   <name>geekUniverse</name>
   <description>Projeto Final Senac Turma 2016.1</description>
+  
   <dependencies>
   		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
@@ -35,6 +36,8 @@
 		
 
   </dependencies>
+  
+  
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>

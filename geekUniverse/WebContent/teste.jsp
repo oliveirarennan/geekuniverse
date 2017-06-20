@@ -9,5 +9,6 @@
 </head>
 <body>
 	<c:out value="Olá Mundo"/>
+	<a href="ServletAdicionarAoCarrinho?id=1">Adicionar ao Carrinho</a>
 </body>
 </html>
