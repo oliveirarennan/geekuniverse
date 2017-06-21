@@ -34,23 +34,34 @@
   		</div>
   	</div>
   		<div class="row">
-  			<div class="col-md-8 col-offset-2">
+  			<div class="col-md-6 col-offset-3">
   				<table class="table">
   				<thead>
   					<tr>
   						<td><strong>id </strong></td>
   						<td><strong>nome </strong></td>
   						<td><strong>valor </strong></td>
+  						<td><strong>quantidade</strong></td>
+  						<td><strong>valor total</strong> </td>
+  						<td><strong>ações</strong></td>
+  						<td> </td>
+  						<td> </td>
+  						
   					</tr>
   				</thead>
   				<tbody>
-  				<jsp:useBean id="sc" class="teste.carrinho.modelo.Produto"/>
+  				<jsp:useBean id="sc" class="teste.carrinho.modelo.Item"/>
   				
-  				<c:forEach var="produto" items="${produtosCarrinho}">
+  				<c:forEach var="item" items="${ItensCarrinho}">
   					<tr>
-  						<td>${produto.id}</td>
-  						<td>${produto.nome}</td>
-  						<td>${produto.valor}</td>
+  						<td>${item.id}</td>
+  						<td>${item.produto.nome}</td>
+  						<td>${item.produto.valor}</td>
+  						<td>${item.quantidade}</td>
+  						<td>${item.preco}</td>
+  						<td><a href="../ServletAdicionarAoCarrinho?id=${item.produto.id}"><span class="glyphicon glyphicon-plus" ></span></a>  </a> <a href="../ServletRemoverDoCarrinho?id=${item.produto.id}"> <span class="glyphicon glyphicon-minus" ></span> </a> <a href="../ServletRemoverDoCarrinho?id=removeAll"> <span class="glyphicon glyphicon-remove" ></span> </td>
+  						<td> </td>
+  						<td> </td>
   					</tr>
   				</c:forEach>	
   				</tbody>
