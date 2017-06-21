@@ -36,7 +36,7 @@ public class ServletRemoverDoCarrinho extends HttpServlet {
 		HttpSession session = request.getSession();
 		String actionId = request.getParameter("id");
 		
-		if(actionId == "removeAll"){
+		if(actionId.equals("removeAll")){
 			itensSessao.removeAll(itensSessao);
 			
 		}else{
