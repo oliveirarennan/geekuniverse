@@ -71,7 +71,7 @@ public class ServletAdicionarAoCarrinho extends HttpServlet {
 			session = request.getSession();
 			if(itensSessao.contains(item)){
 				for (Item i : itensSessao) {
-					if(i.equals(item)){
+					if(i.getProduto().getId() == item.getProduto().getId()){
 						i.setQuantidade(i.getQuantidade() + 1);
 						item.setPreco();
 						System.out.println("===> Item já no carrinho, aumentando a quantidade.");
