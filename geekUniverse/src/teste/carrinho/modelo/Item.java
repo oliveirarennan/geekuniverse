@@ -23,7 +23,7 @@ public class Item {
 		return preco;
 	}
 	public void setPreco() {
-		this.preco = (this.quantidade * produto.getValor());
+		this.preco = (this.quantidade * this.produto.getValor());
 	}
 	public Produto getProduto() {
 		return produto;

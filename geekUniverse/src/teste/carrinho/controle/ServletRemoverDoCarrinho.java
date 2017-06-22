@@ -34,12 +34,37 @@ public class ServletRemoverDoCarrinho extends HttpServlet {
 		// TODO Auto-generated method stub
 		ArrayList<Item> itensSessao = ((ArrayList<Item>) request.getSession().getAttribute("ItensCarrinho"));
 		HttpSession session = request.getSession();
-		String actionId = request.getParameter("id");
 		
+		String actionId = null;
+		try{
+			actionId = request.getParameter("id");
+		}catch (Exception e) {
+			// TODO: handle exception
+			actionId = "0";
+		}
+		
+		
+		String removeLinha = null;
+		try{
+			removeLinha = request.getParameter("rl");
+		}catch (Exception e) {
+			// TODO: handle exception
+			removeLinha = "0";
+		}
+		
+		
+		//Remove todos os intens do carrinho
 		if(actionId.equals("removeAll")){
-			itensSessao.removeAll(itensSessao);
-			
+			try{
+				itensSessao.removeAll(itensSessao);
+				itensSessao = null;
+			}catch (Exception e) {
+				// TODO: handle exception
+				itensSessao = null;
+			}
+		
 		}else{
+			//remove 1 quantidade de produto, caso a quantidade seja menor que 1 remove o produto do carrinho
 			for (Item i : itensSessao) {
 				if(i.getProduto().getId() == Integer.parseInt(actionId)){
 					if(i.getQuantidade() > 1){
@@ -52,6 +77,21 @@ public class ServletRemoverDoCarrinho extends HttpServlet {
 					}
 					
 				}
+			}
+			if(itensSessao.size() < 1){
+				itensSessao = null;
+			}
+		}
+		//remove o produto selecionado independente da quantidade no carrinho
+		if(removeLinha != null){
+			for (Item i : itensSessao) {
+				if(i.getProduto().getId() == Integer.parseInt(removeLinha)){
+						itensSessao.remove(i);
+						break;
+					}
+			}
+			if(itensSessao.size() < 1){
+				itensSessao = null;
 			}
 		}
 		session.setAttribute("ItensCarrinho", itensSessao);

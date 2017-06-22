@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.util.modeler.NotificationInfo;
+
 import teste.carrinho.modelo.Item;
 import teste.carrinho.modelo.Produto;
 
@@ -33,8 +35,9 @@ public class ServletAdicionarAoCarrinho extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		ArrayList<Item> itensSessao = ((ArrayList<Item>) request.getSession().getAttribute("ItensCarrinho"));
+		
+		//Caso não funcione testar se itenSessao.size() > 0 e senao for atribuir null
 		
 		List<Produto> produtos = Produto.retornaProdutos();
 		Produto produtoSelecionado = null;
@@ -61,7 +64,9 @@ public class ServletAdicionarAoCarrinho extends HttpServlet {
 		item.setQuantidade(1);
 		item.setPreco();
 		
-		if(itensSessao == null){
+		Boolean novoItem = false;
+		
+		if(itensSessao == null ){
 			session = request.getSession(true);
 			itensSessao = new ArrayList<Item>();
 			itensSessao.add(item);
@@ -69,25 +74,27 @@ public class ServletAdicionarAoCarrinho extends HttpServlet {
 			
 		}else{
 			session = request.getSession();
-			if(itensSessao.contains(item)){
 				for (Item i : itensSessao) {
 					if(i.getProduto().getId() == item.getProduto().getId()){
 						i.setQuantidade(i.getQuantidade() + 1);
-						item.setPreco();
+						i.setPreco();
+						novoItem = false;
+						session.setAttribute("ItensCarrinho", itensSessao);
 						System.out.println("===> Item já no carrinho, aumentando a quantidade.");
 						break;
+					}else{
+						novoItem = true;
 					}
-					
-				}
-			}else{
-				itensSessao.add(item);
 			}
-			
+				if(novoItem){
+					itensSessao.add(item);
+					session.setAttribute("ItensCarrinho", itensSessao);
+				}
 			
 		}
 		
 		
-		session.setAttribute("ItensCarrinho", itensSessao);
+		
 		response.sendRedirect("TesteCarrinho/carrinho.jsp");
 	}
 

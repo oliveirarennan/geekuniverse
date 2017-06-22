@@ -59,7 +59,7 @@
   						<td>${item.produto.valor}</td>
   						<td>${item.quantidade}</td>
   						<td>${item.preco}</td>
-  						<td><a href="../ServletAdicionarAoCarrinho?id=${item.produto.id}"><span class="glyphicon glyphicon-plus" ></span></a>  </a> <a href="../ServletRemoverDoCarrinho?id=${item.produto.id}"> <span class="glyphicon glyphicon-minus" ></span> </a> <a href="../ServletRemoverDoCarrinho?id=removeAll"> <span class="glyphicon glyphicon-remove" ></span> </td>
+  						<td><a href="../ServletAdicionarAoCarrinho?id=${item.produto.id}"><span class="glyphicon glyphicon-plus" ></span></a>  </a> <a href="../ServletRemoverDoCarrinho?id=${item.produto.id}"> <span class="glyphicon glyphicon-minus" ></span> </a> <a href="../ServletRemoverDoCarrinho?rl=${item.produto.id }"> <span class="glyphicon glyphicon-remove" ></span> </a></td>
   						<td> </td>
   						<td> </td>
   					</tr>
@@ -67,6 +67,8 @@
   				</tbody>
   					
   				</table>
+  				<a href="../ServletRemoverDoCarrinho?id=removeAll">Limpar Carrinho</a>
+  				<br />
   				<a href="#">Fechar Comprar</a>
   			</div>
   		</div>
