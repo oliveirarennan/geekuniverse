@@ -1,0 +1,63 @@
+UCS-01 Cadastrar administrador-Bruno Pádua
+Fluxo alternativo [A4]-2:2.	Volta para o passo 2 do fluxo alternativo [A2]:2.	O sistema remove o administrador logicamente do banco
+Problema:Depois do sistema informar que já existe algum usuário cadastrado com o e-mail e/ou CPF e/ou rg ele não deveria simplesmente pedir o usuario tentar novamente ao inves de remover-lo. 
+
+UCS-02 Adicionar cliente-Bruno Pádua
+Pré-condição:Caso a inclusão seja feita por usuário administrador o mesmo necessita estar devidamente identificado pelo sistema.
+Problema:Isso não é uma pré-condição do cadastro de cliente,uma pré-condição seria mais"Um novo usuario quer se cadastrar como cliente no sistema".
+
+UCS-05 Fazer login-Bruno Pádua
+fluxo principal 1:Usuário solicita autenticação no sistema
+problema:1-sistema solicita o usuario os dados requesitados para iniciar uma sessão
+
+UCS-05 Fazer login-Bruno Pádua
+fluxo alternativo[A3]:Não é possível autenticar o usuário por falha no banco.
+problema:Aonde o Fluxo alternativo [A3] se aplica?
+
+UC05 – Fazer Login-Ginna
+Atores
+Problema:Ator primario incorreto.
+Fluxo alternativo
+Problema: Cadê [A3]?
+
+UC06 – Fazer Logout-Ginna
+Atores
+Problema:Ator primario incorreto.
+Fluxo alternativo
+Problema: Errada lista numerada "2"
+
+UCS12-Filtrar Produto por categoria-Ginna
+Atores
+Problema:Ator primario incorreto
+
+UC14: Adicionar Produto no carrinho-Ginna
+Fluxo principal e Fluxo alternativo
+Problema: defeito lista numerada.
+
+UC22: Finalizar Pedido-Ginna
+Atores
+Problema: Ator primario incorreto.
+
+UC23: Cancelar Pedido-Ginna
+Atores
+Problema: Ator primario incorreto.
+
+UC11: Detalhar Produto-Bruno
+Pré-condição
+Problema:A pré-condição poderia ser os dados cadastrados do produto(se um caso PODE ter uma pré-condição não deixe em branco)
+
+UC12: Filtrar Produto por categoria-Bruno
+Pré-condição
+Problema:veja o problema acima
+
+UC13: Visualizar Carrinho-Bruno
+Pré-condição
+Problema:A pré-condição poderia ser"O cliente requisitou um(s) produto(s) para seu carrinho de compras"
+
+
+
+
+
+
+
+
