@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.tomcat.util.modeler.NotificationInfo;
 
 import teste.carrinho.modelo.Item;
+import teste.carrinho.modelo.Pedido;
 import teste.carrinho.modelo.Produto;
 
 /**
@@ -36,7 +37,7 @@ public class ServletAdicionarAoCarrinho extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Item> itensSessao = ((ArrayList<Item>) request.getSession().getAttribute("ItensCarrinho"));
-		
+		Pedido pedido = (Pedido) request.getSession().getAttribute("ValorCarrinho");
 		//Caso não funcione testar se itenSessao.size() > 0 e senao for atribuir null
 		
 		List<Produto> produtos = Produto.retornaProdutos();
@@ -70,7 +71,10 @@ public class ServletAdicionarAoCarrinho extends HttpServlet {
 			session = request.getSession(true);
 			itensSessao = new ArrayList<Item>();
 			itensSessao.add(item);
+			pedido = new Pedido();
+			pedido.setValor(item.getProduto().getValor());
 			session.setAttribute("ItensCarrinho", itensSessao);
+			session.setAttribute("ValorCarrinho", pedido);
 			
 		}else{
 			session = request.getSession();
@@ -78,8 +82,10 @@ public class ServletAdicionarAoCarrinho extends HttpServlet {
 					if(i.getProduto().getId() == item.getProduto().getId()){
 						i.setQuantidade(i.getQuantidade() + 1);
 						i.setPreco();
+						pedido.setValor(pedido.getValor() + i.getProduto().getValor());
 						novoItem = false;
 						session.setAttribute("ItensCarrinho", itensSessao);
+						session.setAttribute("ValorCarrinho", pedido);
 						System.out.println("===> Item já no carrinho, aumentando a quantidade.");
 						break;
 					}else{
@@ -88,7 +94,9 @@ public class ServletAdicionarAoCarrinho extends HttpServlet {
 			}
 				if(novoItem){
 					itensSessao.add(item);
+					pedido.setValor(pedido.getValor() + item.getProduto().getValor());
 					session.setAttribute("ItensCarrinho", itensSessao);
+					session.setAttribute("ValorCarrinho", pedido);
 				}
 			
 		}

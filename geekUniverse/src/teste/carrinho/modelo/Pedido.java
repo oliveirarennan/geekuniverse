@@ -4,7 +4,14 @@ public class Pedido {
 	private int id;
 	private Cliente cliente;
 	private String Status;
+	private Double valor;
 	
+	public Double getValor() {
+		return valor;
+	}
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
 	public int getId() {
 		return id;
 	}

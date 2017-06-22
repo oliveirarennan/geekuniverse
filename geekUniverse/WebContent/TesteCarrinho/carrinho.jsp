@@ -59,7 +59,7 @@
   						<td>${item.produto.valor}</td>
   						<td>${item.quantidade}</td>
   						<td>${item.preco}</td>
-  						<td><a href="../ServletAdicionarAoCarrinho?id=${item.produto.id}"><span class="glyphicon glyphicon-plus" ></span></a>  </a> <a href="../ServletRemoverDoCarrinho?id=${item.produto.id}"> <span class="glyphicon glyphicon-minus" ></span> </a> <a href="../ServletRemoverDoCarrinho?rl=${item.produto.id }"> <span class="glyphicon glyphicon-remove" ></span> </a></td>
+  						<td><a href="../ServletAdicionarAoCarrinho?id=${item.produto.id}"><span class="glyphicon glyphicon-plus" ></span></a>  </a> <a href="../ServletRemoverDoCarrinho?id=${item.produto.id}&rl=0"> <span class="glyphicon glyphicon-minus" ></span> </a> <a href="../ServletRemoverDoCarrinho?id=${item.produto.id }&rl=1"> <span class="glyphicon glyphicon-remove" ></span> </a></td>
   						<td> </td>
   						<td> </td>
   					</tr>
@@ -67,9 +67,49 @@
   				</tbody>
   					
   				</table>
-  				<a href="../ServletRemoverDoCarrinho?id=removeAll">Limpar Carrinho</a>
+  				<div class="pull-right">
+  					<a  class="btn btn-danger"href="../ServletRemoverDoCarrinho?id=removeAll">Limpar Carrinho</a>
+  				</div>
   				<br />
-  				<a href="#">Fechar Comprar</a>
+  				<div class="row">
+  					<div class="col-md-4">
+  							<form name="calculaFrete" action="../ServletCalcularFrete" method="POST">
+  								<div class="form-group">
+					  						<label for="cep" class="control-label">CEP</label>
+					  						<input type="text" name="cep" id="cep"  class="form-control" required/><input type="submit" class="btn btn-primary pull-right" data-toggle="tooltip" data-placement="right" title="Clique para calcular o frete"/>
+				  						<jsp:useBean id="sf" class="teste.carrinho.modelo.Frete"/>
+				  						<c:set var="valorFrete" value="${Frete}"/>
+				  						<c:if test = "${Frete != null }">
+				  							<br />
+				  							<br />
+				  							<c:if test = "${Frete.valor != null }">
+				  								<h5>O valor do frete é : R$ ${Frete.valor }</h5>
+				  							</c:if>
+				  							<br />
+				  							<h5>O Prazo estimado de entrega é de:  ${Frete.prazo } dia(s) </h5>
+				  						</c:if>
+				  					</div>
+  							</form>
+  							
+		  					<form name="fecharCompra" action="" method="POST">
+				  					<div class="form-group">
+				  						<jsp:useBean id="sp" class="teste.carrinho.modelo.Pedido"/>
+				  						<c:set var="valorPedido" value="${ValorCarrinho }"/>
+					  						<label for="valorCompra" class="control-label">Valor da Compra</label>
+					  						<c:if test = "${Frete.valor != null }">
+					  							<input type="text" name="valorPedido"  class="form-control" readonly value="R$ ${valorPedido.valor + valorFrete.valor}"/>
+					  						</c:if>	
+					  						<c:if test = "${Frete.valor == null }">
+					  							<input type="text" name="valorPedido"  class="form-control" readonly value="R$ ${valorPedido.valor}"/>
+					  						</c:if>
+				  					</div>	
+				  					<div class="form-group">
+		  								<input type="submit"  class="btn btn-success" value="Fechar Compra" />
+		  							</div>	
+		  					</form>
+		  			</div>		
+  				</div>
+  				
   			</div>
   		</div>
   	</div>
@@ -83,5 +123,8 @@
     <script src="resources/js/additional-methods.min.js"></script>
     <script src="resources/js/ConfiguracaoMaskMoney.js"></script>
     <script src="resources/js/ConfiguracaoFormValidation.js"></script>
+    <script src="resources/js/jquery.maskedinput.min.js"></script>
+    <script src="resources/js/ConfiguracaoMaskInput.js"></script>
+    <script src="resources/js/scripts.js"></script>
   </body>
 </html>
