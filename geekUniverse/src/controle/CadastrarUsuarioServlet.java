@@ -1,3 +1,4 @@
+package controle;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -6,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.Endereco;
-import modelo.Pessoa;
-import servico.PessoaServico;
+import modelo.Usuario;
+import servico.UsuarioServico;
 
 @WebServlet("/CadastrarUsuarioServlet")
 public class CadastrarUsuarioServlet extends HttpServlet {
@@ -71,7 +72,7 @@ public class CadastrarUsuarioServlet extends HttpServlet {
 		
 		usuario.setEndereco(e);
 		
-		if(servico.cadastrar(usuario)){
+		if(servico.cadastrarUsuario(usuario)){
 			System.out.println("Usuário incluída");
 		} else {
 			System.out.println("Inclusão falhou!");
