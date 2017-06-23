@@ -15,6 +15,7 @@ public class Usuario {
 	private String senha;
 	private String tipoUsuario;
 	private Boolean status;
+	private Endereco endereco;
 	
 	public int getId() {
 		return id;
@@ -93,5 +94,11 @@ public class Usuario {
 	}
 	public void setStatus(Boolean status) {
 		this.status = status;
+	}
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 }
