@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import teste.carrinho.modelo.Item;
+import teste.carrinho.modelo.Pedido;
 
 /**
  * Servlet implementation class ServletRemoverDoCarrinho
@@ -33,18 +34,37 @@ public class ServletRemoverDoCarrinho extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		ArrayList<Item> itensSessao = ((ArrayList<Item>) request.getSession().getAttribute("ItensCarrinho"));
+		Pedido pedido = (Pedido) request.getSession().getAttribute("ValorCarrinho");
+
 		HttpSession session = request.getSession();
-		String actionId = request.getParameter("id");
 		
+	
+		String	actionId = request.getParameter("id");
+		
+		String	removeLinha = request.getParameter("rl");
+		
+		
+		//Remove todos os intens do carrinho
 		if(actionId.equals("removeAll")){
-			itensSessao.removeAll(itensSessao);
-			
-		}else{
+			try{
+				itensSessao.removeAll(itensSessao);
+				itensSessao = null;
+				pedido.setValor(0.);
+				pedido = null;
+			}catch (Exception e) {
+				// TODO: handle exception
+				itensSessao = null;
+				pedido = null;
+			}
+		
+		}else if((Integer.parseInt(actionId) > 0) && (Integer.parseInt(removeLinha) == 0)){
+			//remove 1 quantidade de produto, caso a quantidade seja menor que 1 remove o produto do carrinho
 			for (Item i : itensSessao) {
 				if(i.getProduto().getId() == Integer.parseInt(actionId)){
 					if(i.getQuantidade() > 1){
 						i.setQuantidade(i.getQuantidade() - 1);
 						i.setPreco();
+						pedido.setValor(pedido.getValor() - i.getProduto().getValor());
 						break;
 					}else{
 						itensSessao.remove(i);
@@ -53,8 +73,28 @@ public class ServletRemoverDoCarrinho extends HttpServlet {
 					
 				}
 			}
+			if(itensSessao.size() < 1){
+				itensSessao = null;
+				pedido = null;
+			}
+		}else if((Integer.parseInt(actionId) > 0) && (Integer.parseInt(removeLinha) == 1)){
+		//remove o produto selecionado independente da quantidade no carrinho
+		if(removeLinha != null){
+			for (Item i : itensSessao) {
+				if(i.getProduto().getId() == Integer.parseInt(actionId)){
+						pedido.setValor(pedido.getValor() - i.getPreco());
+						itensSessao.remove(i);
+						break;
+					}
+			}
+			if(itensSessao.size() < 1){
+				itensSessao = null;
+				pedido = null;
+				}
+			}
 		}
 		session.setAttribute("ItensCarrinho", itensSessao);
+		session.setAttribute("ValorCarrinho", pedido);
 		response.sendRedirect("TesteCarrinho/carrinho.jsp");
 	}
 
