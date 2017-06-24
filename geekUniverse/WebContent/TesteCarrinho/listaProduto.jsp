@@ -29,7 +29,6 @@
   				<jsp:useBean id="su" class="teste.carrinho.modelo.Cliente"/>
   				<c:set var="usuarioLogado" value="${su.retornaUsuarioLogado()}" />
   				<p class="left">Usuario : <strong>${usuarioLogado.nome}</strong> - <a href="carrinho.jsp">Visualizar Carrinho</a> </p>
-  				
   			</nav>
   		</div>
   	</div>
