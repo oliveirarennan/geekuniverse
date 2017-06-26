@@ -57,10 +57,11 @@
                     <div class="form-group">
                         <input type="submit" name="btnCadastrar" value="Cadastrar" class="btn btn-warning">
                         <input type="reset" name="btnLimpar" value="Limpar" class="btn btn-default"/>
-                    </div>         
+                    </div>    
+               </form>     
                     </div>
 
-                  </form>
+                  
                   
               </div>
         
