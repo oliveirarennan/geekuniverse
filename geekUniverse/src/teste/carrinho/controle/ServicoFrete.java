@@ -1,3 +1,4 @@
+/*
 package teste.carrinho.controle;
 
 import br.com.techzee.correios.ws.ConsultaCorreios;
@@ -25,3 +26,4 @@ public class ServicoFrete {
 	}
 
 }
+*/
