@@ -30,4 +30,8 @@ public class FabricanteServico {
 		
 		return fabricanteDao.atualizar(fabricante);
 	}
+	
+	public static Fabricante buscarPorId(int id){
+		return FabricanteDao.buscarPorId(id);
+	}
 }

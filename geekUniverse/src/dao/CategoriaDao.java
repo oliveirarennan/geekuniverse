@@ -52,6 +52,7 @@ public class CategoriaDao {
 			
 			while(rs.next()){
 				categoria = new Categoria();
+				categoria.setId(rs.getInt("id"));
 				categoria.setNome(rs.getString("nome"));
 				categoria.setStatus(rs.getInt("status"));
 				
@@ -110,4 +111,33 @@ public class CategoriaDao {
 	        }
 	        return true;
 	    }
+	
+	public static Categoria buscarPorId(int id){
+		Connection conexao = null;
+		
+		Categoria categoria = null;
+		
+		String sql = "SELECT * FROM categoria where id = ?";
+		
+		try{
+			conexao = ConexaoFabrica.getConnection();
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setInt(1, id);			
+			ResultSet rs = ps.executeQuery();
+			
+			rs.next();
+				categoria = new Categoria();
+				categoria.setId(rs.getInt("id"));
+				categoria.setNome(rs.getString("nome"));
+				categoria.setStatus(rs.getInt("status"));
+				
+			
+		} catch (SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBUtil.fechar(conexao);
+		}
+		return categoria;
+	}
 }

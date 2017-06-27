@@ -46,7 +46,7 @@ $(function(){
                         range: "Digite um numero entre 0 e 1000",
                     },
                     imagem:{
-                        required:"Passe o Caminho da Imagem"
+                        required:"Você precisa selecionar um arquivo."
                     }
 
                 },errorElement: "em",

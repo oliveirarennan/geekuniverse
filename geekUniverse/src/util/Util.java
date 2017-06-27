@@ -13,5 +13,15 @@ public class Util {
 	       md.update(s.getBytes(),0,s.length());
 	       return (new BigInteger(1,md.digest()).toString(16));
 	}
+	
+	public static Double getDoubleFromRealString(String valor){
+		String resultado = valor.replaceAll("R", " ");
+		resultado = resultado.replace("$", " ");
+		resultado = resultado.replaceAll(",", ".");
+		resultado = resultado.trim();
+		System.out.println(resultado);
+		
+		return Double.parseDouble(resultado);
+	}
 
 }

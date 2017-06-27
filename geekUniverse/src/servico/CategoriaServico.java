@@ -30,4 +30,8 @@ public class CategoriaServico {
 		
 		return categoriaDao.atualizar(categoria);
 	}
+	
+	public static Categoria buscarPorId(int id){
+		return CategoriaDao.buscarPorId(id);
+	}
 }

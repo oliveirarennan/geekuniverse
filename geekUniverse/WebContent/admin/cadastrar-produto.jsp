@@ -36,8 +36,7 @@
           </button>
         </div>
       </div>
-        <div class="collapse na
-        vbar-collapse" id="myNavbar top2">
+        <div class="collapse navbar-collapse" id="myNavbar top2">
           <ul class="nav navbar-nav"> 
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="drop">DROP1<span class="caret"></span></a>
@@ -93,7 +92,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user" id="drop"></span> Minha Conta</a></li> 
           </ul>
-
+		</div>
           <div>
              <form>
                 <input class="form-control" type="text" placeholder="Search" id="input">
@@ -107,7 +106,7 @@
           <div class="row">
             <div class=" col-md-6 col-md-offset-3 col-sm-6 col-offset-3 col-xs-6 col-xs-offset-3 col-lg-6 col-lg-offset-3">
               <legend><center>Cadastrar Produtos</center></legend>
-              <form name="frmCadastrarProduto" id="frmCadastrarProduto" action="" method="POST">
+              <form name="frmCadastrarProduto" id="frmCadastrarProduto" action="../ServletCadastrarProduto" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                   <label class="control-label" for="nome">Nome</label>
                   <div class="validateError">
@@ -132,15 +131,50 @@
                     <input type="text" name="estoque" id="estoque" class="form-control"/>
                   </div>  
                 </div>
-                 <div class="form-group">
-                  <label class="control-label" for="imagem">Imagem</label>
+                <div class="form-group">
+                  <label class="control-label" for="categoria">Categoria</label>
                   <div class="validateError">
-                    <input type="file" name="imagem" id="imagem" class="form-control"/>
+                  <select class="form-control" name="categoria" id="categoria">
+                  <jsp:useBean id="ca" class="servico.CategoriaServico"></jsp:useBean>
+                  
+                      <optgroup>
+                   		<c:forEach var="categoria" items="${ca.listar() }">
+                   			<option value="${categoria.id }">${categoria.nome}</option>
+                      </c:forEach>
+                      </optgroup>
+                    </select>
                   </div>  
                 </div>
+                
                 <div class="form-group">
-                  <input type="submit" name="btnCadastrar" value="Cadastrar" class="btn btn-warning">
-                  <input type="reset" name="btnLimpar" value="Limpar" class="btn btn-default"/>
+                  <label class="control-label" for="categoria">Fabricante</label>
+                  <div class="validateError">
+                  <select class="form-control" name="fabricante" id="fabricante">
+                  <jsp:useBean id="fa" class="servico.FabricanteServico"></jsp:useBean>
+                  
+                      <optgroup>
+                   		<c:forEach var="fabricante" items="${fa.listar() }">
+                   			<option value="${fabricante.id }">${fabricante.nome}</option>
+                      </c:forEach>
+                      </optgroup>
+                    </select>
+                  </div>  
+                </div>
+                
+                <div class="input-group">
+	                <label class="input-group-btn">
+	                    <span class="btn btn-warning">
+	                        Escolher Imagem <input type="file" accept="image/jpeg; image/png" style="display: none;" name="arquivo" id="arquivo" >
+	                    </span>
+	                </label>
+	                <div class="validateError">
+	                	<input type="text" class="form-control" readonly name="imagem" id="imagem">
+	                </div>	
+            </div>
+                <br/>
+                <div class="form-group">
+		              <input type="submit" name="btnCadastrar" value="Cadastrar" class="btn btn-warning">
+		              <input type="reset" name="btnLimpar" value="Limpar" class="btn btn-default"/>
                 </div>
               </form>      
             </div>   
@@ -162,5 +196,36 @@
     <script src="resources/js/jquery.maskedinput.min.js"></script>
     <script src="resources/js/ConfiguracaoMaskInput.js"></script>
     <script src="resources/js/scripts.js"></script>
+    
+    <script type="text/javascript">
+    $(function() {
+
+    	  // We can attach the `fileselect` event to all file inputs on the page
+    	  $(document).on('change', ':file', function() {
+    	    var input = $(this),
+    	        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+    	        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    	    input.trigger('fileselect', [numFiles, label]);
+    	  });
+
+    	  // We can watch for our custom `fileselect` event like this
+    	  $(document).ready( function() {
+    	      $(':file').on('fileselect', function(event, numFiles, label) {
+
+    	          var input = $(this).parents('.input-group').find(':text'),
+    	              log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+    	          if( input.length ) {
+    	              input.val(log);
+    	          } else {
+    	              if( log ) alert(log);
+    	          }
+
+    	      });
+    	  });
+    	  
+    	});
+    </script>
+    
   </body>
 </html> 

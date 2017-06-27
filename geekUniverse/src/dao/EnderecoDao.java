@@ -31,7 +31,9 @@ public class EnderecoDao {
 			ps.setString(7, endereco.getComplemento());
 			ps.setString(8, endereco.getCep());
 			
-			retorno = ps.executeUpdate();
+			if(ps.executeUpdate() > 0){
+				retorno = ps.getGeneratedKeys().getInt(1);
+			}
 			
 		} catch (SQLException e){
 			e.printStackTrace();
@@ -41,29 +43,39 @@ public class EnderecoDao {
 		return retorno;
 	}
 	
-	public int buscarId(String endereco){
+	public Endereco buscarId(int id){
 		Connection conexao = null;
+		Endereco endereco = null;
 		
-		int retorno = 0;
-		
-		String sql = "SELECT id FROM endereco WHERE rua = ?";
+		String sql = "SELECT id FROM endereco WHERE id = ?";
 		
 		try{
 			conexao = ConexaoFabrica.getConnection();
 			PreparedStatement ps;
 			ps = conexao.prepareStatement(sql);
-			ps.setString(1, endereco);
+			
+			ps.setInt(1, id);
 			
 			ResultSet rs = ps.executeQuery();
 			
 			if(rs.next()){
-				retorno = rs.getInt("id");
-				return retorno;
+				endereco = new Endereco();
+				endereco.setId(rs.getInt("id"));
+				endereco.setRua(rs.getString("rua"));
+				endereco.setNumero(Integer.parseInt(rs.getString("numero")));
+				endereco.setComplemento(rs.getString("complemento"));
+				endereco.setBairro(rs.getString("bairro"));
+				endereco.setCidade(rs.getString("cidade"));
+				endereco.setEstado(rs.getString("estado"));
+				endereco.setPais(rs.getString("pais"));
+				endereco.setCep(rs.getString("cep"));
+				
+				return endereco;
 			}
 		}catch (SQLException e){
 			e.printStackTrace();
 		}
-		return retorno;
+		return endereco;
 	}
 	
 	public boolean atualizar(Endereco endereco) {

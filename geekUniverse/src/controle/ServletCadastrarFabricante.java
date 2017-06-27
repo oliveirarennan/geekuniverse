@@ -50,11 +50,12 @@ public class ServletCadastrarFabricante extends HttpServlet {
 		fabricante.setStatus(status);
 		
 		FabricanteServico fs = new FabricanteServico();
+		
 		int rq = fs.cadastrar(fabricante);
 		if(rq > 0){
-			response.sendRedirect("admin/cadastrar-fabricante.jsp?categoria=sucesso");
+			response.sendRedirect("admin/cadastrar-fabricante.jsp?fabricante=sucesso");
 		}else{
-			response.sendRedirect("admin/cadastrar-fabricante.jsp?categoria=erro");
+			response.sendRedirect("admin/cadastrar-fabricante.jsp?fabricante=erro");
 		}
 		
 		

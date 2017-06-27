@@ -57,7 +57,7 @@ public class FabricanteDao {
 				fabricante = new Fabricante();
 				fabricante.setId(rs.getInt("id"));
 				fabricante.setNome(rs.getString("nome"));
-				fabricante.setNome(rs.getString("cnpj"));
+				fabricante.setCnpj(rs.getString("cnpj"));
 				fabricante.setStatus(rs.getInt("status"));
 				
 				listaDeFabricantes.add(fabricante);
@@ -116,4 +116,33 @@ public class FabricanteDao {
 	        }
 	        return true;
 	    }
+	
+	public static Fabricante buscarPorId(int id){
+		Connection conexao = null;
+		
+		Fabricante fabricante = null;
+		
+		String sql = "SELECT * FROM fabricante where id = ?";
+		
+		try{
+			conexao = ConexaoFabrica.getConnection();
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setInt(1, id);
+						
+			ResultSet rs = ps.executeQuery();
+			
+			rs.next();
+				fabricante = new Fabricante();
+				fabricante.setId(rs.getInt("id"));
+				fabricante.setNome(rs.getString("nome"));
+				fabricante.setNome(rs.getString("cnpj"));
+				fabricante.setStatus(rs.getInt("status"));
+				
+		} catch (SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBUtil.fechar(conexao);
+		}
+		return fabricante;
+	}	
 }

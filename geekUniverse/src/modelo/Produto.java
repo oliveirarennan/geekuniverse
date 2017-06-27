@@ -5,7 +5,9 @@ public class Produto {
 	private String nome;
 	private String descricao;
 	private Double valor;
-	private String estoque;
+	private int estoque;
+	private Categoria categoria;
+	private Fabricante fabricante;
 	private String imagem;
 	
 	public int getId() {
@@ -32,10 +34,10 @@ public class Produto {
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
-	public String getEstoque() {
+	public int getEstoque() {
 		return estoque;
 	}
-	public void setEstoque(String estoque) {
+	public void setEstoque(int estoque) {
 		this.estoque = estoque;
 	}
 	public String getImagem() {
@@ -43,6 +45,18 @@ public class Produto {
 	}
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
+	}
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+	public Fabricante getFabricante() {
+		return fabricante;
+	}
+	public void setFabricante(Fabricante fabricante) {
+		this.fabricante = fabricante;
 	}
 	@Override
 	public int hashCode() {
@@ -67,8 +81,10 @@ public class Produto {
 	@Override
 	public String toString() {
 		return "Produto [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", valor=" + valor + ", estoque="
-				+ estoque + ", imagem=" + imagem + "]";
+				+ estoque + ", categoria=" + categoria + ", fabricante=" + fabricante + ", imagem=" + imagem + "]";
 	}
+	
+	
 	
 	
 }

@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelo.Produto;
+import servico.CategoriaServico;
+import servico.FabricanteServico;
 import util.DBUtil;
 
 public class ProdutoDao {
@@ -15,7 +17,7 @@ public class ProdutoDao {
 	public int cadastrar(Produto produto){
 		Connection conexao = null;
 		int retorno = 0;
-		String sql = "INSERT INTO produto(nome, descricao, valor, estoque, imagem) values(?, ?, ?, ?, ?) ";
+		String sql = "INSERT INTO produto(nome, descricao, valor, estoque, imagem, fabricante_id, categoria_id) values(?, ?, ?, ?, ?, ?, ?) ";
 		
 		try{
 			conexao = ConexaoFabrica.getConnection();
@@ -25,8 +27,10 @@ public class ProdutoDao {
 			ps.setString(1, produto.getNome());
 			ps.setString(2, produto.getDescricao());
 			ps.setDouble(3, produto.getValor());
-			ps.setString(4, produto.getEstoque());
+			ps.setInt(4, produto.getEstoque());
 			ps.setString(5, produto.getImagem());
+			ps.setInt(6, produto.getFabricante().getId());
+			ps.setInt(7, produto.getCategoria().getId());
 			
 			retorno = ps.executeUpdate();
 			
@@ -59,8 +63,10 @@ public class ProdutoDao {
 				produto.setNome(rs.getString("nome"));
 				produto.setDescricao(rs.getString("descricao"));
 				produto.setValor(rs.getDouble("valor"));
-				produto.setEstoque(rs.getString("estoque"));
+				produto.setEstoque(rs.getInt("estoque"));
 				produto.setImagem(rs.getString("imagem"));
+				produto.setCategoria(CategoriaServico.buscarPorId(rs.getInt("categoria_id")));
+				produto.setFabricante(FabricanteServico.buscarPorId(rs.getInt("fabricante_id")));
 				
 				listaDeProdutos.add(produto);
 			}			
@@ -109,7 +115,7 @@ public class ProdutoDao {
 	            pstm.setString( 1, produto.getNome());
 	            pstm.setString( 2, produto.getDescricao());
 	            pstm.setDouble( 3, produto.getValor());
-	            pstm.setString( 4, produto.getEstoque());
+	            pstm.setInt( 4, produto.getEstoque());
 	            pstm.setString( 5, produto.getImagem());
 	            pstm.setInt( 6, produto.getId());
 	         
