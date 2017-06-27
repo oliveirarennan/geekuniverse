@@ -7,6 +7,12 @@ import modelo.Categoria;
 
 public class CategoriaServico {
 	
+	public int cadastrar(Categoria categoria){
+		CategoriaDao categoriaDao = new CategoriaDao();
+		
+		return categoriaDao.cadastrar(categoria);
+	}
+	
 	public boolean excluir(int registro){
 		CategoriaDao categoriaDao = new CategoriaDao();
 		

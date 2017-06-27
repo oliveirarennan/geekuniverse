@@ -7,6 +7,12 @@ import modelo.Produto;
 
 public class ProdutoServico {
 	
+	public int cadastrar(Produto produto){
+		ProdutoDao produtoDao = new ProdutoDao();
+		
+		return produtoDao.cadastrar(produto);
+	}
+	
 	public boolean excluir(int registro){
 		ProdutoDao produtoDao = new ProdutoDao();
 		

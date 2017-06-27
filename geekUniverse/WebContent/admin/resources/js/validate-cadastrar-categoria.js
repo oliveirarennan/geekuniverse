@@ -3,15 +3,12 @@
 //Mais exemplos http://www.linhadecodigo.com.br/artigo/3706/jquery-validate-validacao-de-formularios-html.aspx
 
 $(function(){
-    $('#frmCadastrarFabricante').validate(
+    $('#frmCadastrarCategoria').validate(
             {
                 rules : {
                     nome:{  
                         required:true,
                         rangelength:[3,100]
-                    },
-                    cnpj:{
-                        required: true,
                     },
                     status:{
                         required: true,
@@ -21,9 +18,6 @@ $(function(){
                     nome:{
                         required: "Você precisa digitar o nome do fabricante",
                         rangelength: "Seu nome precisar ter entre 3 a 100 caracteres"
-                    },
-                    cnpj:{
-                        required:"Você precisa digitar seu CNPJ",
                     },
                    status:{
                         required: "Você precisa escolher um fabricante",

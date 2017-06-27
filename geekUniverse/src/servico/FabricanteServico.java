@@ -7,6 +7,12 @@ import modelo.Fabricante;
 
 public class FabricanteServico {
 	
+	public int cadastrar(Fabricante fabricante){
+		FabricanteDao fabricanteDao = new FabricanteDao();
+		
+		return fabricanteDao.cadastrar(fabricante);
+	}
+	
 	public boolean excluir(int registro){
 		FabricanteDao fabricanteDao = new FabricanteDao();
 		

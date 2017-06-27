@@ -3,31 +3,52 @@
 //Mais exemplos http://www.linhadecodigo.com.br/artigo/3706/jquery-validate-validacao-de-formularios-html.aspx
 
 $(function(){
-    $('#frmCadastrarFabricante').validate(
+    $('#frmCadastrarProduto').validate(
             {
                 rules : {
                     nome:{  
                         required:true,
-                        rangelength:[3,100]
+                        rangelength:[3,100],
                     },
-                    cnpj:{
+                    descicao:{
+                        required: true,
+                        rangelength:[3,255],
+                    },
+                    valor:{
                         required: true,
                     },
-                    status:{
+                    estoque:{
                         required: true,
+                        digits: true,
+                        range: [0, 999] ,       
+                    },
+                    imagem:{
+                        required: true
+
                     }
                 },
+
                 messages:{
                     nome:{
-                        required: "Você precisa digitar o nome do fabricante",
-                        rangelength: "Seu nome precisar ter entre 3 a 100 caracteres"
+                        required: "Você precisa digitar o nome do Produto",
+                        rangelength: "O nome do produto precisa ter entre 3 a 100 caracteres",
                     },
-                    cnpj:{
-                        required:"Você precisa digitar seu CNPJ",
+                    descricao:{
+                        required:"Você precisa digitar a descrição do Produto",
+                        rangelength: "O descrição do produto precisa ter entre 3 a 255 caracteres",
                     },
-                   status:{
-                        required: "Você precisa escolher um fabricante",
+                    valor:{
+                        required:"Você precisa digitar um valor",
+                    },
+                    estoque:{
+                        required: "Você precisa digitar o número de itens que tem no estoque",
+                        digits: "Digite Apenas Números Inteiros",
+                        range: "Digite um numero entre 0 e 1000",
+                    },
+                    imagem:{
+                        required:"Passe o Caminho da Imagem"
                     }
+
                 },errorElement: "em",
     				errorPlacement: function ( error, element ) {
     					// Add the `help-block` class to the error element

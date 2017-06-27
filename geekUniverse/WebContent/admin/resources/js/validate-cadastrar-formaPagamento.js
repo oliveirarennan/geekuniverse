@@ -3,30 +3,34 @@
 //Mais exemplos http://www.linhadecodigo.com.br/artigo/3706/jquery-validate-validacao-de-formularios-html.aspx
 
 $(function(){
-    $('#frmCadastrarFabricante').validate(
+    $('#frmCadastrarFormaPagamento').validate(
             {
                 rules : {
-                    nome:{  
+                    tipoPagamento:{  
                         required:true,
-                        rangelength:[3,100]
                     },
-                    cnpj:{
+                    parcelas:{
                         required: true,
+                        digits: true,
+                        range:[1, 12],
                     },
-                    status:{
-                        required: true,
+                    valor:{
+                        required:true
                     }
+
                 },
                 messages:{
-                    nome:{
-                        required: "Você precisa digitar o nome do fabricante",
-                        rangelength: "Seu nome precisar ter entre 3 a 100 caracteres"
+                    tipoPagamento:{
+                        required: "Você precisa digitar qual a forma de pagamento",
+                        
                     },
-                    cnpj:{
-                        required:"Você precisa digitar seu CNPJ",
+                    parcelas:{
+                        required: "Digite o numero de Parcelas",
+                        digits: "Digite apenas numero",
+                        range: "Digite um numero entre 1 e 12",
                     },
-                   status:{
-                        required: "Você precisa escolher um fabricante",
+                    valor:{
+                        required:"Digite o valor do pagamento"
                     }
                 },errorElement: "em",
     				errorPlacement: function ( error, element ) {
