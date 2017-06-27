@@ -24,14 +24,16 @@ public class FabricanteDao {
 			
 			ps.setString(1, fabricante.getNome());
 			ps.setString(2, fabricante.getCnpj());
-			ps.setBoolean(3, fabricante.getStatus());
+			ps.setInt(3, fabricante.getStatus());
 			
 			retorno = ps.executeUpdate();
 			
 		} catch (SQLException e){
 			e.printStackTrace();
+			return retorno;
 		} finally{
 			DBUtil.fechar(conexao);
+			
 		}
 		return retorno;
 	}
@@ -56,7 +58,7 @@ public class FabricanteDao {
 				fabricante.setId(rs.getInt("id"));
 				fabricante.setNome(rs.getString("nome"));
 				fabricante.setNome(rs.getString("cnpj"));
-				fabricante.setStatus(rs.getBoolean("status"));
+				fabricante.setStatus(rs.getInt("status"));
 				
 				listaDeFabricantes.add(fabricante);
 			}			
@@ -103,8 +105,8 @@ public class FabricanteDao {
 				PreparedStatement pstm = conexao.prepareStatement(query);
 
 	            pstm.setString( 1, fabricante.getNome());
-	            pstm.setBoolean(2, fabricante.getStatus());
-	            pstm.setBoolean( 3, fabricante.getStatus());
+	            pstm.setString(2, fabricante.getCnpj());
+	            pstm.setInt(3, fabricante.getStatus());
 	         
 	            pstm.executeUpdate();
 	            pstm.close();

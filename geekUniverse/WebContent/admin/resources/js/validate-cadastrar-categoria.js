@@ -16,11 +16,11 @@ $(function(){
                 },
                 messages:{
                     nome:{
-                        required: "Você precisa digitar o nome do fabricante",
+                        required: "Você precisa digitar o nome da categoria.",
                         rangelength: "Seu nome precisar ter entre 3 a 100 caracteres"
                     },
                    status:{
-                        required: "Você precisa escolher um fabricante",
+                        required: "Você precisa definir se está ativo ou não",
                     }
                 },errorElement: "em",
     				errorPlacement: function ( error, element ) {

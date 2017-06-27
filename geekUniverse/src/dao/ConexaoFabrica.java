@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class ConexaoFabrica {
 	
 	private static ConexaoFabrica instance = new ConexaoFabrica();
-	public static final String URL = "jdbc:mysql://127.0.0.1:3306/nome_banco";
+	public static final String URL = "jdbc:mysql://localhost:3306/lojavirtual";
 	public static final String USER = "root";
 	public static final String PASSWORD = "";
 	public static final String DRIVER_CLASS = "com.mysql.jdbc.Driver";

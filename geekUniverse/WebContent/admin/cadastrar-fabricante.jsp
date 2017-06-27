@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="resources/css/estilo.css"/>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Cadastro de Categoria</title>
+    <title>Cadastro de Fabricante</title>
 
     <!-- Bootstrap -->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
@@ -106,14 +106,20 @@
       <div class="container-fluid">
           <div class="row">
             <div class=" col-md-6 col-md-offset-3 col-sm-6 col-offset-3 col-xs-6 col-xs-offset-3 col-lg-6 col-lg-offset-3">
-              <legend><center>Cadastrar Categoria</center></legend>
-              <form name="frmCadastrarCategoria" id="frmCadastrarCategoria" action="" method="POST">
+              <legend><center>Cadastrar Fabricante</center></legend>
+              <form name="frmCadastrarFabricante" id="frmCadastrarFabricante" action="../ServletCadastrarFabricante" method="POST">
                 <div class="form-group">
                   <label class="control-label" for="nome">Nome</label>
                   <div class="validateError">
                     <input type="text" name="nome" id="nome" class="form-control"/>
                   </div>  
                 </div>   
+                <div class="form-group">
+                  <label class="control-label" for="cnpj">CNPJ</label>
+                  <div class="validateError">
+                    <input type="text" name="cnpj" id="cnpj" class="form-control"/>
+                  </div>  
+                </div>
                 <div class="form-group">
                   <label class="control-label" for="status">Status</label>
                   <div class="validateError">
@@ -145,7 +151,7 @@
     <script src="resources/js/jquery.validate.min.js"></script>
     <script src="resources/js/additional-methods.min.js"></script>
     <script src="resources/js/ConfiguracaoMaskMoney.js"></script>
-    <script src="resources/js/validate-cadastrar-categoria.js"></script>
+    <script src="resources/js/validate-cadastrar-fabricante.js"></script>
     <script src="resources/js/jquery.maskedinput.min.js"></script>
     <script src="resources/js/ConfiguracaoMaskInput.js"></script>
     <script src="resources/js/scripts.js"></script>

@@ -4,7 +4,7 @@ public class Categoria {
 	
 	private int id;
 	private String nome;
-	private String status;
+	private int status;
 	
 	public int getId() {
 		return id;
@@ -18,10 +18,10 @@ public class Categoria {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getStatus() {
+	public int getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 	@Override

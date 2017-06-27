@@ -5,7 +5,7 @@ public class Fabricante {
 	private int id;
 	private String nome;
 	private String cnpj;
-	private Boolean status;
+	private int status;
 	
 	public int getId() {
 		return id;
@@ -25,10 +25,10 @@ public class Fabricante {
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
-	public Boolean getStatus() {
+	public int getStatus() {
 		return status;
 	}
-	public void setStatus(Boolean status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 	@Override

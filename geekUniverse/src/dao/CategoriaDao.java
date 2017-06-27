@@ -23,7 +23,7 @@ public class CategoriaDao {
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			
 			ps.setString(1, categoria.getNome());
-			ps.setString(3, categoria.getStatus());
+			ps.setInt(2, categoria.getStatus());
 			
 			retorno = ps.executeUpdate();
 			
@@ -53,7 +53,7 @@ public class CategoriaDao {
 			while(rs.next()){
 				categoria = new Categoria();
 				categoria.setNome(rs.getString("nome"));
-				categoria.setStatus(rs.getString("status"));
+				categoria.setStatus(rs.getInt("status"));
 				
 				listaDeCategorias.add(categoria);
 			}			
@@ -99,7 +99,7 @@ public class CategoriaDao {
 				PreparedStatement pstm = conexao.prepareStatement(query);
 
 	            pstm.setString( 1, categoria.getNome());
-	            pstm.setString(2, categoria.getStatus());
+	            pstm.setInt(2, categoria.getStatus());
 	            pstm.setInt( 3, categoria.getId());
 	         
 	            pstm.executeUpdate();
