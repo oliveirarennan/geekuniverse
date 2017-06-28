@@ -1,0 +1,102 @@
+section{
+	margin-top: -2.7%;
+}
+
+#top{
+	margin-left: 38%;
+}
+
+.row{
+	width: 100%;
+	height: 180px;
+}
+
+
+.logo{
+	width: 35%;	
+	margin-top: -13%;
+	margin-left: 32%;
+}
+
+.menu{
+  margin-top: -4.7%;
+}
+
+#drop{
+	color:#ffaa00;
+}
+#nav{
+  margin-left: 22%;
+}
+
+#atrib{	
+	background:#ffaa00;
+}
+
+input[type=text]:hover, textarea:hover{ 
+  background: #ffffff; border:1px solid #ffaa00;
+  -webkit-transform: scale(1.0);
+  -moz-transform: scale(1.0);
+  -ms-transform: scale(1.0);
+  transition: all 0.3s ease-in-out;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
+  width: 100%;   
+}
+ 
+button[type=submit]{
+  background:#ffaa00;
+  color:#ffffff;
+}
+
+.container{
+  background-color: #000;
+  height: 750%;
+}
+#container{
+  background-color: #ac8;
+  height: 1000px;
+}
+
+.thumbnail {
+  padding: 0 0 15px 0;
+  border: none;
+  border-radius: 0;
+}
+
+.thumbnail p {
+  margin-top: 15px;
+  color: #555;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #f1f1f1;
+  border-radius: 0;
+  transition: .2s;
+}
+
+.btn:hover, .btn:focus {
+  border: 1px solid #333;
+  background-color: #fff;
+  color: #000;
+}
+
+.gamb{
+  margin-left: 18%;
+  margin-top: 3%;
+}
+.meio{
+  margin-left: 1.5%;
+}
+
+.imp{
+  
+  margin-left: 17.5%;
+}
+
+
+
