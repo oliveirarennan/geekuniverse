@@ -1,10 +1,12 @@
 package modelo;
 
 public class FormaPagamento {
+
 	private int id;
 	private String tipoPagamento;
 	private int parcelas;
 	private Double valor;
+	
 	public int getId() {
 		return id;
 	}
@@ -28,12 +30,16 @@ public class FormaPagamento {
 	}
 	public void setValor(Double valor) {
 		this.valor = valor;
-	}
+	}	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + id;
+		result = prime * result + parcelas;
+		result = prime * result + ((tipoPagamento == null) ? 0 : tipoPagamento.hashCode());
+		result = prime * result + ((valor == null) ? 0 : valor.hashCode());
 		return result;
 	}
 	@Override
@@ -47,15 +53,18 @@ public class FormaPagamento {
 		FormaPagamento other = (FormaPagamento) obj;
 		if (id != other.id)
 			return false;
+		if (parcelas != other.parcelas)
+			return false;
+		if (tipoPagamento == null) {
+			if (other.tipoPagamento != null)
+				return false;
+		} else if (!tipoPagamento.equals(other.tipoPagamento))
+			return false;
+		if (valor == null) {
+			if (other.valor != null)
+				return false;
+		} else if (!valor.equals(other.valor))
+			return false;
 		return true;
 	}
-	@Override
-	public String toString() {
-		return "FormaPagamento [id=" + id + ", tipoPagamento=" + tipoPagamento + ", parcelas=" + parcelas + ", valor="
-				+ valor + "]";
-	}
-	
-	
-	
-
 }

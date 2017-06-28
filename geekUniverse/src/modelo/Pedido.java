@@ -1,21 +1,16 @@
 package modelo;
 
-import java.util.Date;
+import java.util.Calendar;
 
 public class Pedido {
-	private int id;
+
 	private int numeroPedido;
 	private FormaPagamento formaPagamento;
 	private String statusPedido;
 	private Usuario cliente;
-	private Date dataPedido;
+	private Calendar dataPedido;
 	private Frete frete;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 	public int getNumeroPedido() {
 		return numeroPedido;
 	}
@@ -25,7 +20,7 @@ public class Pedido {
 	public FormaPagamento getFormaPagamento() {
 		return formaPagamento;
 	}
-	public void setFormaPagamento(FormaPagamento formaPagamento) {
+	public void setFpagamento(FormaPagamento formaPagamento) {
 		this.formaPagamento = formaPagamento;
 	}
 	public String getStatusPedido() {
@@ -40,10 +35,10 @@ public class Pedido {
 	public void setCliente(Usuario cliente) {
 		this.cliente = cliente;
 	}
-	public Date getDataPedido() {
+	public Calendar getDataPedido() {
 		return dataPedido;
 	}
-	public void setDataPedido(Date dataPedido) {
+	public void setDataPedido(Calendar dataPedido) {
 		this.dataPedido = dataPedido;
 	}
 	public Frete getFrete() {
@@ -52,12 +47,17 @@ public class Pedido {
 	public void setFrete(Frete frete) {
 		this.frete = frete;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
+		result = prime * result + ((dataPedido == null) ? 0 : dataPedido.hashCode());
+		result = prime * result + ((formaPagamento == null) ? 0 : formaPagamento.hashCode());
+		result = prime * result + ((frete == null) ? 0 : frete.hashCode());
 		result = prime * result + numeroPedido;
+		result = prime * result + ((statusPedido == null) ? 0 : statusPedido.hashCode());
 		return result;
 	}
 	@Override
@@ -69,18 +69,33 @@ public class Pedido {
 		if (getClass() != obj.getClass())
 			return false;
 		Pedido other = (Pedido) obj;
-		if (id != other.id)
+		if (cliente == null) {
+			if (other.cliente != null)
+				return false;
+		} else if (!cliente.equals(other.cliente))
+			return false;
+		if (dataPedido == null) {
+			if (other.dataPedido != null)
+				return false;
+		} else if (!dataPedido.equals(other.dataPedido))
+			return false;
+		if (formaPagamento == null) {
+			if (other.formaPagamento != null)
+				return false;
+		} else if (!formaPagamento.equals(other.formaPagamento))
+			return false;
+		if (frete == null) {
+			if (other.frete != null)
+				return false;
+		} else if (!frete.equals(other.frete))
 			return false;
 		if (numeroPedido != other.numeroPedido)
 			return false;
+		if (statusPedido == null) {
+			if (other.statusPedido != null)
+				return false;
+		} else if (!statusPedido.equals(other.statusPedido))
+			return false;
 		return true;
 	}
-	@Override
-	public String toString() {
-		return "Pedido [id=" + id + ", numeroPedido=" + numeroPedido + ", formaPagamento=" + formaPagamento
-				+ ", statusPedido=" + statusPedido + ", cliente=" + cliente + ", dataPedido=" + dataPedido + ", frete="
-				+ frete + "]";
-	}
-	
-
 }

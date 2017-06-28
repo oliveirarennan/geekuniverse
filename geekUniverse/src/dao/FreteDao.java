@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelo.Fabricante;
 import modelo.Frete;
 import util.DBUtil;
 
@@ -111,4 +112,31 @@ public class FreteDao {
 	        }
 	        return true;
 	    }
+	
+	public static Frete buscarPorId(int id){
+		Connection conexao = null;
+		
+		Frete frete = null;
+		
+		String sql = "SELECT * FROM frete where id = ?";
+		
+		try{
+			conexao = ConexaoFabrica.getConnection();
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setInt(1, id);			
+			ResultSet rs = ps.executeQuery();
+			
+			rs.next();
+				frete = new Frete();
+				frete.setPrazo(rs.getString("prazo"));
+				frete.setValor(rs.getDouble("valor"));
+							
+		} catch (SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBUtil.fechar(conexao);
+		}
+		return frete;
+	}
 }

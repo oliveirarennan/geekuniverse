@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelo.Categoria;
 import modelo.Produto;
 import servico.CategoriaServico;
 import servico.FabricanteServico;
@@ -17,7 +18,7 @@ public class ProdutoDao {
 	public int cadastrar(Produto produto){
 		Connection conexao = null;
 		int retorno = 0;
-		String sql = "INSERT INTO produto(nome, descricao, valor, estoque, imagem, fabricante_id, categoria_id) values(?, ?, ?, ?, ?, ?, ?) ";
+		String sql = "INSERT INTO produto(nome, descricao, valor, estoque, fabricante, categoria, imagem) values(?, ?, ?, ?, ?, ?, ?) ";
 		
 		try{
 			conexao = ConexaoFabrica.getConnection();
@@ -65,8 +66,8 @@ public class ProdutoDao {
 				produto.setValor(rs.getDouble("valor"));
 				produto.setEstoque(rs.getInt("estoque"));
 				produto.setImagem(rs.getString("imagem"));
-				produto.setCategoria(CategoriaServico.buscarPorId(rs.getInt("categoria_id")));
-				produto.setFabricante(FabricanteServico.buscarPorId(rs.getInt("fabricante_id")));
+				produto.setCategoria(CategoriaServico.buscarPorId(rs.getInt("categoria")));
+				produto.setFabricante(FabricanteServico.buscarPorId(rs.getInt("fabricante")));
 				
 				listaDeProdutos.add(produto);
 			}			
@@ -127,4 +128,35 @@ public class ProdutoDao {
 	        }
 	        return true;
 	    }
+	
+	public static Produto buscarPorId(int id){
+		Connection conexao = null;
+		
+		Produto produto = null;
+		
+		String sql = "SELECT * FROM produto where id = ?";
+		
+		try{
+			conexao = ConexaoFabrica.getConnection();
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setInt(1, id);			
+			ResultSet rs = ps.executeQuery();
+			
+			rs.next();
+				produto = new Produto();
+				produto.setId(rs.getInt("id"));
+				produto.setNome(rs.getString("nome"));
+				produto.setDescricao(rs.getString("descricao"));
+				produto.setValor(rs.getDouble("valor"));
+				produto.setEstoque(rs.getInt("estoque"));
+				produto.setImagem(rs.getString("imagem"));
+			
+		} catch (SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBUtil.fechar(conexao);
+		}
+		return produto;
+	}
 }

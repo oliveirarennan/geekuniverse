@@ -2,7 +2,10 @@ package servico;
 
 import java.util.List;
 
+import dao.CategoriaDao;
+import dao.FormaPagamentoDao;
 import dao.ProdutoDao;
+import modelo.FormaPagamento;
 import modelo.Produto;
 
 public class ProdutoServico {
@@ -29,5 +32,9 @@ public class ProdutoServico {
 		ProdutoDao produtoDao = new ProdutoDao();
 		
 		return produtoDao.atualizar(produto);
+	}
+	
+	public static FormaPagamento buscarPorId(int id){
+		return FormaPagamentoDao.buscarPorId(id);
 	}
 }
