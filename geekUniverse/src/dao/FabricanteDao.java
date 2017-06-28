@@ -24,7 +24,7 @@ public class FabricanteDao {
 			
 			ps.setString(1, fabricante.getNome());
 			ps.setString(2, fabricante.getCnpj());
-			ps.setInt(3, fabricante.getStatus());
+			ps.setBoolean(3, fabricante.getStatus());
 			
 			retorno = ps.executeUpdate();
 			
@@ -58,7 +58,7 @@ public class FabricanteDao {
 				fabricante.setId(rs.getInt("id"));
 				fabricante.setNome(rs.getString("nome"));
 				fabricante.setCnpj(rs.getString("cnpj"));
-				fabricante.setStatus(rs.getInt("status"));
+				fabricante.setStatus(rs.getBoolean("status"));
 				
 				listaDeFabricantes.add(fabricante);
 			}			
@@ -106,7 +106,7 @@ public class FabricanteDao {
 
 	            pstm.setString( 1, fabricante.getNome());
 	            pstm.setString(2, fabricante.getCnpj());
-	            pstm.setInt(3, fabricante.getStatus());
+	            pstm.setBoolean(3, fabricante.getStatus());
 	         
 	            pstm.executeUpdate();
 	            pstm.close();
@@ -136,7 +136,7 @@ public class FabricanteDao {
 				fabricante.setId(rs.getInt("id"));
 				fabricante.setNome(rs.getString("nome"));
 				fabricante.setNome(rs.getString("cnpj"));
-				fabricante.setStatus(rs.getInt("status"));
+				fabricante.setStatus(rs.getBoolean("status"));
 				
 		} catch (SQLException e){
 			e.printStackTrace();

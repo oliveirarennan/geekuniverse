@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelo.FormaPagamento;
+import modelo.Produto;
 import util.DBUtil;
 
 public class FormaPagamentoDao {
@@ -114,4 +115,32 @@ public class FormaPagamentoDao {
 	        }
 	        return true;
 	    }
+	
+	public static FormaPagamento buscarPorId(int id){
+		Connection conexao = null;
+		
+		FormaPagamento formaPagamento = null;
+		
+		String sql = "SELECT * FROM formaPagamento where id = ?";
+		
+		try{
+			conexao = ConexaoFabrica.getConnection();
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setInt(1, id);			
+			ResultSet rs = ps.executeQuery();
+			
+			rs.next();
+				formaPagamento = new FormaPagamento();
+				formaPagamento.setTipoPagamento(rs.getString("tipoPagamento"));
+				formaPagamento.setParcelas(rs.getInt("parcelas"));
+				formaPagamento.setValor(rs.getDouble("valor"));
+				
+		} catch (SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBUtil.fechar(conexao);
+		}
+		return formaPagamento;
+	}
 }
