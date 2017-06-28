@@ -1,5 +1,7 @@
 package controle;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,13 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import modelo.Endereco;
 import modelo.Usuario;
+import servico.EnderecoServico;
 import servico.UsuarioServico;
+import util.Util;
 
-@WebServlet("/CadastrarUsuarioServlet")
-public class CadastrarUsuarioServlet extends HttpServlet {
+@WebServlet("/ServletCadastrarUsuario")
+public class ServletCadastrarUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public CadastrarUsuarioServlet() {
+    public ServletCadastrarUsuario() {
         super();
     }
 
@@ -32,7 +36,13 @@ public class CadastrarUsuarioServlet extends HttpServlet {
 		String cpf = request.getParameter("cpf");
 		String rg = request.getParameter("rg");
 		String email = request.getParameter("email");
-		String senha = request.getParameter("senha");
+		String senha = null;
+		try {
+			senha = Util.getMd5(request.getParameter("senha"));
+		} catch (NoSuchAlgorithmException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		String tipoUsuario = request.getParameter("tipoUsuario");
 		String status = request.getParameter("status");
 		String pais = request.getParameter("pais");
@@ -40,7 +50,7 @@ public class CadastrarUsuarioServlet extends HttpServlet {
 		String cidade = request.getParameter("cidade");
 		String bairro = request.getParameter("bairro");
 		String rua = request.getParameter("rua");
-		String numero = request.getParameter("numero");
+		int numero = Integer.parseInt(request.getParameter("numero"));
 		String complemento = request.getParameter("complemento");
 		String cep = request.getParameter("cep");
 		
@@ -53,12 +63,18 @@ public class CadastrarUsuarioServlet extends HttpServlet {
 		usuario.setSexo(sexo);
 		usuario.setCelular(celular);
 		usuario.setTelefoneFixo(telefoneFixo);
-		usuario.setNome(cpf);
-		usuario.setNome(rg);
-		usuario.setNome(email);
-		usuario.setNome(senha);
-		usuario.setNome(tipoUsuario);
-		usuario.setNome(status);
+		usuario.setCpf(cpf);
+		usuario.setRg(rg);
+		usuario.setEmail(email);
+		usuario.setSenha(senha);
+		usuario.setTipoUsuario(tipoUsuario);
+		if(status == "true"){
+			usuario.setStatus(0);
+		}else{
+			usuario.setStatus(1);
+		}
+		
+		
 		
 		Endereco e = new Endereco();
 		e.setEstado(pais);
@@ -66,16 +82,22 @@ public class CadastrarUsuarioServlet extends HttpServlet {
 		e.setEstado(cidade);
 		e.setBairro(bairro);
 		e.setRua(rua);
-		e.setEstado(numero);
+		e.setNumero(numero);
 		e.setComplemento(complemento);
 		e.setEstado(cep);
+
 		
+		int enderecoId = EnderecoServico.cadastrar(e);
+		System.out.println("===>"+enderecoId);
+		e.setId(enderecoId);
 		usuario.setEndereco(e);
 		
+	
+		
 		if(servico.cadastrarUsuario(usuario)){
-			System.out.println("Usuário incluída");
-		} else {
-			System.out.println("Inclusão falhou!");
+			response.sendRedirect("admin/cadastrar-usuario.jsp?usuario=sucesso");
+		}else{
+			response.sendRedirect("admin/cadastrar-usuario.jsp?usuario=erro");
 		}	
 	}
 }

@@ -35,7 +35,7 @@ public class UsuarioDao {
 			ps.setString(9, usuario.getEmail());
 			ps.setString(10, usuario.getSenha());
 			ps.setString(11, usuario.getTipoUsuario());
-			ps.setBoolean(12, usuario.getStatus());
+			ps.setInt(12, usuario.getStatus());
 			
 			retorno = ps.executeUpdate();
 			
@@ -76,7 +76,7 @@ public class UsuarioDao {
 				usuario.setEmail(rs.getString("email"));
 				usuario.setSenha(rs.getString("senha"));
 				usuario.setTipoUsuario(rs.getString("tipoUsuario"));
-				usuario.setStatus(rs.getBoolean("status"));
+				usuario.setStatus(rs.getInt("status"));
 				
 				listaDeUsuarios.add(usuario);
 			}			
@@ -135,7 +135,7 @@ public class UsuarioDao {
 	            pstm.setString( 9, usuario.getEmail());
 	            pstm.setString( 10, usuario.getSenha());
 	            pstm.setString( 11, usuario.getTipoUsuario());
-	            pstm.setBoolean(12, usuario.getStatus());
+	            pstm.setInt(12, usuario.getStatus());
 	            pstm.setInt( 13, usuario.getId());
 	         
 	            pstm.executeUpdate();

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -45,7 +45,7 @@
                 <li><a href="#">atributo1</a></li>
                 <li><a href="#">atributo2</a></li>
                 <li><a href="#">atributo3</a></li>
-                <li><a href="#">atributo4</a></li>
+                <li><a href="#">atributo4</a></li> 
                 <li><a href="#">atributo5</a></li>
               </ul>
             </li>

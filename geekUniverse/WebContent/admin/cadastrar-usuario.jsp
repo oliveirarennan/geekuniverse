@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -106,7 +106,7 @@
           <div class="row">
             <div class=" col-md-6 col-md-offset-3 col-sm-6 col-offset-3 col-xs-6 col-xs-offset-3 col-lg-6 col-lg-offset-3">
               <legend><center>Cadastrar Usuario</center></legend>
-              <form name="frmCadastrarUsuario" id="frmCadastrarUsuario" action="" method="POST">
+              <form name="frmCadastrarUsuario" id="frmCadastrarUsuario" action="../ServletCadastrarUsuario" method="POST">
                 <div class="form-group">
                   <label class="control-label" for="nome">Nome</label>
                   <div class="validateError">
@@ -235,7 +235,7 @@
                 <div class="form-group">
                   <label class="control-label" for="senha">Senha</label>
                   <div class="validateError">
-                    <input type="text" name="senha" id="senha" class="form-control"/>
+                    <input type="password" name="senha" id="senha" class="form-control"/>
                     </div>
                 </div>
                 <div class="form-group">

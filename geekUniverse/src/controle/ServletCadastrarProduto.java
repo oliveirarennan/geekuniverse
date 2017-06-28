@@ -66,11 +66,11 @@ public class ServletCadastrarProduto extends HttpServlet {
 		//Pega o caminho da Pasta do projeto
 		String  pastaProjeto = getServletContext().getRealPath("");
 		
-		//Configura o caminho da pasta onde ficarão as imagens dos produtos
+		//Configura o caminho da pasta onde ficarï¿½o as imagens dos produtos
 		String pastaDestino = pastaProjeto + File.separator + pastaImagens;
 		System.out.println("Imagem salva em " + pastaDestino);
 		
-		//Se a pasta não existir a cria
+		//Se a pasta nï¿½o existir a cria
 		File pasta = new File(pastaDestino);
 		if(!pasta.exists()){
 			pasta.mkdir();

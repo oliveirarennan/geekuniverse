@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class Util {
 	
-	public  String getMd5(String valor) throws NoSuchAlgorithmException{
+	public static String getMd5(String valor) throws NoSuchAlgorithmException{
 			
 		   String s = valor;
 	       MessageDigest md = MessageDigest.getInstance("MD5");

@@ -8,7 +8,7 @@ public class Endereco {
 	private String cidade;
 	private String bairro;
 	private String rua;
-	private Integer numero;
+	private int numero;
 	private String complemento;
 	private String cep;
 	

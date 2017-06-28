@@ -14,7 +14,7 @@ public class Usuario {
 	private String email;
 	private String senha;
 	private String tipoUsuario;
-	private Boolean status;
+	private int status;
 	private Endereco endereco;
 	
 	public int getId() {
@@ -89,10 +89,10 @@ public class Usuario {
 	public void setTipoUsuario(String tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
-	public Boolean getStatus() {
+	public int getStatus() {
 		return status;
 	}
-	public void setStatus(Boolean status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 	public Endereco getEndereco() {
