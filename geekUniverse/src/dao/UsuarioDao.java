@@ -120,9 +120,7 @@ public class UsuarioDao {
 	        try {
 	        	conexao = ConexaoFabrica.getConnection();
 	        	
-	            String query = "UPDATE usuario SET endereco_id, nome = ?, sobrenome = ?, dataNascimento = ?, sexo = ?"
-	            		+ "celular = ?,telefoneFixo = ?, cpf = ?, rg = ?"
-	            		+ "email = ?, senha = ?, tipoUsuario = ?, status = ? WHERE id = ?";
+	            String query = "UPDATE usuario SET endereco_id, nome = ?, sobrenome = ?, dataNascimento = ?, sexo = ?, celular = ?,telefoneFixo = ?, cpf = ?, rg = ?,email = ?, senha = ?, tipoUsuario = ?, status = ? WHERE id = ?";
 
 				PreparedStatement pstm = conexao.prepareStatement(query);
 				
