@@ -4,5 +4,5 @@ jQuery(function($){
 	  $("#cpf").mask("999.999.999-99");
 	  $("#rg").mask("999.999.999-9");
 	  $("#celular").mask("(99)99999-9999");
-	  $("#telFixo").mask("(99)9999-9999");
+	  $("#telefoneFixo").mask("(99)9999-9999");
 });

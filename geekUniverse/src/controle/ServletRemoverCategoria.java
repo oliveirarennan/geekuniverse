@@ -7,20 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.Categoria;
 import servico.CategoriaServico;
 
 /**
- * Servlet implementation class ServletCadastrarCategoria
+ * Servlet implementation class ServletRemoverCategoria
  */
-@WebServlet("/ServletCadastrarCategoria")
-public class ServletCadastrarCategoria extends HttpServlet {
+@WebServlet("/ServletRemoverCategoria")
+public class ServletRemoverCategoria extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletCadastrarCategoria() {
+    public ServletRemoverCategoria() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,35 +28,21 @@ public class ServletCadastrarCategoria extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		// TODO Auto-generated method stub
+		int id = Integer.parseInt(request.getParameter("id"));
+		if(CategoriaServico.excluir(id)){
+			response.sendRedirect("admin/gerenciar-categorias.jsp?categoria=sucesso");
+		}else{
+			response.sendRedirect("admin/gerenciar-categorias.jsp?categoria=falha");
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nome = request.getParameter("nome");
-		String status = request.getParameter("status");
-	
-		Categoria categoria = new Categoria();
-		categoria.setNome(nome);
-		
-		if(status.equals("true")){
-			categoria.setStatus(1);
-		}else{
-			categoria.setStatus(0);
-		}
-		
-		CategoriaServico cs = new CategoriaServico();
-		
-		int rq = cs.cadastrar(categoria);
-		
-		if(rq > 0){
-			response.sendRedirect("admin/cadastrar-categoria.jsp?categoria=sucesso");
-		}else{
-			response.sendRedirect("admin/cadastrar-categoria.jsp?categoria=erro");
-		}
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

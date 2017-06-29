@@ -64,12 +64,43 @@ public class CategoriaDao {
 			DBUtil.fechar(conexao);
 		}
 		return listaDeCategorias;
-	}		
+	}
+	
+	public List<Categoria> listarAtivada(){
+		Connection conexao = null;
+		
+		List<Categoria> listaDeCategorias = new ArrayList<Categoria>();
+		Categoria categoria = null;
+		
+		String sql = "SELECT * FROM categoria where status = 1";
+		
+		try{
+			conexao = ConexaoFabrica.getConnection();
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+						
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()){
+				categoria = new Categoria();
+				categoria.setId(rs.getInt("id"));
+				categoria.setNome(rs.getString("nome"));
+				categoria.setStatus(rs.getInt("status"));
+				
+				listaDeCategorias.add(categoria);
+			}			
+		} catch (SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBUtil.fechar(conexao);
+		}
+		return listaDeCategorias;
+	}
 	
 	public boolean excluir(int registro){
 		Connection conexao = null;
 		
-		String sql = "DELETE FROM categoria WHERE nome = ?";
+		String sql = "DELETE FROM categoria WHERE id = ?";
 		boolean retorno = false;
 		
 		try{

@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,33 +10,34 @@ import java.util.List;
 
 import modelo.Usuario;
 import util.DBUtil;
+import util.Util;
 
 public class UsuarioDao {
 	
 	public int cadastrar(Usuario usuario){
 		Connection conexao = null;
 		int retorno = 0;
-		String sql = "INSERT INTO usuario(nome, sobrenome, dataNascimento, sexo, celular, telefoneFixo"
-				+ " cpf, rg, email, senha, tipoUsuario, status) "
-				+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+		String sql = "INSERT INTO usuario(endereco_id, nome, sobrenome, dataNascimento, sexo, celular, telefoneFixo , cpf, rg, email, senha, tipoUsuario, status) "
+				+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 		
 		try{
 			conexao = ConexaoFabrica.getConnection();
 			
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			
-			ps.setString(1, usuario.getNome());
-			ps.setString(2, usuario.getSobrenome());
-			ps.setString(3, usuario.getDataNascimento());
-			ps.setString(4, usuario.getSexo());
-			ps.setString(5, usuario.getCelular());
-			ps.setString(6, usuario.getTelefoneFixo());
-			ps.setString(7, usuario.getCpf());
-			ps.setString(8, usuario.getRg());
-			ps.setString(9, usuario.getEmail());
-			ps.setString(10, usuario.getSenha());
-			ps.setString(11, usuario.getTipoUsuario());
-			ps.setInt(12, usuario.getStatus());
+			ps.setInt(1, usuario.getEndereco().getId());
+			ps.setString(2, usuario.getNome());
+			ps.setString(3, usuario.getSobrenome());
+			ps.setString(4, usuario.getDataNascimento());
+			ps.setString(5, usuario.getSexo());
+			ps.setString(6, usuario.getCelular());
+			ps.setString(7, usuario.getTelefoneFixo());
+			ps.setString(8, usuario.getCpf());
+			ps.setString(9, usuario.getRg());
+			ps.setString(10, usuario.getEmail());
+			ps.setString(11, usuario.getSenha());
+			ps.setString(12, usuario.getTipoUsuario());
+			ps.setInt(13, usuario.getStatus());
 			
 			retorno = ps.executeUpdate();
 			

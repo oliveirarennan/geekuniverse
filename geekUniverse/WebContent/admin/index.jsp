@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="resources/css/estilo.css"/>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Cadastro de Categoria</title>
+    <title>Painel Administrativo</title>
 
     <!-- Bootstrap -->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
@@ -106,33 +106,22 @@
       <div class="container-fluid">
           <div class="row">
             <div class=" col-md-6 col-md-offset-3 col-sm-6 col-offset-3 col-xs-6 col-xs-offset-3 col-lg-6 col-lg-offset-3">
-              <legend><center>Cadastrar Categoria</center></legend>
-              <form name="frmCadastrarCategoria" id="frmCadastrarCategoria" action="../ServletCadastrarCategoria" method="POST">
-                <div class="form-group">
-                  <label class="control-label" for="nome">Nome</label>
-                  <div class="validateError">
-                    <input type="text" name="nome" id="nome" class="form-control"/>
-                  </div>  
-                </div>   
-                <div class="form-group">
-                  <label class="control-label" for="status">Status</label>
-                  <div class="validateError">
-                    <select class="form-control" name="status" id="status">
-                      <optgroup>
-                          <option value="true" selected>Ativado</option>
-                          <option value="false">Desativado </option> 
-                      </optgroup>
-                    </select>
-                  </div> 
-                </div>
-                <div class="form-group">
-                  <input type="submit" name="btnCadastrar" value="Cadastrar" class="btn btn-warning">
-                  <input type="reset" name="btnLimpar" value="Limpar" class="btn btn-default"/>
-                </div>
-              </form>   
-                <a href="gerenciar-categorias.jsp" class="btn btn-default">Voltar</a>    
-            </div>  
-          
+              <legend><center>Painel Administrativo</center></legend>
+              
+              <br />
+              
+              <div class="well"><center><a href="gerenciar-usuarios.jsp" class="btn btn-warning">Gerenciar Usuários</a></center></div>
+              
+              <div class="well"><center><a href="gerenciar-categorias.jsp" class="btn btn-warning">Gerenciar Categorias</a></center></div>
+              
+              <div class="well"><center><a href="gerenciar-fabricantes.jsp" class="btn btn-warning">Gerenciar Fabricantes</a></center></div>
+              
+              <div class="well"><center><a href="gerenciar-produtos.jsp" class="btn btn-warning">Gerenciar Produtos</a></center></div>
+              
+              <div class="well"><center><a href="#" class="btn btn-warning">Gerenciar Pedidos</a></center></div>
+              
+                    
+            </div>   
           </div>
       </div>   
   </div>

@@ -50,7 +50,7 @@ $(function(){
                     celular:{  
                         required:true,
                     },
-                    telFixo:{  
+                    telefoneFixo:{  
                         required:true,
                     },
                     cpf:{  

@@ -138,7 +138,7 @@
                   <jsp:useBean id="ca" class="servico.CategoriaServico"></jsp:useBean>
                   
                       <optgroup>
-                   		<c:forEach var="categoria" items="${ca.listar() }">
+                   		<c:forEach var="categoria" items="${ca.listarAtivada() }">
                    			<option value="${categoria.id }">${categoria.nome}</option>
                       </c:forEach>
                       </optgroup>
@@ -153,7 +153,7 @@
                   <jsp:useBean id="fa" class="servico.FabricanteServico"></jsp:useBean>
                   
                       <optgroup>
-                   		<c:forEach var="fabricante" items="${fa.listar() }">
+                   		<c:forEach var="fabricante" items="${fa.listarAtivado() }">
                    			<option value="${fabricante.id }">${fabricante.nome}</option>
                       </c:forEach>
                       </optgroup>
@@ -176,7 +176,8 @@
 		              <input type="submit" name="btnCadastrar" value="Cadastrar" class="btn btn-warning">
 		              <input type="reset" name="btnLimpar" value="Limpar" class="btn btn-default"/>
                 </div>
-              </form>      
+              </form> 
+                   <a href="gerenciar-produtos.jsp" class="btn btn-default">Voltar</a>    
             </div>   
           </div>
       </div>   

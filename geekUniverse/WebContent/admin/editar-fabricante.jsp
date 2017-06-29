@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="resources/css/estilo.css"/>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Cadastro de Categoria</title>
+    <title>Cadastro de Fabricante</title>
 
     <!-- Bootstrap -->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
@@ -44,7 +44,7 @@
                 <li><a href="#">atributo1</a></li>
                 <li><a href="#">atributo2</a></li>
                 <li><a href="#">atributo3</a></li>
-                <li><a href="#">atributo4</a></li> 
+                <li><a href="#">atributo4</a></li>
                 <li><a href="#">atributo5</a></li>
               </ul>
             </li>
@@ -106,21 +106,33 @@
       <div class="container-fluid">
           <div class="row">
             <div class=" col-md-6 col-md-offset-3 col-sm-6 col-offset-3 col-xs-6 col-xs-offset-3 col-lg-6 col-lg-offset-3">
-              <legend><center>Cadastrar Categoria</center></legend>
-              <form name="frmCadastrarCategoria" id="frmCadastrarCategoria" action="../ServletCadastrarCategoria" method="POST">
+              <legend><center>Editar Fabricante</center></legend>
+              <form name="frmCadastrarFabricante" id="frmCadastrarFabricante" action="../ServletEditarFabricante" method="POST">
                 <div class="form-group">
                   <label class="control-label" for="nome">Nome</label>
                   <div class="validateError">
-                    <input type="text" name="nome" id="nome" class="form-control"/>
+                    <input type="text" name="nome" id="nome" class="form-control" value="${fabricante.nome }"/>
                   </div>  
                 </div>   
+                <div class="form-group">
+                  <label class="control-label" for="cnpj">CNPJ</label>
+                  <div class="validateError">
+                    <input type="text" name="cnpj" id="cnpj" class="form-control" value="${fabricante.cnpj }"/>
+                  </div>  
+                </div>
                 <div class="form-group">
                   <label class="control-label" for="status">Status</label>
                   <div class="validateError">
                     <select class="form-control" name="status" id="status">
                       <optgroup>
-                          <option value="true" selected>Ativado</option>
-                          <option value="false">Desativado </option> 
+                          <c:if test="${fabricante.status == 1}">
+                          		<option value="true" selected>Ativado</option>
+                          		<option value="false">Desativado </option>
+                          </c:if>
+                          <c:if test="${fabricante.status == 0}">
+                          			<option value="true" >Ativado</option>
+                          			<option value="false" selected>Desativado </option>
+                          </c:if>
                       </optgroup>
                     </select>
                   </div> 
@@ -129,10 +141,9 @@
                   <input type="submit" name="btnCadastrar" value="Cadastrar" class="btn btn-warning">
                   <input type="reset" name="btnLimpar" value="Limpar" class="btn btn-default"/>
                 </div>
-              </form>   
-                <a href="gerenciar-categorias.jsp" class="btn btn-default">Voltar</a>    
-            </div>  
-          
+              </form>  
+              <a href="gerenciar-fabricantes.jsp" class="btn btn-default">Voltar</a>        
+            </div>   
           </div>
       </div>   
   </div>
@@ -147,7 +158,7 @@
     <script src="resources/js/jquery.validate.min.js"></script>
     <script src="resources/js/additional-methods.min.js"></script>
     <script src="resources/js/ConfiguracaoMaskMoney.js"></script>
-    <script src="resources/js/validate-cadastrar-categoria.js"></script>
+    <script src="resources/js/validate-cadastrar-fabricante.js"></script>
     <script src="resources/js/jquery.maskedinput.min.js"></script>
     <script src="resources/js/ConfiguracaoMaskInput.js"></script>
     <script src="resources/js/scripts.js"></script>

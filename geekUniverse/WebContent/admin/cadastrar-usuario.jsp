@@ -120,6 +120,17 @@
                     </div>
                 </div>
                 <div class="form-group">
+                  <label class="control-label" for="sexo">Sexo</label>
+                  <div class="validateError">
+                    <select name="sexo" id="sexo" class="form-control">
+                    	<optgroup>
+                    		<option value="Masculino">Masculino</option>
+                    		<option value="Feminino">Feminino</option>
+                    	</optgroup>
+                    </select>
+                    </div>
+                </div>
+                <div class="form-group">
                   <label class="control-label" for="pais">Pais</label>
                   <div class="validateError">
                     <input type="text" name="pais" id="pais" class="form-control"/>
@@ -129,36 +140,14 @@
                   <label class="control-label" for="estado">Estado</label>
                   <div class="validateError">
                     <select class="form-control" name="estado" id="estado">
+                     <jsp:useBean id="cu" class="servico.EstadoServico"></jsp:useBean>
                       <optgroup>
-                          <option value="AC" selected>AC</option>
-                          <option value="AL">AL</option>
-                          <option value="AP">AP</option>
-                          <option value="AM">AM</option>
-                          <option value="BA">BA</option>
-                          <option value="CE">CE</option>
-                          <option value="DF">DF</option>
-                          <option value="ES">ES</option>
-                          <option value="GO">GO</option>
-                          <option value="MA">MA</option>
-                          <option value="MT">MT</option>
-                          <option value="MS">MS</option>
-                          <option value="MG">MG</option>
-                          <option value="PB">PA</option>
-                          <option value="PB">PB</option>
-                          <option value="PR">PR</option>
-                          <option value="PI">PE</option>
-                          <option value="RJ">RJ</option>
-                          <option value="RN">RN</option>
-                          <option value="RS">RS</option>
-                          <option value="RO">RO</option>
-                          <option value="RR">RR</option>
-                          <option value="SC">SC</option>
-                          <option value="SP">SP</option>
-                          <option value="SE">SE</option>
-                          <option value="TO">TO</option> 
+                   		<c:forEach var="estado" items="${cu.listar() }">
+                   			<option value="${estado.id }">${estado.descricao}</option>
+                      </c:forEach>
                       </optgroup>
-                    </select> 
-                    </div>
+                    </select>
+                  </div>  
                 </div>
                 <div class="form-group">
                   <label class="control-label" for="cidade">Cidade</label>
@@ -211,7 +200,7 @@
                 <div class="form-group">
                   <label class="control-label" for="telFixo">Telefone Fixo</label>
                   <div class="validateError">
-                    <input type="text" name="telFixo" id="telFixo" class="form-control"/>
+                    <input type="text" name="telefoneFixo" id="telefoneFixo" class="form-control"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -251,7 +240,7 @@
                   <label class="control-label" for="status">Status</label>
                     <select class="form-control" name="status" id="status">
                       <optgroup>
-                          <option value="true" selected>Ativado</option>
+                          <option value="true" >Ativado</option>
                           <option value="false">Desativado</option> 
                       </optgroup>
                     </select> 

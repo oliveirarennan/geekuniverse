@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="resources/css/estilo.css"/>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Cadastro de Categoria</title>
+    <title>Gerenciar Categorias</title>
 
     <!-- Bootstrap -->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
@@ -105,34 +105,38 @@
     <br/>
       <div class="container-fluid">
           <div class="row">
-            <div class=" col-md-6 col-md-offset-3 col-sm-6 col-offset-3 col-xs-6 col-xs-offset-3 col-lg-6 col-lg-offset-3">
-              <legend><center>Cadastrar Categoria</center></legend>
-              <form name="frmCadastrarCategoria" id="frmCadastrarCategoria" action="../ServletCadastrarCategoria" method="POST">
-                <div class="form-group">
-                  <label class="control-label" for="nome">Nome</label>
-                  <div class="validateError">
-                    <input type="text" name="nome" id="nome" class="form-control"/>
-                  </div>  
-                </div>   
-                <div class="form-group">
-                  <label class="control-label" for="status">Status</label>
-                  <div class="validateError">
-                    <select class="form-control" name="status" id="status">
-                      <optgroup>
-                          <option value="true" selected>Ativado</option>
-                          <option value="false">Desativado </option> 
-                      </optgroup>
-                    </select>
-                  </div> 
-                </div>
-                <div class="form-group">
-                  <input type="submit" name="btnCadastrar" value="Cadastrar" class="btn btn-warning">
-                  <input type="reset" name="btnLimpar" value="Limpar" class="btn btn-default"/>
-                </div>
-              </form>   
-                <a href="gerenciar-categorias.jsp" class="btn btn-default">Voltar</a>    
-            </div>  
-          
+            <div class=" col-md-8 col-md-offset-2 col-sm-8 col-offset-2 col-xs-8 col-xs-offset-2 col-lg-8 col-lg-offset-2">
+              <legend><center>Gerenciar Categorias</center></legend>
+              <a href="cadastrar-categoria.jsp" class="btn btn-warning btn-xs">Adicionar Categoria</a><a href="index.jsp" class="btn btn-default btn-xs">Voltar</a>
+              <br />
+              <br />
+              
+              <table class="table">
+              	<thead>
+              	
+              		<tr>
+              			<td><strong>nome</strong></td>
+              			<td><strong>status</strong></td>
+              			<td><strong>ações</strong></td>
+              			
+              		</tr>
+              		
+              	</thead>
+              	<tbody>
+              	<jsp:useBean id="ca" class="servico.CategoriaServico"></jsp:useBean>
+              	<jsp:useBean id="converter" class="util.Util"></jsp:useBean>
+              	<c:forEach var="categoria" items="${ca.listar() }">
+              		<tr>
+              			<td>${categoria.nome}</td>
+              			<td>${converter.converteStatus(categoria.status)}</td>
+              			<td><a href="../ServletEditarCategoria?id=${categoria.id }" class="btn btn-primary btn-xs">Editar</a>  <a href="../ServletRemoverCategoria?id=${categoria.id }" class="btn btn-danger btn-xs">remover</a>  </td>
+              		</tr>
+              		</c:forEach>
+              	</tbody>
+              </table>
+              
+                    
+            </div>   
           </div>
       </div>   
   </div>

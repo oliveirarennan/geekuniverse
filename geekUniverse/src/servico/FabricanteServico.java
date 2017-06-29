@@ -13,7 +13,7 @@ public class FabricanteServico {
 		return fabricanteDao.cadastrar(fabricante);
 	}
 	
-	public boolean excluir(int registro){
+	public static boolean excluir(int registro){
 		FabricanteDao fabricanteDao = new FabricanteDao();
 		
 		return fabricanteDao.excluir(registro);
@@ -24,8 +24,14 @@ public class FabricanteServico {
 		
 		return fabricanteDao.listar();
 	}
+	
+	public List<Fabricante> listarAtivado(){
+		FabricanteDao fabricanteDao = new FabricanteDao();
+		
+		return fabricanteDao.listarAtivado();
+	}
 
-	public boolean atualizar(Fabricante fabricante) {
+	public static boolean atualizar(Fabricante fabricante) {
 		FabricanteDao fabricanteDao = new FabricanteDao();
 		
 		return fabricanteDao.atualizar(fabricante);

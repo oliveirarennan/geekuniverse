@@ -9,27 +9,32 @@ import javax.servlet.http.HttpServletResponse;
 
 import modelo.Fabricante;
 import servico.FabricanteServico;
+import util.Util;
 
 /**
- * Servlet implementation class ServletCadastrarFabricante
+ * Servlet implementation class ServletEditarFabricante
  */
-@WebServlet("/ServletCadastrarFabricante")
-public class ServletCadastrarFabricante extends HttpServlet {
+@WebServlet("/ServletEditarFabricante")
+public class ServletEditarFabricante extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletCadastrarFabricante() {
+    public ServletEditarFabricante() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		request.getSession().removeAttribute("fabricante");
+		int id = Integer.parseInt(request.getParameter("id"));
+		Fabricante fabricante = FabricanteServico.buscarPorId(id);
+		request.getSession(true).setAttribute("fabricante", fabricante);
+		
+		response.sendRedirect("admin/editar-fabricante.jsp");
 	}
 
 	/**
@@ -38,27 +43,18 @@ public class ServletCadastrarFabricante extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nome = request.getParameter("nome");
 		String cnpj = request.getParameter("cnpj");
-		String status = request.getParameter("status");
-		
-		
-		Fabricante fabricante = new Fabricante();
+		int status = Util.statusParseInt(request.getParameter("status"));
+		Fabricante fabricante = ((Fabricante) request.getSession().getAttribute("fabricante"));
 		
 		fabricante.setNome(nome);
 		fabricante.setCnpj(cnpj);
+		fabricante.setStatus(status);
 		
-		if(status.equals("true")){
-			fabricante.setStatus(1);
+		if(FabricanteServico.atualizar(fabricante)){
+			response.sendRedirect("admin/editar-fabricante.jsp?fabricante=sucesso");
 		}else{
-			fabricante.setStatus(0);
-		}
-		
-		FabricanteServico fs = new FabricanteServico();
-		
-		int rq = fs.cadastrar(fabricante);
-		if(rq > 0){
-			response.sendRedirect("admin/cadastrar-fabricante.jsp?fabricante=sucesso");
-		}else{
-			response.sendRedirect("admin/cadastrar-fabricante.jsp?fabricante=erro");
+			response.sendRedirect("admin/editar-fabricante.jsp?fabricante=falha");
+
 		}
 		
 		

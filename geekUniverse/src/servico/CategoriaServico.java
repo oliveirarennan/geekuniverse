@@ -13,19 +13,25 @@ public class CategoriaServico {
 		return categoriaDao.cadastrar(categoria);
 	}
 	
-	public boolean excluir(int registro){
+	public static boolean excluir(int registro){
 		CategoriaDao categoriaDao = new CategoriaDao();
 		
 		return categoriaDao.excluir(registro);
 	}
 	
-	public List<Categoria> listar(){
+	public static List<Categoria> listar(){
 		CategoriaDao categoriaDao = new CategoriaDao();
 		
 		return categoriaDao.listar();
 	}
+	
+	public static List<Categoria> listarAtivada(){
+		CategoriaDao categoriaDao = new CategoriaDao();
+		
+		return categoriaDao.listarAtivada();
+	}
 
-	public boolean atualizar(Categoria categoria) {
+	public static boolean atualizar(Categoria categoria) {
 		CategoriaDao categoriaDao = new CategoriaDao();
 		
 		return categoriaDao.atualizar(categoria);

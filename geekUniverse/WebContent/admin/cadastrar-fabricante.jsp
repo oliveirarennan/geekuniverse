@@ -36,8 +36,7 @@
           </button>
         </div>
       </div>
-        <div class="collapse na
-        vbar-collapse" id="myNavbar top2">
+        <div class="collapse navbar-collapse" id="myNavbar top2">
           <ul class="nav navbar-nav"> 
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="drop">DROP1<span class="caret"></span></a>
@@ -90,6 +89,7 @@
               </ul>
             </li>
           </ul>
+          </div>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user" id="drop"></span> Minha Conta</a></li> 
           </ul>
@@ -135,7 +135,8 @@
                   <input type="submit" name="btnCadastrar" value="Cadastrar" class="btn btn-warning">
                   <input type="reset" name="btnLimpar" value="Limpar" class="btn btn-default"/>
                 </div>
-              </form>      
+              </form>  
+              <a href="gerenciar-fabricantes.jsp" class="btn btn-default">Voltar</a>        
             </div>   
           </div>
       </div>   

@@ -5,7 +5,7 @@ import modelo.Endereco;
 
 public class EnderecoServico {
 	
-	public static int cadastrar(Endereco endereco){
+	public static Endereco cadastrar(Endereco endereco){
 		EnderecoDao ed = new EnderecoDao();
 		
 		return ed.cadastrar(endereco);

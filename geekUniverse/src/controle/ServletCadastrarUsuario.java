@@ -1,6 +1,10 @@
 package controle;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import modelo.Endereco;
 import modelo.Usuario;
 import servico.EnderecoServico;
+import servico.EstadoServico;
 import servico.UsuarioServico;
 import util.Util;
 
@@ -29,7 +34,6 @@ public class ServletCadastrarUsuario extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nome = request.getParameter("nome");
 		String sobrenome = request.getParameter("sobrenome");
-		String dataNascimento = request.getParameter("dataNacimento");
 		String sexo = request.getParameter("sexo");
 		String celular = request.getParameter("celular");
 		String telefoneFixo = request.getParameter("telefoneFixo");
@@ -40,20 +44,20 @@ public class ServletCadastrarUsuario extends HttpServlet {
 		try {
 			senha = Util.getMd5(request.getParameter("senha"));
 		} catch (NoSuchAlgorithmException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		String tipoUsuario = request.getParameter("tipoUsuario");
 		String status = request.getParameter("status");
 		String pais = request.getParameter("pais");
-		String estado = request.getParameter("estado");
+		int estado = Integer.parseInt(request.getParameter("estado"));
 		String cidade = request.getParameter("cidade");
 		String bairro = request.getParameter("bairro");
 		String rua = request.getParameter("rua");
 		int numero = Integer.parseInt(request.getParameter("numero"));
 		String complemento = request.getParameter("complemento");
 		String cep = request.getParameter("cep");
-		
+		String dataNascimento = request.getParameter("dataNascimento");
+		dataNascimento = dataNascimento.replaceAll("-", "/");
 		UsuarioServico servico = new UsuarioServico();
 		
 		Usuario usuario = new Usuario();
@@ -67,30 +71,32 @@ public class ServletCadastrarUsuario extends HttpServlet {
 		usuario.setRg(rg);
 		usuario.setEmail(email);
 		usuario.setSenha(senha);
-		usuario.setTipoUsuario(tipoUsuario);
-		if(status == "true"){
-			usuario.setStatus(0);
+		if(tipoUsuario != null){
+			usuario.setTipoUsuario(tipoUsuario);
 		}else{
+			usuario.setTipoUsuario("cliente");
+		}
+		usuario.setSexo(sexo);
+		if(status.equals("true")){
 			usuario.setStatus(1);
+		}else{
+			usuario.setStatus(0);
 		}
 		
 		
 		
 		Endereco e = new Endereco();
-		e.setEstado(pais);
-		e.setEstado(estado);
-		e.setEstado(cidade);
+		e.setPais(pais);
+		e.setEstado(EstadoServico.buscarPorId(estado));
+		e.setCidade(cidade);
 		e.setBairro(bairro);
 		e.setRua(rua);
 		e.setNumero(numero);
 		e.setComplemento(complemento);
-		e.setEstado(cep);
+		e.setCep(cep);
 
+		usuario.setEndereco(EnderecoServico.cadastrar(e));
 		
-		int enderecoId = EnderecoServico.cadastrar(e);
-		System.out.println("===>"+enderecoId);
-		e.setId(enderecoId);
-		usuario.setEndereco(e);
 		
 	
 		

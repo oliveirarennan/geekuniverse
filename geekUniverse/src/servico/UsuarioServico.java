@@ -1,21 +1,13 @@
 package servico;
 
-import dao.EnderecoDao;
 import dao.UsuarioDao;
 import modelo.Usuario;
 
 public class UsuarioServico {
 	
-	public boolean cadastrarUsuario(Usuario usuario){
-		EnderecoDao enderecoDao = new EnderecoDao();
-		UsuarioDao usuarioDao = new UsuarioDao();
-		
-		int retorno = 0;
-		
-		if(enderecoDao.cadastrar(usuario.getEndereco()) > 0){
-			retorno = usuarioDao.cadastrar(usuario);
-		}
-		if(retorno > 0){
+	public static boolean cadastrarUsuario(Usuario usuario){
+		UsuarioDao ud = new UsuarioDao();
+		if(ud.cadastrar(usuario) > 0){
 			return true;
 		}else{
 			return false;

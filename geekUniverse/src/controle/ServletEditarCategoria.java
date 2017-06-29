@@ -6,21 +6,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import modelo.Categoria;
 import servico.CategoriaServico;
+import util.Util;
 
 /**
- * Servlet implementation class ServletCadastrarCategoria
+ * Servlet implementation class ServletEditarCategoria
  */
-@WebServlet("/ServletCadastrarCategoria")
-public class ServletCadastrarCategoria extends HttpServlet {
+@WebServlet("/ServletEditarCategoria")
+public class ServletEditarCategoria extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletCadastrarCategoria() {
+    public ServletEditarCategoria() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,35 +31,32 @@ public class ServletCadastrarCategoria extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		// TODO Auto-generated method stub
+		request.getSession().removeAttribute("categoria");
+		int id = Integer.parseInt(request.getParameter("id"));
+		Categoria categoria = CategoriaServico.buscarPorId(id);
+		HttpSession session = request.getSession(true);
+		session.setAttribute("categoria", categoria);
+		response.sendRedirect("admin/editar-categoria.jsp");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		String nome = request.getParameter("nome");
-		String status = request.getParameter("status");
-	
-		Categoria categoria = new Categoria();
+		int status = Util.statusParseInt(request.getParameter("status"));
+		Categoria categoria = ((Categoria) request.getSession().getAttribute("categoria"));
+		
 		categoria.setNome(nome);
+		categoria.setStatus(status);
 		
-		if(status.equals("true")){
-			categoria.setStatus(1);
+		if(CategoriaServico.atualizar(categoria)){
+			response.sendRedirect("admin/editar-categoria.jsp?categoria=sucesso");
 		}else{
-			categoria.setStatus(0);
+			response.sendRedirect("admin/editar-categoria.jsp?categoria=erro");
 		}
-		
-		CategoriaServico cs = new CategoriaServico();
-		
-		int rq = cs.cadastrar(categoria);
-		
-		if(rq > 0){
-			response.sendRedirect("admin/cadastrar-categoria.jsp?categoria=sucesso");
-		}else{
-			response.sendRedirect("admin/cadastrar-categoria.jsp?categoria=erro");
-		}
-		
 	}
 
 }

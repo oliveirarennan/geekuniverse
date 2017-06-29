@@ -1,11 +1,9 @@
 package modelo;
 
-public class Fabricante {
-	
+public class Estado {
 	private int id;
-	private String nome;
-	private String cnpj;
-	private int status;
+	private String sigla;
+	private String descricao;
 	
 	public int getId() {
 		return id;
@@ -13,23 +11,17 @@ public class Fabricante {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getNome() {
-		return nome;
+	public String getSigla() {
+		return sigla;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setSigla(String sigla) {
+		this.sigla = sigla;
 	}
-	public String getCnpj() {
-		return cnpj;
+	public String getDescricao() {
+		return descricao;
 	}
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
-	}
-	public int getStatus() {
-		return status;
-	}
-	public void setStatus(int status) {
-		this.status = status;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	@Override
 	public int hashCode() {
@@ -46,15 +38,18 @@ public class Fabricante {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Fabricante other = (Fabricante) obj;
+		Estado other = (Estado) obj;
 		if (id != other.id)
 			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
-		return "Fabricante [id=" + id + ", nome=" + nome + ", cnpj=" + cnpj + ", status=" + status + "]";
+		return "Estado [id=" + id + ", sigla=" + sigla + ", descricao=" + descricao + "]";
 	}
+	
+	
+	
 	
 
 }

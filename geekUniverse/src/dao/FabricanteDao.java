@@ -24,7 +24,7 @@ public class FabricanteDao {
 			
 			ps.setString(1, fabricante.getNome());
 			ps.setString(2, fabricante.getCnpj());
-			ps.setBoolean(3, fabricante.getStatus());
+			ps.setInt(3, fabricante.getStatus());
 			
 			retorno = ps.executeUpdate();
 			
@@ -58,7 +58,7 @@ public class FabricanteDao {
 				fabricante.setId(rs.getInt("id"));
 				fabricante.setNome(rs.getString("nome"));
 				fabricante.setCnpj(rs.getString("cnpj"));
-				fabricante.setStatus(rs.getBoolean("status"));
+				fabricante.setStatus(rs.getInt("status"));
 				
 				listaDeFabricantes.add(fabricante);
 			}			
@@ -68,13 +68,45 @@ public class FabricanteDao {
 			DBUtil.fechar(conexao);
 		}
 		return listaDeFabricantes;
-	}		
+	}
 	
-	
-	public boolean excluir(int registro){
+	public List<Fabricante> listarAtivado(){
 		Connection conexao = null;
 		
-		String sql = "DELETE FROM fabricante WHERE nome = ?";
+		List<Fabricante> listaDeFabricantes = new ArrayList<Fabricante>();
+		Fabricante fabricante = null;
+		
+		String sql = "SELECT * FROM fabricante where status = 1";
+		
+		try{
+			conexao = ConexaoFabrica.getConnection();
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+						
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()){
+				fabricante = new Fabricante();
+				fabricante.setId(rs.getInt("id"));
+				fabricante.setNome(rs.getString("nome"));
+				fabricante.setCnpj(rs.getString("cnpj"));
+				fabricante.setStatus(rs.getInt("status"));
+				
+				listaDeFabricantes.add(fabricante);
+			}			
+		} catch (SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBUtil.fechar(conexao);
+		}
+		return listaDeFabricantes;
+	}	
+	
+	
+	public  boolean excluir(int registro){
+		Connection conexao = null;
+		
+		String sql = "DELETE FROM fabricante WHERE id = ?";
 		boolean retorno = false;
 		
 		try{
@@ -100,13 +132,14 @@ public class FabricanteDao {
 	        try {
 	        	conexao = ConexaoFabrica.getConnection();
 	        	
-	            String query = "UPDATE fabricante SET nome = ?, cnpj = ?, status = ? WHERE nome = ?";
+	            String query = "UPDATE fabricante SET nome = ?, cnpj = ?, status = ? WHERE id = ?";
 
 				PreparedStatement pstm = conexao.prepareStatement(query);
 
 	            pstm.setString( 1, fabricante.getNome());
 	            pstm.setString(2, fabricante.getCnpj());
-	            pstm.setBoolean(3, fabricante.getStatus());
+	            pstm.setInt(3, fabricante.getStatus());
+	            pstm.setInt(4, fabricante.getId());
 	         
 	            pstm.executeUpdate();
 	            pstm.close();
@@ -135,8 +168,8 @@ public class FabricanteDao {
 				fabricante = new Fabricante();
 				fabricante.setId(rs.getInt("id"));
 				fabricante.setNome(rs.getString("nome"));
-				fabricante.setNome(rs.getString("cnpj"));
-				fabricante.setStatus(rs.getBoolean("status"));
+				fabricante.setCnpj(rs.getString("cnpj"));
+				fabricante.setStatus(rs.getInt("status"));
 				
 		} catch (SQLException e){
 			e.printStackTrace();

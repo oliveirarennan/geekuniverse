@@ -16,7 +16,7 @@ public class ProdutoServico {
 		return produtoDao.cadastrar(produto);
 	}
 	
-	public boolean excluir(int registro){
+	public static boolean excluir(int registro){
 		ProdutoDao produtoDao = new ProdutoDao();
 		
 		return produtoDao.excluir(registro);
@@ -27,14 +27,20 @@ public class ProdutoServico {
 		
 		return produtoDao.listar();
 	}
+	
+	public List<Produto> listarNoEstoque(){
+		ProdutoDao produtoDao = new ProdutoDao();
+		
+		return produtoDao.listarNoEstoque();
+	}
 
-	public boolean atualizar(Produto produto) {
+	public static boolean atualizar(Produto produto) {
 		ProdutoDao produtoDao = new ProdutoDao();
 		
 		return produtoDao.atualizar(produto);
 	}
 	
-	public static FormaPagamento buscarPorId(int id){
-		return FormaPagamentoDao.buscarPorId(id);
+	public static Produto buscarPorId(int id){
+		return ProdutoDao.buscarPorId(id);
 	}
 }

@@ -1,29 +1,32 @@
 package dao;
 
+import java.lang.Thread.State;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import modelo.Endereco;
+import servico.EstadoServico;
 import util.DBUtil;
 
 public class EnderecoDao {
 	
-	public int cadastrar(Endereco endereco){
+	public Endereco cadastrar(Endereco endereco){
 		Connection conexao = null;
-		int retorno = 0;
-		String sql = "INSERT INTO endereco(pais, estado, cidade, bairro, rua, numero, complemento, cep) values(?, ?, ?, ?, ?, ?, ?, ?) ";
+		
+		String sql = "INSERT INTO endereco(pais, estados_id, cidade, bairro, rua, numero, complemento, cep) values(?, ?, ?, ?, ?, ?, ?, ?) ";
 		
 		try{
 			conexao = ConexaoFabrica.getConnection();
 			
-			PreparedStatement ps = conexao.prepareStatement(sql);
+			PreparedStatement ps = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			
 			ps.setString(1, endereco.getPais());
-			ps.setString(2, endereco.getEstado());
+			ps.setInt(2, endereco.getEstado().getId());
 			ps.setString(3, endereco.getCidade());
 			ps.setString(4, endereco.getBairro());
 			ps.setString(5, endereco.getRua());
@@ -31,8 +34,17 @@ public class EnderecoDao {
 			ps.setString(7, endereco.getComplemento());
 			ps.setString(8, endereco.getCep());
 			
-			if(ps.executeUpdate() > 0){
-				retorno = ps.getGeneratedKeys().getInt(1);
+			ps.executeUpdate();
+			if(ps.executeUpdate() == 0){
+				return null;
+			}
+			try{
+				ResultSet idGerado =  ps.getGeneratedKeys();
+				if(idGerado.next()){
+					endereco.setId(idGerado.getInt(1));
+				}
+			}catch (Exception e) {
+				e.getStackTrace();
 			}
 			
 		} catch (SQLException e){
@@ -40,7 +52,7 @@ public class EnderecoDao {
 		} finally{
 			DBUtil.fechar(conexao);
 		}
-		return retorno;
+		return endereco;
 	}
 	
 	public Endereco buscarId(int id){
@@ -66,7 +78,7 @@ public class EnderecoDao {
 				endereco.setComplemento(rs.getString("complemento"));
 				endereco.setBairro(rs.getString("bairro"));
 				endereco.setCidade(rs.getString("cidade"));
-				endereco.setEstado(rs.getString("estado"));
+				endereco.setEstado(EstadoServico.buscarPorId(rs.getInt("estado_id")));
 				endereco.setPais(rs.getString("pais"));
 				endereco.setCep(rs.getString("cep"));
 				
@@ -84,12 +96,12 @@ public class EnderecoDao {
 		        try {
 		        	conexao = ConexaoFabrica.getConnection();
 		        	
-		            String query = "UPDATE endereco SET pais = ?, estado = ?, cidade = ?, bairro = ?, rua = ?, numero = ?, complemento = ?, cep = ? WHERE id = ?";
+		            String query = "UPDATE endereco SET pais = ?, estados_id = ?, cidade = ?, bairro = ?, rua = ?, numero = ?, complemento = ?, cep = ? WHERE id = ?";
 	
 					PreparedStatement pstm = conexao.prepareStatement(query);
 	
 					pstm.setString( 1, endereco.getPais());
-		            pstm.setString( 2, endereco.getEstado());
+		            pstm.setInt( 2, endereco.getEstado().getId());
 		            pstm.setString( 3, endereco.getCidade());
 		            pstm.setString( 4, endereco.getBairro());
 		            pstm.setString( 5, endereco.getRua());
@@ -127,7 +139,7 @@ public class EnderecoDao {
 				endereco = new Endereco();
 				endereco.setId(rs.getInt("id"));
 				endereco.setPais(rs.getString("pais"));
-				endereco.setEstado(rs.getString("estado"));
+				endereco.setEstado(EstadoServico.buscarPorId(rs.getInt("estado")));
 				endereco.setCidade(rs.getString("cidade"));
 				endereco.setBairro(rs.getString("bairro"));
 				endereco.setRua(rs.getString("rua"));

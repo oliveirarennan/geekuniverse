@@ -18,7 +18,7 @@ public class ProdutoDao {
 	public int cadastrar(Produto produto){
 		Connection conexao = null;
 		int retorno = 0;
-		String sql = "INSERT INTO produto(nome, descricao, valor, estoque, fabricante, categoria, imagem) values(?, ?, ?, ?, ?, ?, ?) ";
+		String sql = "INSERT INTO produto(nome, descricao, valor, estoque, imagem, fabricante_id, categoria_id) values(?, ?, ?, ?, ?, ?, ?) ";
 		
 		try{
 			conexao = ConexaoFabrica.getConnection();
@@ -66,6 +66,42 @@ public class ProdutoDao {
 				produto.setValor(rs.getDouble("valor"));
 				produto.setEstoque(rs.getInt("estoque"));
 				produto.setImagem(rs.getString("imagem"));
+				produto.setCategoria(CategoriaServico.buscarPorId(rs.getInt("categoria_id")));
+				produto.setFabricante(FabricanteServico.buscarPorId(rs.getInt("fabricante_id")));
+				
+				listaDeProdutos.add(produto);
+			}			
+		} catch (SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBUtil.fechar(conexao);
+		}
+		return listaDeProdutos;
+	}
+	
+	public List<Produto> listarNoEstoque(){
+		Connection conexao = null;
+		
+		List<Produto> listaDeProdutos = new ArrayList<Produto>();
+		Produto produto = null;
+		
+		String sql = "SELECT * FROM produto where estoque > 0";
+		
+		try{
+			conexao = ConexaoFabrica.getConnection();
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+						
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()){
+				produto = new Produto();
+				produto.setId(rs.getInt("id"));
+				produto.setNome(rs.getString("nome"));
+				produto.setDescricao(rs.getString("descricao"));
+				produto.setValor(rs.getDouble("valor"));
+				produto.setEstoque(rs.getInt("estoque"));
+				produto.setImagem(rs.getString("imagem"));
 				produto.setCategoria(CategoriaServico.buscarPorId(rs.getInt("categoria")));
 				produto.setFabricante(FabricanteServico.buscarPorId(rs.getInt("fabricante")));
 				
@@ -77,7 +113,7 @@ public class ProdutoDao {
 			DBUtil.fechar(conexao);
 		}
 		return listaDeProdutos;
-	}		
+	}
 	
 	
 	public boolean excluir(int registro){
@@ -151,6 +187,8 @@ public class ProdutoDao {
 				produto.setValor(rs.getDouble("valor"));
 				produto.setEstoque(rs.getInt("estoque"));
 				produto.setImagem(rs.getString("imagem"));
+				produto.setCategoria(CategoriaServico.buscarPorId(rs.getInt("categoria_id")));
+				produto.setFabricante(FabricanteServico.buscarPorId(rs.getInt("fabricante_id")));
 			
 		} catch (SQLException e){
 			e.printStackTrace();
