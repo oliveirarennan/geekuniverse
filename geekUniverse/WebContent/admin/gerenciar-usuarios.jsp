@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="resources/css/estilo.css"/>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Painel Administrativo</title>
+    <title>Gerenciar Usuários</title>
 
     <!-- Bootstrap -->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
@@ -105,20 +105,41 @@
     <br/>
       <div class="container-fluid">
           <div class="row">
-            <div class=" col-md-6 col-md-offset-3 col-sm-6 col-offset-3 col-xs-6 col-xs-offset-3 col-lg-6 col-lg-offset-3">
-              <legend><center>Painel Administrativo</center></legend>
-              
+            <div class=" col-md-12  col-sm-12  col-xs-12  col-lg-12 ">
+              <legend><center>Gerenciar Usuários</center></legend>
+              <a href="cadastrar-usuario.jsp" class="btn btn-warning btn-xs">Adicionar Usuário</a><a href="index.jsp" class="btn btn-default btn-xs">Voltar</a>
+              <br />
               <br />
               
-              <div class="well"><center><a href="gerenciar-usuarios.jsp" class="btn btn-warning">Gerenciar Usuários</a></center></div>
-              
-              <div class="well"><center><a href="gerenciar-categorias.jsp" class="btn btn-warning">Gerenciar Categorias</a></center></div>
-              
-              <div class="well"><center><a href="gerenciar-fabricantes.jsp" class="btn btn-warning">Gerenciar Fabricantes</a></center></div>
-              
-              <div class="well"><center><a href="gerenciar-produtos.jsp" class="btn btn-warning">Gerenciar Produtos</a></center></div>
-              
-              <div class="well"><center><a href="gerenciar-pedidos.jsp" class="btn btn-warning">Gerenciar Pedidos</a></center></div>
+              <table class="table">
+              	<thead>
+              	
+              		<tr>
+              			<td><strong>nome</strong></td>
+              			<td><strong>cidade</strong></td>
+              			<td><strong>estado</strong></td>
+              			<td><strong>tipo</strong></td>
+              			<td><strong>status</strong></td>
+              			<td><strong>ações</strong></td>
+              			
+              		</tr>
+              		
+              	</thead>
+              	<tbody>
+              	<jsp:useBean id="us" class="servico.UsuarioServico"></jsp:useBean>
+              	<jsp:useBean id="converter" class="util.Util"></jsp:useBean>
+              	<c:forEach var="usuario" items="${us.listar() }">
+              		<tr>
+              			<td>${usuario.nome }</td>
+              			<td>${usuario.endereco.cidade}</td>
+              			<td>${usuario.endereco.estado.descricao}</td>
+              			<td>${usuario.tipoUsuario}</td>
+              			<td>${converter.converteStatus(usuario.status)}</td>
+              			<td><a href="../ServletEditarUsuario?id=${usuario.id }" class="btn btn-primary btn-xs">Editar</a>  <a href="../ServletRemoverUsuario?id=${usuario.id }" class="btn btn-danger btn-xs">remover</a>  </td>
+              		</tr>
+              		</c:forEach>
+              	</tbody>
+              </table>
               
                     
             </div>   

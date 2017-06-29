@@ -106,8 +106,8 @@
       <div class="container-fluid">
           <div class="row">
             <div class=" col-md-6 col-md-offset-3 col-sm-6 col-offset-3 col-xs-6 col-xs-offset-3 col-lg-6 col-lg-offset-3">
-              <legend><center>Cadastrar Usuario</center></legend>
-              <form name="frmCadastrarUsuario" id="frmCadastrarUsuario" action="../ServletCadastrarUsuario" method="POST">
+              <legend><center>Formulario de Cadastro</center></legend>
+              <form name="frmCadastrarUsuario" id="frmCadastrarUsuario" action="ServletCadastrarUsuario" method="POST">
                 <div class="form-group">
                   <label class="control-label" for="nome">Nome</label>
                   <div class="validateError">
@@ -228,31 +228,14 @@
                     <input type="password" name="senha" id="senha" class="form-control"/>
                     </div>
                 </div>
-                <div class="form-group">
-                  <label class="control-label" for="tipoUsuario">Contas</label>
-                    <select class="form-control" name="tipoUsuario" id="tipoUsuario">
-                      <optgroup>
-                          <option value="administrador" selected>Administrador</option>
-                          <option value="cliente">Usuario Comum</option> 
-                      </optgroup>
-                    </select> 
-                </div>
-                <div class="form-group">
-                  <label class="control-label" for="status">Status</label>
-                    <select class="form-control" name="status" id="status">
-                      <optgroup>
-                          <option value="true" >Ativado</option>
-                          <option value="false">Desativado</option> 
-                      </optgroup>
-                    </select> 
-                </div>
+                
                 <div class="form-group">
                   <input type="submit" name="btnCadastrar" value="Cadastrar" class="btn btn-warning">
                   <input type="reset" name="btnLimpar" value="Limpar" class="btn btn-default"/>
                 </div>
                
               </form>
-                	<a href="gerenciar-usuarios.jsp" class="btn btn-default">Voltar</a> 
+                	<a href="index.jsp" class="btn btn-default">Pagina Principal</a> 
             </div>   
           </div>
       </div>   

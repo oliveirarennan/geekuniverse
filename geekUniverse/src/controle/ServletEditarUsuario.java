@@ -1,4 +1,5 @@
 package controle;
+
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
@@ -15,19 +16,43 @@ import servico.EstadoServico;
 import servico.UsuarioServico;
 import util.Util;
 
-@WebServlet("/ServletCadastrarUsuario")
-public class ServletCadastrarUsuario extends HttpServlet {
+/**
+ * Servlet implementation class ServletEditarUsuario
+ */
+@WebServlet("/ServletEditarUsuario")
+public class ServletEditarUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public ServletCadastrarUsuario() {
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ServletEditarUsuario() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		request.getSession().removeAttribute("usuario");
+		
+		int id =  Integer.parseInt(request.getParameter("id"));
+		Usuario usuario = UsuarioServico.buscarPorId(id);
+		request.getSession(true).setAttribute("usuario", usuario);
+		
+		response.sendRedirect("admin/editar-usuario.jsp");
+		
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		Usuario usuario = ((Usuario)request.getSession().getAttribute("usuario"));
+		
 		String nome = request.getParameter("nome");
 		String sobrenome = request.getParameter("sobrenome");
 		String sexo = request.getParameter("sexo");
@@ -38,7 +63,9 @@ public class ServletCadastrarUsuario extends HttpServlet {
 		String email = request.getParameter("email");
 		String senha = null;
 		try {
+			if(request.getParameter("senha") != null){
 			senha = Util.getMd5(request.getParameter("senha"));
+			}
 		} catch (NoSuchAlgorithmException e1) {
 			e1.printStackTrace();
 		}
@@ -56,7 +83,6 @@ public class ServletCadastrarUsuario extends HttpServlet {
 		String dataNascimento = request.getParameter("dataNascimento");
 		dataNascimento = dataNascimento.replaceAll("-", "/");
 		
-		Usuario usuario = new Usuario();
 		usuario.setNome(nome);
 		usuario.setSobrenome(sobrenome);
 		usuario.setDataNascimento(dataNascimento);
@@ -66,7 +92,9 @@ public class ServletCadastrarUsuario extends HttpServlet {
 		usuario.setCpf(cpf);
 		usuario.setRg(rg);
 		usuario.setEmail(email);
-		usuario.setSenha(senha);
+		if(senha != null){
+			usuario.setSenha(senha);
+		}
 		if(tipoUsuario != null){
 			usuario.setTipoUsuario(tipoUsuario);
 		}else{
@@ -84,34 +112,38 @@ public class ServletCadastrarUsuario extends HttpServlet {
 		}
 		
 		
-		
-		Endereco e = new Endereco();
-		e.setPais(pais);
-		e.setEstado(EstadoServico.buscarPorId(estado));
-		e.setCidade(cidade);
-		e.setBairro(bairro);
-		e.setRua(rua);
-		e.setNumero(numero);
-		e.setComplemento(complemento);
-		e.setCep(cep);
+		usuario.getEndereco().setPais(pais);
+		usuario.getEndereco().setEstado(EstadoServico.buscarPorId(estado));
+		usuario.getEndereco().setCidade(cidade);
+		usuario.getEndereco().setBairro(bairro);
+		usuario.getEndereco().setRua(rua);
+		usuario.getEndereco().setNumero(numero);
+		usuario.getEndereco().setComplemento(complemento);
+		usuario.getEndereco().setCep(cep);
 
-		usuario.setEndereco(EnderecoServico.cadastrar(e));
+		if(EnderecoServico.atualizar(usuario.getEndereco())){
 		
-		
-	
-		
-		if(UsuarioServico.cadastrarUsuario(usuario)){
-			if((tipoUsuario == null) && (status == null)){
-				response.sendRedirect("cadastrar-usuario.jsp?usuario=sucesso");
+			if(UsuarioServico.atualizar(usuario)){
+				if((tipoUsuario == null) && (status == null)){
+					response.sendRedirect("editar-usuario.jsp?usuario=sucesso");
+				}else{
+					response.sendRedirect("admin/editar-usuario.jsp?usuario=sucesso");
+				}
 			}else{
-				response.sendRedirect("admin/cadastrar-usuario.jsp?usuario=sucesso");
-			}
+				if((tipoUsuario == null) && (status == null)){
+					response.sendRedirect("editar-usuario.jsp?usuario=erro");
+				}else{
+					response.sendRedirect("admin/editar-usuario.jsp?usuario=erro");
+				}
+			}	
 		}else{
 			if((tipoUsuario == null) && (status == null)){
-				response.sendRedirect("cadastrar-usuario.jsp?usuario=erro");
+				response.sendRedirect("editar-usuario.jsp?usuario=erro");
 			}else{
-				response.sendRedirect("admin/cadastrar-usuario.jsp?usuario=erro");
+				response.sendRedirect("admin/editar-usuario.jsp?usuario=erro");
 			}
-		}	
+		}
+		
 	}
+
 }

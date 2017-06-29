@@ -16,5 +16,10 @@ public class EnderecoServico {
 		
 		return ed.buscarId(id);
 	}
+	
+	public static Boolean atualizar(Endereco endereco){
+		EnderecoDao ed = new EnderecoDao();
+		return ed.atualizar(endereco);
+	}
 
 }

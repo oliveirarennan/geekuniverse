@@ -59,7 +59,7 @@ public class EnderecoDao {
 		Connection conexao = null;
 		Endereco endereco = null;
 		
-		String sql = "SELECT id FROM endereco WHERE id = ?";
+		String sql = "SELECT * FROM endereco WHERE id = ?";
 		
 		try{
 			conexao = ConexaoFabrica.getConnection();
@@ -78,7 +78,7 @@ public class EnderecoDao {
 				endereco.setComplemento(rs.getString("complemento"));
 				endereco.setBairro(rs.getString("bairro"));
 				endereco.setCidade(rs.getString("cidade"));
-				endereco.setEstado(EstadoServico.buscarPorId(rs.getInt("estado_id")));
+				endereco.setEstado(EstadoServico.buscarPorId(rs.getInt("estados_id")));
 				endereco.setPais(rs.getString("pais"));
 				endereco.setCep(rs.getString("cep"));
 				
@@ -115,6 +115,7 @@ public class EnderecoDao {
 	
 		        } catch (SQLException e) {
 		            e.printStackTrace();
+		            return false;
 		        }
 		        return true;
 		    }
