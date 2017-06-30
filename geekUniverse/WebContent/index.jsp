@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="PT-BR">
 	<head>
@@ -28,7 +32,7 @@
     		}	
   	</style>
 		<title>GEEK UNIVERSE</title>
-		<link rel="shortcut icon" type="image/x-ico" href="img/favicon.ico">
+		<link rel="shortcut icon" type="image/x-png" href="img/icone.png">
 	</head>
 	<body background="img/body.jpg">
 		<section>
@@ -149,77 +153,101 @@
 			</nav>
 		</header>
 		<section class="container-fluid">
-			<span class="row"></span>
-			<br>
-			<div class="col-md-6 imp">
-				<img src="http://via.placeholder.com/450x50" class="img-responsive"> 
+			<div class="col-md-3 tipo1">
+				<img src="http://via.placeholder.com/260x50" class="img-responsive"> 
 			</div>
-			<div class="row text-center gamb col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2 col-lg-8 col-lg-offset-2">
-		      	<div class="col-md-3">
+			<div class="gamb col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2 col-lg-8 col-lg-offset-2">
+				<div class="col-md-3">
 		        	<div class="thumbnail">
 				    	<img src="http://via.placeholder.com/300x300" alt="Paris" width="300" height="300">
-				        <p><strong>Produto 1</strong></p>
-				        <button class="btn"><a href="index1.html">Ver Detalhes</a></button>
+				        <center><p><strong>Produto 1</strong></p></center>
+				        <center><button class="btn"><a href="index1.html">Ver Detalhes</a></button></center>
 				    </div>
 		      	</div>
 				<div class="col-md-3">
 				    <div class="thumbnail">
 				        <img src="http://via.placeholder.com/300x300" alt="New York" width="300" height="300">
-				        <p><strong>Produto 2</strong></p>
-				        <button class="btn"><a href="index1.html">Ver Detalhes</a></button>
-				    </div>
+				        <center><p><strong>Produto 2</strong></p></center>
+				        <center><button class="btn"><a href="index1.html">Ver Detalhes</a></button>
+				    </div><
 				</div>
 			    <div class="col-md-3">
 			        <div class="thumbnail">
 		          		<img src="http://via.placeholder.com/300x300" alt="San Francisco" width="300" height="300">
-		          		<p><strong>Produto 3</strong></p>
-		          		<button class="btn"><a href="index1.html">Ver Detalhes</a></button>
+		          		<center><p><strong>Produto 3</strong></p></center>
+		          		<center><button class="btn"><a href="index1.html">Ver Detalhes</a></button></center>
 			        </div>
 			    </div>
 		      	<div class="col-md-3">
 		        	<div class="thumbnail">
 	          			<img src="http://via.placeholder.com/300x300" alt="San Francisco" width="300" height="300">
-	          			<p><strong>Produto 3</strong></p>
-	          			<button class="btn"><a href="index1.html">Ver Detalhes</a></button>
+	          			<center><p><strong>Produto 4</strong></p></center>
+	          			<center><button class="btn"><a href="index1.html">Ver Detalhes</a></button></center>
 		        	</div>
 		      	</div>
-		    	<div class="">
-		    		<img src="http://via.placeholder.com/1185x150" class="img-responsive meio">
-		  		</div>
-		  		<br>
-		  		<div class="col-md-6 impe">
-				<img src="http://via.placeholder.com/450x50" class="img-responsive"> 
 			</div>
-		  		<div class="col-md-3">
+			<!-- Divs da IMAGEM central e do tipo de venda seguinte -->
+			<div class="col-md-10 col-md-offset-2">
+		   		<img src="http://via.placeholder.com/1190x150" class="img-responsive img">
+		  	</div>
+	  		<div class="col-md-3 tipo">
+				<img src="http://via.placeholder.com/260x50" class="img-responsive"> 
+			</div>
+			<!-- //Divs da IMAGEM central e do tipo de venda seguinte -->
+			<div class="gamb col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2 col-lg-8 col-lg-offset-2">
+				<div class="col-md-3">
 		        	<div class="thumbnail">
 				    	<img src="http://via.placeholder.com/300x300" alt="Paris" width="300" height="300">
-				        <p><strong>Produto 1</strong></p>
-				        <button class="btn"><a href="index1.html">Ver Detalhes</a></button>
+				        <center><p><strong>Produto 1</strong></p></center>
+				        <center><button class="btn"><a href="index1.html">Ver Detalhes</a></button></center>
 				    </div>
 		      	</div>
 				<div class="col-md-3">
 				    <div class="thumbnail">
 				        <img src="http://via.placeholder.com/300x300" alt="New York" width="300" height="300">
-				        <p><strong>Produto 2</strong></p>
-				        <button class="btn"><a href="index1.html">Ver Detalhes</a></button>
+				        <center><p><strong>Produto 2</strong></p></center>
+				        <center><button class="btn"><a href="index1.html">Ver Detalhes</a></button></center>
 				    </div>
 				</div>
 			    <div class="col-md-3">
 			        <div class="thumbnail">
 		          		<img src="http://via.placeholder.com/300x300" alt="San Francisco" width="300" height="300">
-		          		<p><strong>Produto 3</strong></p>
-		          		<button class="btn"><a href="index1.html">Ver Detalhes</a></button>
+		          		<center><p><strong>Produto 3</strong></p></center>
+		          		<center><button class="btn"><a href="index1.html">Ver Detalhes</a></button></center>
 			        </div>
 			    </div>
 		      	<div class="col-md-3">
 		        	<div class="thumbnail">
 	          			<img src="http://via.placeholder.com/300x300" alt="San Francisco" width="300" height="300">
-	          			<p><strong>Produto 3</strong></p>
-	          			<button class="btn"><a href="index1.html">Ver Detalhes</a></button>
+	          			<center><p><strong>Produto 4</strong></p></center>
+	          			<center><button class="btn"><a href="index1.html">Ver Detalhes</a></button></center>
 		        	</div>
 		      	</div>
-		    </div>
-		    <span class="row"></span>
+			</div>
 		</section>
+		<footer class="col-md-12 footer">
+			<div class="col-md-5 col-md-offset-5">
+				<img src="img/logo1.png" class="img-responsive">
+			</div>
+			<div>
+				<div class="social col-md-4 col-md-offset-2">
+				    <ul class="social-network social-circle">
+				      <li><a href="#" class="icoInstagram" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+				      <li><a href="#" class="icoFacebook" title="Facebook" data-toggle="modal" data-target="#modal2"><i class="fa fa-facebook"></i></a></li>
+				      <li><a href="#" class="icoTwitter" title="Twitter"  data-toggle="modal" data-target="#modal1"><i class="fa fa-twitter"></i></a></li>
+				      <li><a href="#" class="icoWhatsapp" title="Whatsapp" data-toggle="modal" data-target="#modalwpp"><i class="fa fa-whatsapp"></i></a></li>
+				      <li class="boleto"><i class="fa fa-barcode" aria-hidden="true"></i></li>
+				    </ul>
+				</div>
+			</div>
+		</footer>
 	</body>
 </html>
+
+
+
+
+
+
+
+

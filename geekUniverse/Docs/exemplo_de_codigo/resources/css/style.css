@@ -1,15 +1,16 @@
-.box-area{
-    margin-left: 4%;
+.box-area {
+	margin-left: 4%;
 }
-.box{
-    border: medium solid black;
-    width: 250px;
-    height: 250px;
-    background-color: red;
-    margin: 1% 1% 1% 1%;
-  
+
+.box {
+	border: medium solid black;
+	width: 250px;
+	height: 250px;
+	background-color: red;
+	margin: 1% 1% 1% 1%;
 }
-.box > img{
-    width: 246px;
-    height: 246px;
+
+.box>img {
+	width: 246px;
+	height: 246px;
 }

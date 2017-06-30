@@ -1,61 +1,60 @@
-#logo{
-  margin-left: 38%;
+#logo {
+	margin-left: 38%;
 }
 
-#top2{
-  margin-top: -60%;
+#top2 {
+	margin-top: -60%;
 }
 
-#top{
-  margin-top: -8.1%;
-  margin-left: 20%;
+#top {
+	margin-top: -8.1%;
+	margin-left: 20%;
 }
 
-#drop{
-	color:#ffaa00;
+#drop {
+	color: #ffaa00;
 }
 
-#atrib{	
-	background:#ffaa00;
+#atrib {
+	background: #ffaa00;
+}
 
+#input {
+	margin-top: 0.5%;
+	float: center;
+	height: 4.5%;
+	width: 20%;
+	margin-left: 45%;
+	display: inline-block;
 }
-#input{
-     margin-top: 0.5%;
-	   float: center;
-	   height:4.5%;
-  	 width: 20%;
-  	 margin-left: 45%;
-  	 display: inline-block;
-     
-}
-#button{
+
+#button {
 	margin-top: 0.3%;
-  float: right;
-  height: 4.5%;
-  margin-right: 1.2%;
-
-  
+	float: right;
+	height: 4.5%;
+	margin-right: 1.2%;
 }
-input[type=text]:hover, textarea:hover{ 
-         background: #ffffff; border:3px solid #ffaa00;
 
-    -webkit-transform: scale(1.0);
-    -moz-transform: scale(1.0);
-    -ms-transform: scale(1.0);
-    transition: all 0.3s ease-in-out;
-    transition-property: all;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
-    transition-delay: 0s;
-    width: 100%;   
+input[type=text]:hover, textarea:hover {
+	background: #ffffff;
+	border: 3px solid #ffaa00;
+	-webkit-transform: scale(1.0);
+	-moz-transform: scale(1.0);
+	-ms-transform: scale(1.0);
+	transition: all 0.3s ease-in-out;
+	transition-property: all;
+	transition-duration: 0.3s;
+	transition-timing-function: ease-in-out;
+	transition-delay: 0s;
+	width: 100%;
 }
- 
-button[type=submit]{
 
-        background:#ffaa00;
-        color:#ffffff;
+button[type=submit] {
+	background: #ffaa00;
+	color: #ffffff;
 }
-.fundo{
-  background-color: #A9A9A9;
-  height: 1600px;
+
+.fundo {
+	background-color: #A9A9A9;
+	height: 1600px;
 }
