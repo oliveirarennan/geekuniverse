@@ -3,54 +3,35 @@
 //Mais exemplos http://www.linhadecodigo.com.br/artigo/3706/jquery-validate-validacao-de-formularios-html.aspx
 
 $(function(){
-    $('#frmCadastrarProduto').validate(
+    $('#frmCadastrarFormaPagamento').validate(
             {
                 rules : {
-                    nome:{  
+                    tipoPagamento:{  
                         required:true,
-                        rangelength:[3,100],
                     },
-                    descicao:{
-                        required: true,
-                        rangelength:[3,255],
-                    },
-                    valor:{
-                        required: true,
-                        number: true
-                    },
-                    estoque:{
+                    parcelas:{
                         required: true,
                         digits: true,
-                        range: [0, 999] ,       
-                    },
-                    imagem:{
-                        required: false
-
-                    }
-                },
-
-                messages:{
-                    nome:{
-                        required: "Você precisa digitar o nome do Produto",
-                        rangelength: "O nome do produto precisa ter entre 3 a 100 caracteres",
-                    },
-                    descricao:{
-                        required:"Você precisa digitar a descrição do Produto",
-                        rangelength: "O descrição do produto precisa ter entre 3 a 255 caracteres",
+                        range:[1, 12],
                     },
                     valor:{
-                        required:"Você precisa digitar um valor",
-                        number:"Você so pode entrar com números"
-                    },
-                    estoque:{
-                        required: "Você precisa digitar o número de itens que tem no estoque",
-                        digits: "Digite Apenas Números Inteiros",
-                        range: "Digite um numero entre 0 e 1000",
-                    },
-                    imagem:{
-                        required:"Você precisa selecionar um arquivo."
+                        required:true
                     }
 
+                },
+                messages:{
+                    tipoPagamento:{
+                        required: "Você precisa digitar qual a forma de pagamento",
+                        
+                    },
+                    parcelas:{
+                        required: "Digite o numero de Parcelas",
+                        digits: "Digite apenas numero",
+                        range: "Digite um numero entre 1 e 12",
+                    },
+                    valor:{
+                        required:"Digite o valor do pagamento"
+                    }
                 },errorElement: "em",
     				errorPlacement: function ( error, element ) {
     					// Add the `help-block` class to the error element

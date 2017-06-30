@@ -145,16 +145,17 @@ public class ProdutoDao {
 	        try {
 	        	conexao = ConexaoFabrica.getConnection();
 	        	
-	            String query = "UPDATE produto SET nome = ?, descricao = ?, valor = ?, estoque = ?, imagem = ? WHERE id = ?";
+	            String query = "UPDATE produto SET fabricante_id = ?, categoria_id = ?, nome = ?, descricao = ?, valor = ?, estoque = ?, imagem = ? WHERE id = ?";
 
 				PreparedStatement pstm = conexao.prepareStatement(query);
-
-	            pstm.setString( 1, produto.getNome());
-	            pstm.setString( 2, produto.getDescricao());
-	            pstm.setDouble( 3, produto.getValor());
-	            pstm.setInt( 4, produto.getEstoque());
-	            pstm.setString( 5, produto.getImagem());
-	            pstm.setInt( 6, produto.getId());
+				pstm.setInt(1, produto.getFabricante().getId());
+				pstm.setInt(2, produto.getCategoria().getId());
+	            pstm.setString(3, produto.getNome());
+	            pstm.setString(4, produto.getDescricao());
+	            pstm.setDouble(5, produto.getValor());
+	            pstm.setInt(6, produto.getEstoque());
+	            pstm.setString(7, produto.getImagem());
+	            pstm.setInt(8, produto.getId());
 	         
 	            pstm.executeUpdate();
 	            pstm.close();
