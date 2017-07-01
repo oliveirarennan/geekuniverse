@@ -51,8 +51,7 @@ public class ServletAdicionarAoCarrinho extends HttpServlet {
 		if(produtoSelecionado.getEstoque() > 0){
 		item.setProduto(produtoSelecionado);
 		item.setQuantidade(1);
-		ProdutoServico.removerDoEstoque(item.getProduto(), item.getQuantidade());
-		item.getProduto().setEstoque(item.getProduto().getEstoque() - item.getQuantidade());
+		ProdutoServico.removerDoEstoque(item.getProduto(), 1);
 		
 		
 		item.calcularPreco();
@@ -73,6 +72,7 @@ public class ServletAdicionarAoCarrinho extends HttpServlet {
 				for (Item i : itensSessao) {
 					if(i.getProduto().getId() == item.getProduto().getId()){
 						i.setQuantidade(i.getQuantidade() + 1);
+						i.getProduto().setEstoque(i.getProduto().getEstoque() -1);
 						i.calcularPreco();
 						pedido.setValor(pedido.getValor() + i.getProduto().getValor());
 						novoItem = false;

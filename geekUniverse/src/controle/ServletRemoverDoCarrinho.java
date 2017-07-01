@@ -67,7 +67,6 @@ public class ServletRemoverDoCarrinho extends HttpServlet {
 				if(i.getProduto().getId() == Integer.parseInt(actionId)){
 					if(i.getQuantidade() > 1){
 						i.setQuantidade(i.getQuantidade() - 1);
-						//i.getProduto().setEstoque(i.getProduto().getEstoque() + 1);
 						ProdutoServico.adicionarAoEstoque(i.getProduto(), 1);
 						i.calcularPreco();
 						
