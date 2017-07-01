@@ -38,7 +38,7 @@
                   <jsp:useBean id="ca" class="servico.CategoriaServico"></jsp:useBean>
                   
                       <optgroup>
-                   		<c:forEach var="categoria" items="${ca.listarAtivada() }">
+                   		<c:forEach var="categoria" items="${ca.listarAtivas() }">
                    			<option value="${categoria.id }">${categoria.nome}</option>
                       </c:forEach>
                       </optgroup>

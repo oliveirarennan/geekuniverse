@@ -10,6 +10,7 @@ public class Pedido {
 	private Usuario cliente;
 	private Calendar dataPedido;
 	private Frete frete;
+	private Double valor;
 	
 	public int getNumeroPedido() {
 		return numeroPedido;
@@ -48,6 +49,16 @@ public class Pedido {
 		this.frete = frete;
 	}
 	
+	
+	public Double getValor() {
+		return valor;
+	}
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
+	public void setFormaPagamento(FormaPagamento formaPagamento) {
+		this.formaPagamento = formaPagamento;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

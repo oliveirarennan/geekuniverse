@@ -38,6 +38,7 @@
       </div>
         
           <ul class="nav navbar-nav navbar-left">
-            <li><a href="#"><span class="glyphicon glyphicon-user" id="drop"></span> Minha Conta</a></li> 
+            <li><a href="#"><span class="glyphicon glyphicon-user" id="drop"></span> Minha Conta</a></li>
+            <li><a href="../index.jsp"><span class="glyphicon glyphicon-shopping-cart"></span>Home da Loja</a></li> 
           </ul>
   </nav>

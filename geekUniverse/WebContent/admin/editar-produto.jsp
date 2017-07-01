@@ -39,7 +39,7 @@
                   <jsp:useBean id="ca" class="servico.CategoriaServico"></jsp:useBean>
                   
                       <optgroup>
-                   		<c:forEach var="categoria" items="${ca.listarAtivada() }">
+                   		<c:forEach var="categoria" items="${ca.listarAtivas() }">
                    			<option value="${categoria.id }" <c:if test="${categoria.id == produto.categoria.id }"><c:out value="selected"/></c:if>>${categoria.nome}</option>
                       </c:forEach>
                       </optgroup>

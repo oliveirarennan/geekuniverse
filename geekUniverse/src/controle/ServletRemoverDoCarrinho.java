@@ -1,4 +1,4 @@
-package teste.carrinho.controle;
+package controle;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import teste.carrinho.modelo.Item;
-import teste.carrinho.modelo.Pedido;
+import modelo.Item;
+import modelo.Pedido;
+import servico.ProdutoServico;
 
 /**
  * Servlet implementation class ServletRemoverDoCarrinho
@@ -47,6 +48,9 @@ public class ServletRemoverDoCarrinho extends HttpServlet {
 		//Remove todos os intens do carrinho
 		if(actionId.equals("removeAll")){
 			try{
+				for (Item item : itensSessao) {
+					ProdutoServico.adicionarAoEstoque(item.getProduto(), item.getQuantidade());
+				}
 				itensSessao.removeAll(itensSessao);
 				itensSessao = null;
 				pedido.setValor(0.);
@@ -63,10 +67,15 @@ public class ServletRemoverDoCarrinho extends HttpServlet {
 				if(i.getProduto().getId() == Integer.parseInt(actionId)){
 					if(i.getQuantidade() > 1){
 						i.setQuantidade(i.getQuantidade() - 1);
-						i.setPreco();
+						//i.getProduto().setEstoque(i.getProduto().getEstoque() + 1);
+						ProdutoServico.adicionarAoEstoque(i.getProduto(), 1);
+						i.calcularPreco();
+						
 						pedido.setValor(pedido.getValor() - i.getProduto().getValor());
 						break;
 					}else{
+						i.setQuantidade(i.getQuantidade() - 1);
+						ProdutoServico.adicionarAoEstoque(i.getProduto(), 1);
 						itensSessao.remove(i);
 						break;
 					}
@@ -83,6 +92,7 @@ public class ServletRemoverDoCarrinho extends HttpServlet {
 			for (Item i : itensSessao) {
 				if(i.getProduto().getId() == Integer.parseInt(actionId)){
 						pedido.setValor(pedido.getValor() - i.getPreco());
+						ProdutoServico.adicionarAoEstoque(i.getProduto(), i.getQuantidade());
 						itensSessao.remove(i);
 						break;
 					}
@@ -95,7 +105,7 @@ public class ServletRemoverDoCarrinho extends HttpServlet {
 		}
 		session.setAttribute("ItensCarrinho", itensSessao);
 		session.setAttribute("ValorCarrinho", pedido);
-		response.sendRedirect("TesteCarrinho/carrinho.jsp");
+		response.sendRedirect("carrinho.jsp");
 	}
 
 	/**

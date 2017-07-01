@@ -1,4 +1,4 @@
-package teste.carrinho.controle;
+package controle;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.tomcat.util.modeler.NotificationInfo;
 
-import teste.carrinho.modelo.Item;
-import teste.carrinho.modelo.Pedido;
-import teste.carrinho.modelo.Produto;
+import modelo.Item;
+import modelo.Pedido;
+import modelo.Produto;
+import servico.ProdutoServico;
 
 /**
  * Servlet implementation class ServletAdicionarAoCarrinho
@@ -40,30 +40,22 @@ public class ServletAdicionarAoCarrinho extends HttpServlet {
 		Pedido pedido = (Pedido) request.getSession().getAttribute("ValorCarrinho");
 		//Caso não funcione testar se itenSessao.size() > 0 e senao for atribuir null
 		
-		List<Produto> produtos = Produto.retornaProdutos();
-		Produto produtoSelecionado = null;
+		int idproduto = Integer.parseInt(request.getParameter("id"));
+		Produto produtoSelecionado = ProdutoServico.buscarPorId(idproduto);
 		HttpSession session = null;
 		Item item = new Item();
 		
-		int idproduto = Integer.parseInt(request.getParameter("id"));
 		
-		switch (idproduto) {
-		case 1:
-			produtoSelecionado = produtos.get(0);
-			break;
-		case 2:
-			produtoSelecionado = produtos.get(1);
-			break;
-		case 3:
-			produtoSelecionado = produtos.get(2);
-			break;	
-		default:
-			break;
-		}
 		
+		
+		if(produtoSelecionado.getEstoque() > 0){
 		item.setProduto(produtoSelecionado);
 		item.setQuantidade(1);
-		item.setPreco();
+		ProdutoServico.removerDoEstoque(item.getProduto(), item.getQuantidade());
+		item.getProduto().setEstoque(item.getProduto().getEstoque() - item.getQuantidade());
+		
+		
+		item.calcularPreco();
 		
 		Boolean novoItem = false;
 		
@@ -81,7 +73,7 @@ public class ServletAdicionarAoCarrinho extends HttpServlet {
 				for (Item i : itensSessao) {
 					if(i.getProduto().getId() == item.getProduto().getId()){
 						i.setQuantidade(i.getQuantidade() + 1);
-						i.setPreco();
+						i.calcularPreco();
 						pedido.setValor(pedido.getValor() + i.getProduto().getValor());
 						novoItem = false;
 						session.setAttribute("ItensCarrinho", itensSessao);
@@ -103,7 +95,10 @@ public class ServletAdicionarAoCarrinho extends HttpServlet {
 		
 		
 		
-		response.sendRedirect("TesteCarrinho/carrinho.jsp");
+		response.sendRedirect("carrinho.jsp");
+		}else{
+			response.sendRedirect("carrinho.jsp?estoque=erro");
+		}
 	}
 
 	/**

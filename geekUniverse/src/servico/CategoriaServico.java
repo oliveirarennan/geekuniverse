@@ -25,11 +25,12 @@ public class CategoriaServico {
 		return categoriaDao.listar();
 	}
 	
-	public static List<Categoria> listarAtivada(){
+	public static List<Categoria> listarAtivas(){
 		CategoriaDao categoriaDao = new CategoriaDao();
 		
-		return categoriaDao.listarAtivada();
+		return categoriaDao.listarAtivas();
 	}
+	
 
 	public static boolean atualizar(Categoria categoria) {
 		CategoriaDao categoriaDao = new CategoriaDao();
