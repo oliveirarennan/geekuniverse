@@ -4,44 +4,52 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-// import modelo.Frete;
-// import modelo.Usuario
-// import modelo.FormaPagamento;
 import modelo.Pedido;
-import servico.CategoriaServico;
+import servico.FormaPagamentoServico;
+import servico.FreteServico;
+import servico.UsuarioServico;
 import util.DBUtil;
 
 public class PedidoDao {
 	
-	public int cadastrar(Pedido pedido){
+	public Pedido cadastrar(Pedido pedido){
 		Connection conexao = null;
-		int retorno = 0;
-		String sql = "INSERT INTO pedido(numeroPedido, formaPagamento, statusPedido, cliente, dataPedido, frete) values(?, ?, ?, ?, ?, ?) ";
+		String sql = "INSERT INTO pedido(numeroPedido, formaPagamento_id, status, usuario_id, dataPedido, frete_id, valor) values(?, ?, ?, ?, ?, ?, ?) ";
 		
 		try{
 			conexao = ConexaoFabrica.getConnection();
 			
-			PreparedStatement ps = conexao.prepareStatement(sql);
+			PreparedStatement ps = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			
 			ps.setInt(1, pedido.getNumeroPedido());
 			ps.setInt(2, pedido.getFormaPagamento().getId());
 			ps.setString(3, pedido.getStatusPedido());
-			ps.setString(4, pedido.getStatusPedido());
-			ps.setInt(5, pedido.getCliente().getId());
-		//	ps.set(6, pedido.getDataPedido());
+			ps.setInt(4, pedido.getCliente().getId());
+			ps.setString(5, pedido.getDataPedido());
 			ps.setInt(6, pedido.getFrete().getId());
+			ps.setDouble(7, pedido.getValor());
 			
-			retorno = ps.executeUpdate();
+			if(ps.executeUpdate() == 0){
+				return null;
+			}
+			try{
+				ResultSet idGerado =  ps.getGeneratedKeys();
+				if(idGerado.next()){
+					pedido.setId(idGerado.getInt(1));
+				}
+			}catch (Exception e) {
+				e.getStackTrace();
+			}
 			
 		} catch (SQLException e){
 			e.printStackTrace();
 		} finally{
 			DBUtil.fechar(conexao);
 		}
-		return retorno;
+		return pedido;
 	}
 	
 	public List<Pedido> listar(){
@@ -62,11 +70,11 @@ public class PedidoDao {
 			while(rs.next()){
 				pedido = new Pedido();
 				pedido.setNumeroPedido(rs.getInt("numeroPedido"));
-			//	pedido.setFormaPagamento(FormaPagamentoServico.buscarPorId(rs.getInt("formaPagamento")));
+				pedido.setFormaPagamento(FormaPagamentoServico.buscarPorId(rs.getInt("formaPagamento")));
 				pedido.setStatusPedido(rs.getString("statusPedido"));
-			//	pedido.setCliente(rs.getUsuario().getId());
-			//	pedido.setDataPedido(rs.getCalendar("dataPedido"));
-			//	pedido.setFrete(rs.getFrete().getId());
+				pedido.setCliente(UsuarioServico.buscarPorId(rs.getInt("usuario_id")));
+				pedido.setDataPedido(rs.getString("dataPedido"));
+				pedido.setFrete(FreteServico.buscarPorId(rs.getInt("frete_id")));
 				
 				listaDePedidos.add(pedido);
 			}			
@@ -108,16 +116,18 @@ public class PedidoDao {
 	        try {
 	        	conexao = ConexaoFabrica.getConnection();
 	        	
-	            String query = "UPDATE pedido SET formaPagamento = ?, statusPedido = ?, cliente = ?, dataPedido = ?, frete = ? WHERE numeroPedido = ?";
+	            String query = "UPDATE pedido SET formaPagamento_id = ?, status = ?, usuario_id = ?, dataPedido = ?, frete_id = ?, valor = ?, numeroPedido = ? WHERE id = ?";
 
 				PreparedStatement pstm = conexao.prepareStatement(query);
 
 	            pstm.setInt( 1, pedido.getFormaPagamento().getId());
 	            pstm.setString( 2, pedido.getStatusPedido());
 	            pstm.setInt( 3, pedido.getCliente().getId());
-	        //  pstm.set...( 4, pedido.getDataPedido());
+	            pstm.setString( 4, pedido.getDataPedido());
 	            pstm.setInt( 5, pedido.getFrete().getId());
-	            pstm.setInt( 6, pedido.getNumeroPedido());
+	            pstm.setDouble( 6, pedido.getValor());
+	            pstm.setInt( 7, pedido.getNumeroPedido());
+	            pstm.setInt(8, pedido.getId());
 	         
 	            pstm.executeUpdate();
 	            pstm.close();
@@ -127,4 +137,38 @@ public class PedidoDao {
 	        }
 	        return true;
 	    }
+	
+	public Pedido buscarPorId(int id){
+		Connection conexao = null;
+		
+		
+		Pedido pedido = null;
+		
+		String sql = "SELECT * FROM pedido where id = ?";
+		
+		try{
+			conexao = ConexaoFabrica.getConnection();
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setInt(1, id);
+						
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()){
+				pedido = new Pedido();
+				pedido.setNumeroPedido(rs.getInt("numeroPedido"));
+				pedido.setFormaPagamento(FormaPagamentoServico.buscarPorId(rs.getInt("formaPagamento")));
+				pedido.setStatusPedido(rs.getString("statusPedido"));
+				pedido.setCliente(UsuarioServico.buscarPorId(rs.getInt("usuario_id")));
+				pedido.setDataPedido(rs.getString("dataPedido"));
+				pedido.setFrete(FreteServico.buscarPorId(rs.getInt("frete_id")));
+				
+			}			
+		} catch (SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBUtil.fechar(conexao);
+		}
+		return pedido;
+	}
 }

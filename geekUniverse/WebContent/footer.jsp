@@ -1,3 +1,32 @@
+<!-- Login Modal-->
+      <!-- Modal -->
+        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="loginModal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Login</h4>
+              </div>
+              <div class="modal-body">
+                 <form action="ServletLogin" method="POST" >
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">@</span>
+                        <input type="text" class="form-control" placeholder="Email" id="emailid" name="email" aria-describedby="basic-addon1">
+                      </div><br >
+                      <div class="input-group">
+                          <span class="input-group-addon" id="basic-addon1">#</span>
+                          <input type="password" class="form-control" placeholder="Senha" id="senhaid" name="senha">
+                      </div><br>
+                      <div class="input-group">
+                          <button type="submit" class="btn btn-warning">Entrar</button>
+                          <a href="#"> Esqueci a senha</a>
+                      </div>
+                  </form>
+              </div>
+           </div>
+          </div>
+        </div>
+        
 <footer class="col-md-12 footer">
 			<div class="col-md-5 col-md-offset-5">
 				<img src="img/logo1.png" class="img-responsive">
@@ -13,6 +42,8 @@
 				    </ul>
 				</div>
 			</div>
+			
+			
 		</footer>
 	</body>
 </html>

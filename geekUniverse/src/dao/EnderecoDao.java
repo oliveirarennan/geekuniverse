@@ -34,7 +34,6 @@ public class EnderecoDao {
 			ps.setString(7, endereco.getComplemento());
 			ps.setString(8, endereco.getCep());
 			
-			ps.executeUpdate();
 			if(ps.executeUpdate() == 0){
 				return null;
 			}

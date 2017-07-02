@@ -11,8 +11,8 @@
 				    </div>
 					<p>${produtoSelecionado.descricao}</p>
 					<br>
-					
-					<p>R$ ${produtoSelecionado.valor }</p>
+					<fmt:setLocale value="pt_br"/>
+					<p><fmt:formatNumber value="${produtoSelecionado.valor}" type="currency"/></p>
 					<br>
 					<br>
 					<a href="ServletAdicionarAoCarrinho?id=${produtoSelecionado.id }" class="btn btn-default">Adicionar no Carrinho</a>

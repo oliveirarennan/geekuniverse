@@ -31,8 +31,9 @@
 								<jsp:useBean id="pa" class="servico.ProdutoServico"></jsp:useBean>
 								<c:forEach var="produto" items="${pa.listar() }">
 									<tr>
+									<fmt:setLocale value="pt_br"/>
 										<td>${produto.nome}</td>
-										<td>${produto.valor}</td>
+										<td><fmt:formatNumber value="${produto.valor}" type="currency"/></td>
 										<td>${produto.estoque}</td>
 										<td>${produto.categoria.nome}</td>
 										<td>${produto.fabricante.nome}</td>

@@ -12,10 +12,11 @@
 				<c:forEach var="produto" items="${pr.listarUltimosCadastrados() }">
 				<div class="col-md-3">
 		        	<div class="thumbnail">
+		        	<fmt:setLocale value="pt_br"/>
 				    	<img src="imagens-produtos/${produto.imagem}" alt="Paris" width="300" height="300">
 				        <center><p><strong>${produto.nome} </strong></p></center>
-				        <center><p><i>R$ ${produto.valor} </i></p></center>
-				        <center><button class="btn"><a href="ServletDetalharProduto?id=${produto.id }">Ver Detalhes</a></button></center>
+				        <center><p><i><fmt:formatNumber value="${produto.valor}" type="currency"/></i></p></center>
+				        <center><button class="btn"><a href="ServletDetalharProduto?id=${produto.id }">Ver Detalhes</a></button></center> 
 				    </div>
 		      	</div>
 		      	</c:forEach>

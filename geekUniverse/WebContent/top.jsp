@@ -15,16 +15,16 @@
 	  	<script type="text/javascript" src="js/botao.js"></script>
 
    		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="resources/css/bootstrap.min.css">
 
 		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity=sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<link rel="stylesheet" href="resources/css/bootstrap-theme.min.css">
 
 		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="resources/js/bootstrap.min.js"></script>
 
 		<!-- Awesome Font bootstrap-->
-		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"/> 
 
  	<style type="text/css">
   		.carousel-inner > .item > 
@@ -135,7 +135,27 @@
 	      				</ul>
 	      				<div> 
 	      					<ul class="nav navbar-nav navbar-right">
-	      						<li><a href="#"><span class="glyphicon glyphicon-user"  id="drop"></span> Minha Conta</a></li>
+	      					<c:choose >
+	      						<c:when test="${usuarioLogado == null }">
+			      						<li class="dropdown">
+					              			<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="drop"><span class="glyphicon glyphicon-user"></span> Login<span class="caret"></span></a>
+								            <ul class="dropdown-menu" id="atrib">
+								            	<li><a href="#" data-toggle="modal" data-target="#loginModal">Entrar</a></li>
+								                <li><a href="cadastrar-usuario.jsp"><strong>Não tem conta? Cadastre-se !</strong></a></li>
+						             		 </ul>
+						            	</li>
+				            	</c:when>
+				            	<c:when test="${usuarioLogado ne null }">
+				            		<li class="dropdown">
+					              			<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="drop"><span class="glyphicon glyphicon-user"></span>Olá,  ${usuarioLogado.nome}<span class="caret"></span></a>
+								            <ul class="dropdown-menu" id="atrib">
+								            	<li><a href="editar-usuario.jsp" >Alterar Dados</a></li>
+								                <li><a href="ServletLogout?logout=true"><strong>Sair</strong></a></li>
+						             		 </ul>
+						            	</li>
+				            	
+				            	</c:when>
+				            </c:choose>
 	      						<c:set var="qtdItens" value="{$ItensCarrinho.item.value}"/>
 	      						 <li><a href="carrinho.jsp"><span class="glyphicon glyphicon-shopping-cart"><span class="badge">${ItensCarrinho.size()}</span></span></a></li> 
 	    					</ul>

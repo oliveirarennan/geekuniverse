@@ -3,15 +3,23 @@ package modelo;
 import java.util.Calendar;
 
 public class Pedido {
-
+	private int id;
 	private int numeroPedido;
 	private FormaPagamento formaPagamento;
 	private String statusPedido;
 	private Usuario cliente;
-	private Calendar dataPedido;
+	private String dataPedido;
 	private Frete frete;
 	private Double valor;
 	
+	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public int getNumeroPedido() {
 		return numeroPedido;
 	}
@@ -36,10 +44,10 @@ public class Pedido {
 	public void setCliente(Usuario cliente) {
 		this.cliente = cliente;
 	}
-	public Calendar getDataPedido() {
+	public String getDataPedido() {
 		return dataPedido;
 	}
-	public void setDataPedido(Calendar dataPedido) {
+	public void setDataPedido(String dataPedido) {
 		this.dataPedido = dataPedido;
 	}
 	public Frete getFrete() {

@@ -1,5 +1,6 @@
 package dao;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +11,7 @@ import java.util.List;
 import modelo.Usuario;
 import servico.EnderecoServico;
 import util.DBUtil;
+import util.Util;
 
 public class UsuarioDao {
 	
@@ -187,4 +189,59 @@ public class UsuarioDao {
 		}
 		return usuario;
 	}	
+	
+	public Usuario Login(String nomeUsuario, String senha){
+		Connection conexao = null;
+		
+		Usuario usuario = null;
+		
+		String sql = "SELECT * FROM usuario where email = ? and status = 1 limit 1 ";
+		
+		try{
+			conexao = ConexaoFabrica.getConnection();
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setString(1, nomeUsuario);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()){
+				usuario = new Usuario();
+				usuario.setEndereco(EnderecoServico.bucarPorID(rs.getInt("endereco_id")));
+				usuario.setId(rs.getInt("id"));
+				usuario.setNome(rs.getString("nome"));
+				usuario.setSobrenome(rs.getString("sobrenome"));
+				usuario.setDataNascimento(rs.getString("dataNascimento"));
+				usuario.setSexo(rs.getString("sexo"));
+				usuario.setCelular(rs.getString("celular"));
+				usuario.setTelefoneFixo(rs.getString("telefoneFixo"));
+				usuario.setCpf(rs.getString("cpf"));
+				usuario.setRg(rs.getString("rg"));
+				usuario.setEmail(rs.getString("email"));
+				usuario.setSenha(rs.getString("senha"));
+				usuario.setTipoUsuario(rs.getString("tipoUsuario"));
+				usuario.setStatus(rs.getInt("status"));
+				
+			}			
+		} catch (SQLException e){
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		} finally{
+			DBUtil.fechar(conexao);
+		}
+		if(usuario != null){
+		try {
+			if(usuario.getEmail().equals(nomeUsuario) && usuario.getSenha().equals(Util.getMd5(senha))){
+			return usuario;
+			}else{
+				usuario = null;
+				return usuario;
+			}
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+		return usuario;
+	}
 }

@@ -17,7 +17,7 @@
 					<c:forEach var="item" items="${ItensCarrinho}">
 						<div class="col-md-8 col-md-offset-2 ">
 							<div class="thumbnail">
-								 <strong>Nome: </strong>${item.produto.nome } <a href="ServletDetalharProduto?id=${item.produto.id }"><span class="glyphicon glyphicon-search"></span></a> | <strong>Quantidade: </strong>${item.quantidade} |<strong>Preço Unitario</strong>${item.produto.valor} |  <c:if test="${item.produto.estoque > 0 }" > <a
+								 <strong>Nome: </strong>${item.produto.nome } <a href="ServletDetalharProduto?id=${item.produto.id }"><span class="glyphicon glyphicon-search"></span></a> | <strong>Quantidade: </strong>${item.quantidade} |<strong>Preço Unitario</strong><fmt:formatNumber value="${item.produto.valor}" type="currency"/>|  <c:if test="${item.produto.estoque > 0 }" > <a
 									href="ServletAdicionarAoCarrinho?id=${item.produto.id}"><span
 										class="glyphicon glyphicon-plus"></span></a> </c:if> <a
 									href="ServletRemoverDoCarrinho?id=${item.produto.id}&rl=0">
@@ -49,7 +49,7 @@
 								 
 								 <div class="row">
 					<div class="col-md-4">
-						<form name="calculaFrete" action="../ServletCalcularFrete"
+						<form name="calculaFrete" action="ServletCalcularFrete"
 							method="POST">
 							<div class="form-group">
 								<label for="cep" class="control-label">CEP</label> <input
@@ -57,13 +57,13 @@
 									type="submit" class="btn btn-primary pull-right"
 									data-toggle="tooltip" data-placement="right"
 									title="Clique para calcular o frete" />
-								<jsp:useBean id="sf" class="teste.carrinho.modelo.Frete" />
+								<jsp:useBean id="sf" class="modelo.Frete" />
 								<c:set var="valorFrete" value="${Frete}" />
 								<c:if test="${Frete != null }">
 									<br />
 									<br />
 									<c:if test="${Frete.valor != null }">
-										<h5>O valor do frete é : R$ ${Frete.valor }</h5>
+										<h5>O valor do frete é : <fmt:formatNumber value="${Frete.valor}" type="currency"/></h5>
 									</c:if>
 									<br />
 									<h5>O Prazo estimado de entrega é de: ${Frete.prazo }
@@ -72,25 +72,37 @@
 							</div>
 						</form>
 
-						<form name="fecharCompra" action="" method="POST">
+						<form name="fecharCompra" action="ServletFecharCompra" method="POST">
 							<div class="form-group">
-								<jsp:useBean id="sp" class="teste.carrinho.modelo.Pedido" />
+								<jsp:useBean id="sp" class="modelo.Pedido" />
 								<c:set var="valorPedido" value="${ValorCarrinho }" />
+								<fmt:setLocale value="pt_br"/>
+								
 								<label for="valorCompra" class="control-label">Valor da
 									Compra</label>
 								<c:if test="${Frete.valor != null }">
-									<input type="text" name="valorPedido" class="form-control"
-										readonly value="R$ ${valorPedido.valor + valorFrete.valor}" />
+									R$<input type="text" name="valorPedido" class="form-control"
+										readonly value="${valorPedido.valor + valorFrete.valor}" required/>
 								</c:if>
 								<c:if test="${Frete.valor == null }">
-									<input type="text" name="valorPedido" class="form-control"
-										readonly value="R$ ${valorPedido.valor}" />
+									<input type="text" name="valorPedido" class="form-control" readonly value="<fmt:formatNumber value="${valorPedido.valor }" type="currency"/>" />
 								</c:if>
 							</div>
-							<div class="form-group">
-								<input type="submit" class="btn btn-success"
-									value="Fechar Compra" />
-							</div>
+							<c:choose>
+								<c:when test="${usuarioLogado ne null }">
+									<div class="form-group">
+										<input type="submit" class="btn btn-success"
+											value="Fechar Compra" />
+									</div>
+								</c:when>
+								<c:when test="${usuarioLogado == null }">
+									<div >
+										<h4>Para finalizar seu pedido, faça login XD</h4>
+										<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#loginModal">Login</a>
+									</div>
+								</c:when>	
+							</c:choose>
+								
 						</form>
 					</div>
 				</div>

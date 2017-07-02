@@ -78,7 +78,6 @@ public class ServletAdicionarAoCarrinho extends HttpServlet {
 						novoItem = false;
 						session.setAttribute("ItensCarrinho", itensSessao);
 						session.setAttribute("ValorCarrinho", pedido);
-						System.out.println("===> Item já no carrinho, aumentando a quantidade.");
 						break;
 					}else{
 						novoItem = true;

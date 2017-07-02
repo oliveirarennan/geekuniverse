@@ -1,30 +1,34 @@
 package servico;
-/*
-package servico;
 
-import br.com.techzee.correios.ws.ConsultaCorreios;
-import br.com.techzee.correios.ws.dto.CorreiosPrecoPrazo;
-import teste.carrinho.modelo.Frete;
+import java.util.List;
 
-public class ServicoFrete {
+import dao.FreteDao;
+import modelo.Frete;
+
+public class FreteServico {
+	public static Frete gravar(Frete frete){
+		FreteDao fDao= new FreteDao();
+		return fDao.cadastrar(frete);
+	}
 	
-	public static Frete CalcularFrete(String cepOrigem, String cepDestino ){
-		Frete frete = new Frete();
-		try {
-			CorreiosPrecoPrazo result = new ConsultaCorreios().calcularPrecoPrazo(cepOrigem, cepDestino)[0];
-			frete.setPrazo(result.getPrazoEntrega().toString());
-			frete.setValor(result.getPrecoFrete());
-			System.out.println(String.format("Valor do Frete: %f - Prazo de Entrega: %d dias", result.getPrecoFrete(), result.getPrazoEntrega()));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			frete.setValor(null);
-			frete.setPrazo(e.getMessage());
-			
-			e.printStackTrace();
-			
-		}
-		return frete;
+public static boolean atualizar(Frete frete){
+		FreteDao fDao= new FreteDao();
+		return fDao.atualizar(frete);
 	}
 
+public static boolean excluir(int id){
+	FreteDao fDao= new FreteDao();
+	return fDao.excluir(id);
 }
-*/
+
+public static List<Frete> listar(){
+	FreteDao fDao= new FreteDao();
+	return fDao.listar();
+}
+
+public static Frete buscarPorId(int id){
+	FreteDao fDao= new FreteDao();
+	return fDao.buscarPorId(id);
+}
+
+}
