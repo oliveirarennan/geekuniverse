@@ -1,3 +1,4 @@
+<%@ include file="verificar-login.jsp" %> 
 <%@include file="top.jsp" %>
 		<fmt:setLocale value="pt_br"/>
 		<section class="container-fluid">
@@ -26,20 +27,26 @@
 						</div>
 					</c:forEach>
 					
-					<br>
-					Valor Frete : <strong><i><fmt:formatNumber value="${pedido.frete.valor}" type="currency"/></i></strong>
-					
-					<br>
-					<strong>Valor Total : <i><fmt:formatNumber value="${pedido.valor}" type="currency"/></i></strong>
-					
-					<br />
-					<br />
-					<div >
-						Endereço: ${usuarioLogado.endereco.rua}, Número ${usuarioLogado.endereco.numero}, ${usuarioLogado.endereco.bairro}, ${usuarioLogado.endereco.cidade}/${usuarioLogado.endereco.estado.sigla} - ${usuarioLogado.endereco.pais}  
-						<br>
-						<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#enderecoModal">Alterar Endereço</a>
+					<div class="col-md-8 col-md-offset-2 ">
+						<div class="alert alert-warning" role="alert"><p>Valor Frete : <strong><i><fmt:formatNumber value="${pedido.frete.valor}" type="currency"/></i></strong><h6> * Frete Baseado em seu endereço de cadastro. Para alterar, edite seu endereço.</h6>  </p>
+							<center><h3><strong>Valor Total : <i><fmt:formatNumber value="${pedido.valor}" type="currency"/></i></strong></h3></center>
+						</div>
+						
 					</div>
 					
+					
+				
+					<div class="col-md-8 col-md-offset-2" style="margin-top: 5%;">
+						<div class="alert alert-info" role="alert">
+							Endereço: ${usuarioLogado.endereco.rua}, Número ${usuarioLogado.endereco.numero}, ${usuarioLogado.endereco.complemento} - ${usuarioLogado.endereco.bairro}, ${usuarioLogado.endereco.cidade}/${usuarioLogado.endereco.estado.sigla} - ${usuarioLogado.endereco.pais}  
+							<p>CEP: ${usuarioLogado.endereco.cep}</p>
+						</div>	
+						<a href="#" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#enderecoModal">Alterar Endereço</a>
+					</div>
+				<br/>
+				<legend>Forma de Pagamento</legend>					
+					
+					<div class="col-md-8 col-md-offset-2" style="margin-top: 5%;">
 						<form name="finalizarPedido" action="ServletFinalizarPedido" method="POST">
 							<div class="form-group">
 								<select name="formaPagamento" id="formaPagamento" class="form-control">
@@ -64,10 +71,10 @@
 							</c:choose>
 								
 						</form>
+					</div>	
 						</c:if>
 					</div>
-					</div>
-				</div>				 
+								 
 						
 				
 					
@@ -81,10 +88,16 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Login</h4>
+                <h4 class="modal-title" id="myModalLabel">Trocar Endereço</h4>
               </div>
               <div class="modal-body">
                  <form action="ServletEditarEndereco" method="POST" >
+                 	<div class="form-group" style="display: none;">
+								
+									<input type="text" name="id" id="id" class="form-control" value="${usuarioLogado.endereco.id }"/>
+									<input type="text" name="compra" id="compra" class="form-control" value="1"/>
+								
+							</div>
                       <div class="form-group">
 								<label class="control-label" for="pais">Pais</label>
 								<div class="validateError">

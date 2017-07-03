@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
+<%@ include file="verificar-login.jsp" %> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -36,9 +37,16 @@
           </button>
         </div>
       </div>
-        
-          <ul class="nav navbar-nav navbar-left">
-            <li><a href="#"><span class="glyphicon glyphicon-user" id="drop"></span> Minha Conta</a></li>
-            <li><a href="../index.jsp"><span class="glyphicon glyphicon-home"></span>Home da Loja</a></li> 
-          </ul>
-  </nav>
+
+			<ul class="nav navbar-nav navbar-left">
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#" id="drop"><span
+						class="glyphicon glyphicon-user"></span>${usuarioLogado.email}<span
+						class="caret"></span></a>
+					<ul class="dropdown-menu" id="atrib">
+						<li><a href="ServletLogout?logout=true"><strong>Sair</strong></a></li>
+					</ul></li>
+				<li><a href="../index.jsp"><span
+						class="glyphicon glyphicon-home"></span>Home da Loja</a></li>
+			</ul>
+		</nav>

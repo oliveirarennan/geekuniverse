@@ -21,6 +21,7 @@ public class Util {
 		String resultado = valor.replaceAll("R", "");
 		resultado = resultado.replace("$", "");
 		resultado = resultado.replace(".", "");
+		resultado = resultado.replace(",", ".");
 		resultado = resultado.trim();
 		Double numeroConvertido = Double.parseDouble(resultado);
 		return numeroConvertido;

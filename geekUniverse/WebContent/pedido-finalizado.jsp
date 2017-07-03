@@ -1,3 +1,4 @@
+<%@ include file="verificar-login.jsp" %> 
 <%@include file="top.jsp" %>
 		
 		<section class="container-fluid">
@@ -8,7 +9,7 @@
 					  	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<strong>Sucesso!</strong>Seu pedido foi registrado em nosso sistema.
 					</div>
-					<a href="#" class="btn btn-success">Visualizar Boleto</a> 
+					<a href="boletos/${boleto}" target="_blank" class="btn btn-success" >Visualizar Boleto</a> 
 				</div>
 					
 			</div>

@@ -1,6 +1,7 @@
 package controle;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import modelo.Frete;
 import modelo.Pedido;
 import modelo.Usuario;
+import util.Util;
 
 /**
  * Servlet implementation class ServletFecharCompra
@@ -43,10 +45,12 @@ public class ServletFecharCompra extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String valorTotoal = request.getParameter("valorPedido");
-		Frete frete = (Frete) request.getSession().getAttribute("frete");
+		String valorTotal = request.getParameter("valorPedido");
+				
+		Frete frete = (Frete) request.getSession().getAttribute("Frete");
 		Pedido pedido = new Pedido();
-		pedido.setValor(Double.parseDouble(valorTotoal));
+		
+		pedido.setValor(Util.getDoubleFromRealString(valorTotal));
 		pedido.setFrete(frete);
 		Usuario usuario = (Usuario) request.getSession().getAttribute("usuarioLogado");
 		pedido.setStatusPedido("Aguardando pagamento");

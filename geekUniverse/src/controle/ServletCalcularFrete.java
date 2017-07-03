@@ -61,7 +61,7 @@ public class ServletCalcularFrete extends HttpServlet {
 		
 		
 		Frete frete = new Frete();
-		frete.setValor(pedido.getValor()* 0.1);
+		frete.setValor(pedido.getValor()* 0.03);
 		Random prazo = new Random();
 		
 		frete.setPrazo((prazo.nextInt(5)+16) + " ");

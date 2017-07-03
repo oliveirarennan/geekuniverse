@@ -17,7 +17,7 @@ public class FormaPagamentoDao {
 	public FormaPagamento cadastrar(FormaPagamento pagamento){
 		Connection conexao = null;
 		
-		String sql = "INSERT INTO formaPagamento(tipoPagamento, parcelas, valor) values(?, ?, ?) ";
+		String sql = "INSERT INTO formaPagamento(tipoPagamento, parcelas, valor, info) values(?, ?, ?, ?) ";
 		
 		try{
 			conexao = ConexaoFabrica.getConnection();
@@ -27,6 +27,7 @@ public class FormaPagamentoDao {
 			ps.setString(1, pagamento.getTipoPagamento());
 			ps.setInt(2, pagamento.getParcelas());
 			ps.setDouble(3, pagamento.getValor());
+			ps.setString(4, pagamento.getInfo());
 			
 			if(ps.executeUpdate() == 0){
 				return null;
@@ -69,6 +70,7 @@ public class FormaPagamentoDao {
 				pagamento.setTipoPagamento(rs.getString("tipoPagamento"));
 				pagamento.setParcelas(rs.getInt("parcelas"));
 				pagamento.setValor(rs.getDouble("valor"));
+				pagamento.setInfo(rs.getString("info"));
 				
 				listaDeFormaPagamento.add(pagamento);
 			}			
@@ -112,14 +114,16 @@ public class FormaPagamentoDao {
 	        try {
 	        	conexao = ConexaoFabrica.getConnection();
 	        	
-	            String query = "UPDATE formaPagamento SET tipoPagamento = ?, parcelas = ?, preco = ? WHERE id = ?";
+	            String query = "UPDATE formaPagamento SET tipoPagamento = ?, parcelas = ?, valor = ?, info = ? WHERE id = ?";
 
 				PreparedStatement pstm = conexao.prepareStatement(query);
 
 	            pstm.setString( 1, pagamento.getTipoPagamento());
 	            pstm.setInt( 2, pagamento.getParcelas());
 	            pstm.setDouble( 3, pagamento.getValor());
-	         
+	            pstm.setString( 4, pagamento.getInfo());
+	            pstm.setInt( 5, pagamento.getId());
+
 	            pstm.executeUpdate();
 	            pstm.close();
 
@@ -148,6 +152,7 @@ public class FormaPagamentoDao {
 				formaPagamento.setTipoPagamento(rs.getString("tipoPagamento"));
 				formaPagamento.setParcelas(rs.getInt("parcelas"));
 				formaPagamento.setValor(rs.getDouble("valor"));
+				formaPagamento.setInfo(rs.getString("info"));
 				
 		} catch (SQLException e){
 			e.printStackTrace();

@@ -52,8 +52,8 @@
 						<form name="calculaFrete" action="ServletCalcularFrete"
 							method="POST">
 							<div class="form-group">
-								<label for="cep" class="control-label">CEP</label> <input
-									type="text" name="cep" id="cep" class="form-control" required /><input
+								<label for="cep" class="control-label">Verifique o valor do frete</label> <input
+									type="text" name="cep" id="cep" class="form-control" required placeholder="Digite seu Cep"/><input
 									type="submit" class="btn btn-primary pull-right"
 									data-toggle="tooltip" data-placement="right"
 									title="Clique para calcular o frete" />
@@ -63,7 +63,7 @@
 									<br />
 									<br />
 									<c:if test="${Frete.valor != null }">
-										<h5>O valor do frete é : <fmt:formatNumber value="${Frete.valor}" type="currency"/></h5>
+										<h5>O valor  do frete para o cep informado  é  de: <fmt:formatNumber value="${Frete.valor}" type="currency"/></h5>
 									</c:if>
 									<br />
 									<h5>O Prazo estimado de entrega é de: ${Frete.prazo }
@@ -82,7 +82,7 @@
 									Compra</label>
 								<c:if test="${Frete.valor != null }">
 									R$<input type="text" name="valorPedido" class="form-control"
-										readonly value="${valorPedido.valor + valorFrete.valor}" required/>
+										readonly value="<fmt:formatNumber value="${valorPedido.valor + valorFrete.valor}" type="currency"/>" required/>
 								</c:if>
 								<c:if test="${Frete.valor == null }">
 									<input type="text" name="valorPedido" class="form-control" readonly value="<fmt:formatNumber value="${valorPedido.valor }" type="currency"/>" />
@@ -90,10 +90,21 @@
 							</div>
 							<c:choose>
 								<c:when test="${usuarioLogado ne null }">
-									<div class="form-group">
-										<input type="submit" class="btn btn-success"
-											value="Fechar Compra" />
-									</div>
+									<c:choose>
+										<c:when test="${Frete.valor != null }">
+											<div class="form-group">
+												<input type="submit" class="btn btn-success"
+													value="Fechar Compra" />
+											</div>
+										</c:when>	
+										<c:when test="${Frete.valor == null }">
+											<div class="form-group">
+												<input type="submit" class="btn btn-success"
+													value="Fechar Compra" disabled />
+													<h3>Para continuar, informe seu cep XD </h3>
+											</div>
+										</c:when>	
+									</c:choose>
 								</c:when>
 								<c:when test="${usuarioLogado == null }">
 									<div >

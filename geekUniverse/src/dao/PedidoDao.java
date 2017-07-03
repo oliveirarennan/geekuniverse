@@ -69,9 +69,10 @@ public class PedidoDao {
 			
 			while(rs.next()){
 				pedido = new Pedido();
+				pedido.setId(rs.getInt("id"));
 				pedido.setNumeroPedido(rs.getInt("numeroPedido"));
-				pedido.setFormaPagamento(FormaPagamentoServico.buscarPorId(rs.getInt("formaPagamento")));
-				pedido.setStatusPedido(rs.getString("statusPedido"));
+				pedido.setFormaPagamento(FormaPagamentoServico.buscarPorId(rs.getInt("formaPagamento_id")));
+				pedido.setStatusPedido(rs.getString("status"));
 				pedido.setCliente(UsuarioServico.buscarPorId(rs.getInt("usuario_id")));
 				pedido.setDataPedido(rs.getString("dataPedido"));
 				pedido.setFrete(FreteServico.buscarPorId(rs.getInt("frete_id")));
@@ -157,7 +158,7 @@ public class PedidoDao {
 			if(rs.next()){
 				pedido = new Pedido();
 				pedido.setNumeroPedido(rs.getInt("numeroPedido"));
-				pedido.setFormaPagamento(FormaPagamentoServico.buscarPorId(rs.getInt("formaPagamento")));
+				pedido.setFormaPagamento(FormaPagamentoServico.buscarPorId(rs.getInt("formaPagamento_id")));
 				pedido.setStatusPedido(rs.getString("statusPedido"));
 				pedido.setCliente(UsuarioServico.buscarPorId(rs.getInt("usuario_id")));
 				pedido.setDataPedido(rs.getString("dataPedido"));
