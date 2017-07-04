@@ -7,3 +7,5 @@ cadastro produto:não aceita numero maior de 1000 no campo valor
 erro de design na pagina de cadastro de usuario(o botão voltar)
 
 não é possivel fazer a mudança nos campos categoria e fabricante do produto(em gerenciar produto)
+
+gerenciar pedido(admin):está escrito gerenciar categorias
