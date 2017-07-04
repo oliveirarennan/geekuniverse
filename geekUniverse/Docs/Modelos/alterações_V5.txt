@@ -1,0 +1,19 @@
+Alterações feitas de uma versão pra outra.
+
+27/06/2017
+V2 - produto --> imagem(45)caracteres.
+
+v3 - produto --> imagem(255)caracteres.
+
+29/06/2017
+
+Tipos Date em Usuario e Pedido transformados em tipo String...
+
+
+04/07/2017
+Alterações V5
+
+
+Adicionado na tabela pedido, a coluna valor.
+
+adicionado na tabela forma de pagamento, a coluna info.
