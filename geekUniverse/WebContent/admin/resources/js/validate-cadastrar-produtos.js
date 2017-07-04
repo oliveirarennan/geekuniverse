@@ -12,15 +12,16 @@ $(function(){
                     },
                     descicao:{
                         required: true,
-                        rangelength:[3,255],
+                        rangelength:[3,255]
                     },
                     valor:{
                         required: true,
+                        number:true
                     },
                     estoque:{
                         required: true,
                         digits: true,
-                        range: [0, 999] ,       
+                        range: [0, 9999]       
                     },
                     imagem:{
                         required: true
@@ -39,6 +40,7 @@ $(function(){
                     },
                     valor:{
                         required:"Você precisa digitar um valor",
+                        number: "Você só pode digitar números"
                     },
                     estoque:{
                         required: "Você precisa digitar o número de itens que tem no estoque",

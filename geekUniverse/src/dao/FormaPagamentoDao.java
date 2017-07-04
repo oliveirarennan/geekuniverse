@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,28 +14,39 @@ import util.DBUtil;
 
 public class FormaPagamentoDao {
 	
-	public int cadastrar(FormaPagamento pagamento){
+	public FormaPagamento cadastrar(FormaPagamento pagamento){
 		Connection conexao = null;
-		int retorno = 0;
-		String sql = "INSERT INTO formaPagamento(tipoPagamento, parcelas, valor) values(?, ?, ?) ";
+		
+		String sql = "INSERT INTO formaPagamento(tipoPagamento, parcelas, valor, info) values(?, ?, ?, ?) ";
 		
 		try{
 			conexao = ConexaoFabrica.getConnection();
 			
-			PreparedStatement ps = conexao.prepareStatement(sql);
+			PreparedStatement ps = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			
 			ps.setString(1, pagamento.getTipoPagamento());
 			ps.setInt(2, pagamento.getParcelas());
 			ps.setDouble(3, pagamento.getValor());
+			ps.setString(4, pagamento.getInfo());
 			
-			retorno = ps.executeUpdate();
+			if(ps.executeUpdate() == 0){
+				return null;
+			}
+			try{
+				ResultSet idGerado =  ps.getGeneratedKeys();
+				if(idGerado.next()){
+					pagamento.setId(idGerado.getInt(1));
+				}
+			}catch (Exception e) {
+				e.getStackTrace();
+			}
 			
 		} catch (SQLException e){
 			e.printStackTrace();
 		} finally{
 			DBUtil.fechar(conexao);
 		}
-		return retorno;
+		return pagamento;
 	}
 	
 	public List<FormaPagamento> listar(){
@@ -58,6 +70,7 @@ public class FormaPagamentoDao {
 				pagamento.setTipoPagamento(rs.getString("tipoPagamento"));
 				pagamento.setParcelas(rs.getInt("parcelas"));
 				pagamento.setValor(rs.getDouble("valor"));
+				pagamento.setInfo(rs.getString("info"));
 				
 				listaDeFormaPagamento.add(pagamento);
 			}			
@@ -67,7 +80,9 @@ public class FormaPagamentoDao {
 			DBUtil.fechar(conexao);
 		}
 		return listaDeFormaPagamento;
-	}		
+	}
+	
+	
 	
 	
 	public boolean excluir(int registro){
@@ -99,14 +114,16 @@ public class FormaPagamentoDao {
 	        try {
 	        	conexao = ConexaoFabrica.getConnection();
 	        	
-	            String query = "UPDATE formaPagamento SET tipoPagamento = ?, parcelas = ?, preco = ? WHERE id = ?";
+	            String query = "UPDATE formaPagamento SET tipoPagamento = ?, parcelas = ?, valor = ?, info = ? WHERE id = ?";
 
 				PreparedStatement pstm = conexao.prepareStatement(query);
 
 	            pstm.setString( 1, pagamento.getTipoPagamento());
 	            pstm.setInt( 2, pagamento.getParcelas());
 	            pstm.setDouble( 3, pagamento.getValor());
-	         
+	            pstm.setString( 4, pagamento.getInfo());
+	            pstm.setInt( 5, pagamento.getId());
+
 	            pstm.executeUpdate();
 	            pstm.close();
 
@@ -116,7 +133,7 @@ public class FormaPagamentoDao {
 	        return true;
 	    }
 	
-	public static FormaPagamento buscarPorId(int id){
+	public  FormaPagamento buscarPorId(int id){
 		Connection conexao = null;
 		
 		FormaPagamento formaPagamento = null;
@@ -135,6 +152,7 @@ public class FormaPagamentoDao {
 				formaPagamento.setTipoPagamento(rs.getString("tipoPagamento"));
 				formaPagamento.setParcelas(rs.getInt("parcelas"));
 				formaPagamento.setValor(rs.getDouble("valor"));
+				formaPagamento.setInfo(rs.getString("info"));
 				
 		} catch (SQLException e){
 			e.printStackTrace();

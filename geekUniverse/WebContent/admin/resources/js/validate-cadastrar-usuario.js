@@ -35,6 +35,7 @@ $(function(){
                     },
                     numero:{  
                         required:true,
+                        digits: true,
                         rangelength:[1,100]
                     },
                     complemento:{  
@@ -77,7 +78,7 @@ $(function(){
                     },
                     sobrenome:{  
                         required:"Você precisa digitar seu sobrenome",
-                        rangelength:"Você precisa digitar no mínimo 3 caracteres",
+                        rangelength:"Você precisa digitar no mínimo 8 caracteres e no maximo 20",
                     },
                     pais:{  
                         required:"Você precisa digitar seu pais",
@@ -100,7 +101,7 @@ $(function(){
                     },
                     numero:{  
                         required:"Você precisa digitar seu numero",
-                        rangelength:"Você precisa digitar no mínimo 3 caracteres",
+                        digits:"Apenas números inteiros são validos"
                     },
                     complemento:{  
                         required:"Você precisa digitar seu complemento",
@@ -129,7 +130,7 @@ $(function(){
                     },
                     senha:{  
                         required:"Você precisa digitar sua senha",
-                        rangelength:"Você precisa digitar no mínimo 3 caracteres",
+                        rangelength:"Você precisa digitar no mínimo 8 caracteres",
                     },
                     status:{
                         required: true,

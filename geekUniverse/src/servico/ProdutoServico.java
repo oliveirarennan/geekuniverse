@@ -5,6 +5,7 @@ import java.util.List;
 import dao.CategoriaDao;
 import dao.FormaPagamentoDao;
 import dao.ProdutoDao;
+import modelo.Categoria;
 import modelo.FormaPagamento;
 import modelo.Produto;
 
@@ -27,6 +28,16 @@ public class ProdutoServico {
 		
 		return produtoDao.listar();
 	}
+	public static List<Produto> listarUltimosCadastrados(){
+		ProdutoDao produtoDao = new ProdutoDao();
+		
+		return produtoDao.listarUltimosCadastrados();
+	}
+	public static List<Produto> listarPorCategoria(Categoria categoria, int quantidade){
+		ProdutoDao produtoDao = new ProdutoDao();
+		
+		return produtoDao.listarPorCategoria(categoria, quantidade);
+	}
 	
 	public List<Produto> listarNoEstoque(){
 		ProdutoDao produtoDao = new ProdutoDao();
@@ -42,5 +53,17 @@ public class ProdutoServico {
 	
 	public static Produto buscarPorId(int id){
 		return ProdutoDao.buscarPorId(id);
+	}
+	
+	public static void  adicionarAoEstoque(Produto produto, int quantidade){
+		ProdutoDao produtoDao = new ProdutoDao();
+		
+		produtoDao.adicionarNoEstoque(produto, quantidade);
+	}
+	
+	public static void  removerDoEstoque(Produto produto, int quantidade){
+		ProdutoDao produtoDao = new ProdutoDao();
+		
+		produtoDao.removerDoEstoque(produto, quantidade);
 	}
 }

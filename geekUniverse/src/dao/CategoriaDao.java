@@ -66,7 +66,7 @@ public class CategoriaDao {
 		return listaDeCategorias;
 	}
 	
-	public List<Categoria> listarAtivada(){
+	public List<Categoria> listarAtivas(){
 		Connection conexao = null;
 		
 		List<Categoria> listaDeCategorias = new ArrayList<Categoria>();
@@ -96,6 +96,8 @@ public class CategoriaDao {
 		}
 		return listaDeCategorias;
 	}
+	
+	
 	
 	public boolean excluir(int registro){
 		Connection conexao = null;

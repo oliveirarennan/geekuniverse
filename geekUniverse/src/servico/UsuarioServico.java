@@ -35,4 +35,9 @@ public class UsuarioServico {
 		UsuarioDao ud = new UsuarioDao();
 		return ud.buscarPorId(id);
 	}
+
+	public static Usuario Login(String login, String senha) {
+		UsuarioDao usuarioDao = new UsuarioDao();
+		return usuarioDao.Login(login, senha);
+	}
 }

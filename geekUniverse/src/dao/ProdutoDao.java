@@ -79,6 +79,89 @@ public class ProdutoDao {
 		return listaDeProdutos;
 	}
 	
+	public List<Produto> listarUltimosCadastrados(){
+		Connection conexao = null;
+		
+		List<Produto> listaDeProdutos = new ArrayList<Produto>();
+		Produto produto = null;
+		
+		String sql = "SELECT * FROM produto where estoque > 0 ORDER BY id desc limit 4";
+		
+		try{
+			conexao = ConexaoFabrica.getConnection();
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+						
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()){
+				produto = new Produto();
+				produto.setId(rs.getInt("id"));
+				produto.setNome(rs.getString("nome"));
+				produto.setDescricao(rs.getString("descricao"));
+				produto.setValor(rs.getDouble("valor"));
+				produto.setEstoque(rs.getInt("estoque"));
+				produto.setImagem(rs.getString("imagem"));
+				produto.setCategoria(CategoriaServico.buscarPorId(rs.getInt("categoria_id")));
+				produto.setFabricante(FabricanteServico.buscarPorId(rs.getInt("fabricante_id")));
+				
+				listaDeProdutos.add(produto);
+			}			
+		} catch (SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBUtil.fechar(conexao);
+		}
+		return listaDeProdutos;
+	}
+	
+	public List<Produto> listarPorCategoria(Categoria categoria, int quantidade){
+		Connection conexao = null;
+		
+		List<Produto> listaDeProdutos = new ArrayList<Produto>();
+		Produto produto = null;
+		String sql = null;
+		if(quantidade > 0){
+			sql = "SELECT * FROM produto where categoria_id = ? and estoque > 0 ORDER BY id desc limit ?";
+		}else{
+			sql = "SELECT * FROM produto where categoria_id = ? order by id desc";
+		}
+		
+		try{
+			conexao = ConexaoFabrica.getConnection();
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			if(quantidade > 0){
+				ps.setInt(1, categoria.getId());
+				ps.setInt(2, quantidade);
+			}else{
+				ps.setInt(1, categoria.getId());
+			}
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()){
+				produto = new Produto();
+				produto.setId(rs.getInt("id"));
+				produto.setNome(rs.getString("nome"));
+				produto.setDescricao(rs.getString("descricao"));
+				produto.setValor(rs.getDouble("valor"));
+				produto.setEstoque(rs.getInt("estoque"));
+				produto.setImagem(rs.getString("imagem"));
+				produto.setCategoria(CategoriaServico.buscarPorId(rs.getInt("categoria_id")));
+				produto.setFabricante(FabricanteServico.buscarPorId(rs.getInt("fabricante_id")));
+				
+				listaDeProdutos.add(produto);
+			}			
+		} catch (SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBUtil.fechar(conexao);
+		}
+		return listaDeProdutos;
+	}
+	
+	
 	public List<Produto> listarNoEstoque(){
 		Connection conexao = null;
 		
@@ -145,16 +228,17 @@ public class ProdutoDao {
 	        try {
 	        	conexao = ConexaoFabrica.getConnection();
 	        	
-	            String query = "UPDATE produto SET nome = ?, descricao = ?, valor = ?, estoque = ?, imagem = ? WHERE id = ?";
+	            String query = "UPDATE produto SET fabricante_id = ?, categoria_id = ?, nome = ?, descricao = ?, valor = ?, estoque = ?, imagem = ? WHERE id = ?";
 
 				PreparedStatement pstm = conexao.prepareStatement(query);
-
-	            pstm.setString( 1, produto.getNome());
-	            pstm.setString( 2, produto.getDescricao());
-	            pstm.setDouble( 3, produto.getValor());
-	            pstm.setInt( 4, produto.getEstoque());
-	            pstm.setString( 5, produto.getImagem());
-	            pstm.setInt( 6, produto.getId());
+				pstm.setInt(1, produto.getFabricante().getId());
+				pstm.setInt(2, produto.getCategoria().getId());
+	            pstm.setString(3, produto.getNome());
+	            pstm.setString(4, produto.getDescricao());
+	            pstm.setDouble(5, produto.getValor());
+	            pstm.setInt(6, produto.getEstoque());
+	            pstm.setString(7, produto.getImagem());
+	            pstm.setInt(8, produto.getId());
 	         
 	            pstm.executeUpdate();
 	            pstm.close();
@@ -196,5 +280,20 @@ public class ProdutoDao {
 			DBUtil.fechar(conexao);
 		}
 		return produto;
+	}
+	public  void adicionarNoEstoque(Produto produto, int quantidade){
+		
+			produto.setEstoque(produto.getEstoque() + quantidade);
+		
+		this.atualizar(produto);
+	}
+	
+	public  void removerDoEstoque(Produto produto, int quantidade){
+		if(produto.getEstoque() > quantidade){
+			produto.setEstoque(produto.getEstoque() - quantidade);
+		}else{
+			produto.setEstoque(0);
+		}
+		this.atualizar(produto);
 	}
 }

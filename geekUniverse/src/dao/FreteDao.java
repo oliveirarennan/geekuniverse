@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,27 +14,37 @@ import util.DBUtil;
 
 public class FreteDao {
 	
-	public int cadastrar(Frete frete){
+	public Frete cadastrar(Frete frete){
 		Connection conexao = null;
-		int retorno = 0;
+		
 		String sql = "INSERT INTO frete(prazo, valor) values(?, ?) ";
 		
 		try{
 			conexao = ConexaoFabrica.getConnection();
 			
-			PreparedStatement ps = conexao.prepareStatement(sql);
+			PreparedStatement ps = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			
 			ps.setString(1, frete.getPrazo());
 			ps.setDouble(2, frete.getValor());
 			
-			retorno = ps.executeUpdate();
+			if(ps.executeUpdate() == 0){
+				return null;
+			}
+			try{
+				ResultSet idGerado =  ps.getGeneratedKeys();
+				if(idGerado.next()){
+					frete.setId(idGerado.getInt(1));
+				}
+			}catch (Exception e) {
+				e.getStackTrace();
+			}
 			
 		} catch (SQLException e){
 			e.printStackTrace();
 		} finally{
 			DBUtil.fechar(conexao);
 		}
-		return retorno;
+		return frete;
 	}
 	
 	public List<Frete> listar(){
@@ -113,7 +124,7 @@ public class FreteDao {
 	        return true;
 	    }
 	
-	public static Frete buscarPorId(int id){
+	public  Frete buscarPorId(int id){
 		Connection conexao = null;
 		
 		Frete frete = null;

@@ -3,7 +3,6 @@ package util;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,13 +18,13 @@ public class Util {
 	}
 	
 	public static Double getDoubleFromRealString(String valor){
-		String resultado = valor.replaceAll("R", " ");
-		resultado = resultado.replace("$", " ");
-		resultado = resultado.replaceAll(",", ".");
+		String resultado = valor.replaceAll("R", "");
+		resultado = resultado.replace("$", "");
+		resultado = resultado.replace(".", "");
+		resultado = resultado.replace(",", ".");
 		resultado = resultado.trim();
-		System.out.println(resultado);
-		
-		return Double.parseDouble(resultado);
+		Double numeroConvertido = Double.parseDouble(resultado);
+		return numeroConvertido;
 	}
 	
 	public static Date formartaData(String data){

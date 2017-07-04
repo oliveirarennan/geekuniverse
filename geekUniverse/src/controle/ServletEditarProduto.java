@@ -61,7 +61,7 @@ public class ServletEditarProduto extends HttpServlet {
 		
 		String nome = request.getParameter("nome");
 		String descricao = request.getParameter("descricao");
-		Double valor = Util.getDoubleFromRealString(request.getParameter("valor"));
+		Double valor = Double.parseDouble(request.getParameter("valor"));
 		int estoque = Integer.parseInt(request.getParameter("estoque"));
 		int categoria = Integer.parseInt(request.getParameter("categoria"));
 		int fabricante = Integer.parseInt(request.getParameter("fabricante"));

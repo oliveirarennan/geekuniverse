@@ -16,6 +16,7 @@ $(function(){
                     },
                     valor:{
                         required: true,
+                        number: true
                     },
                     estoque:{
                         required: true,
@@ -39,6 +40,7 @@ $(function(){
                     },
                     valor:{
                         required:"Você precisa digitar um valor",
+                        number:"Você so pode entrar com números"
                     },
                     estoque:{
                         required: "Você precisa digitar o número de itens que tem no estoque",

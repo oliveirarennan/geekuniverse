@@ -1,5 +1,6 @@
 package modelo;
 
+
 public class Item {
 	
 	
@@ -38,6 +39,10 @@ public class Item {
 	}
 	public void setPreco(Double preco) {
 		this.preco = preco;
+	}
+	
+	public  void calcularPreco(){
+		this.setPreco(this.produto.getValor() * this.getQuantidade());
 	}
 	
 	@Override

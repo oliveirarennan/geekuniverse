@@ -6,6 +6,7 @@ public class FormaPagamento {
 	private String tipoPagamento;
 	private int parcelas;
 	private Double valor;
+	private String info;
 	
 	public int getId() {
 		return id;
@@ -32,6 +33,13 @@ public class FormaPagamento {
 		this.valor = valor;
 	}	
 	
+	
+	public String getInfo() {
+		return info;
+	}
+	public void setInfo(String info) {
+		this.info = info;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -9,4 +9,9 @@
     <param-name>pastaImagens</param-name>
     <param-value>imagens-produtos</param-value>
   </context-param>
+  <context-param>
+    <description>Pasta com os boletos gerados</description>
+    <param-name>pastaBoletos</param-name>
+    <param-value>boletos</param-value>
+  </context-param>
 </web-app>
