@@ -2,8 +2,7 @@
 		<section class="container-fluid">
 			<div class="col-md-3 tipo1">
 			
-				<img src="http://via.placeholder.com/260x50" class="img-responsive"> 
-				<label class="nomeCategoria">Ultimos Produtos</label>
+				<img src="img/produtos.jpg" class="img-responsive"> 
 			<jsp:useBean id="pr" class="servico.ProdutoServico"></jsp:useBean>
 			<jsp:useBean id="converter" class="util.Util"></jsp:useBean>
 			 	

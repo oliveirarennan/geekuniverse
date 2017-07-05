@@ -29,7 +29,7 @@
         
 <footer class="col-md-12 footer">
 			<div class="col-md-5 col-md-offset-5">
-				<img src="img/logo1.png" class="img-responsive">
+				<img src="img/logo2.png" class="img-responsive">
 			</div>
 			<div>
 				<div class="social col-md-4 col-md-offset-2">

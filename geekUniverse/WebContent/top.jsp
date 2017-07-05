@@ -94,9 +94,9 @@
 	    				<form class="navbar-form navbar-left">
 	      					<div class="form-group">
 	      					
-	        					<input class="form-control" type="text" placeholder="Search" id="input">
+	        					<input class="form-control" type="text" placeholder="Buscar" id="input">
 	        				</div>	
-	        				<button class="btn btn-outline-success" type="submit" id="button">Search</button>
+	        				<button class="btn btn-outline-success" type="submit" id="button">Buscar</button>
 	        				
 	      				</form>
 	      				
