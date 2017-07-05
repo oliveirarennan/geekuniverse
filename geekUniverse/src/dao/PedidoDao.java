@@ -142,7 +142,6 @@ public class PedidoDao {
 	public Pedido buscarPorId(int id){
 		Connection conexao = null;
 		
-		
 		Pedido pedido = null;
 		
 		String sql = "SELECT * FROM pedido where id = ?";
@@ -157,12 +156,14 @@ public class PedidoDao {
 			
 			if(rs.next()){
 				pedido = new Pedido();
+				pedido.setId(rs.getInt("id"));
 				pedido.setNumeroPedido(rs.getInt("numeroPedido"));
 				pedido.setFormaPagamento(FormaPagamentoServico.buscarPorId(rs.getInt("formaPagamento_id")));
-				pedido.setStatusPedido(rs.getString("statusPedido"));
+				pedido.setStatusPedido(rs.getString("status"));
 				pedido.setCliente(UsuarioServico.buscarPorId(rs.getInt("usuario_id")));
 				pedido.setDataPedido(rs.getString("dataPedido"));
 				pedido.setFrete(FreteServico.buscarPorId(rs.getInt("frete_id")));
+				pedido.setValor(rs.getDouble("valor"));
 				
 			}			
 		} catch (SQLException e){

@@ -101,7 +101,7 @@
                       <div class="form-group">
 								<label class="control-label" for="pais">Pais</label>
 								<div class="validateError">
-									<input type="text" name="pais" id="pais" class="form-control" />
+									<input type="text" name="pais" id="pais" class="form-control" value="${usuarioLogado.endereco.pais }"/>
 								</div>
 							</div>
 							<div class="form-group">

@@ -1,18 +1,15 @@
 package geekUniverse.teste;
 
-import br.com.caelum.stella.boleto.Banco;
-import br.com.caelum.stella.boleto.Beneficiario;
-import br.com.caelum.stella.boleto.Boleto;
-import br.com.caelum.stella.boleto.Datas;
-import br.com.caelum.stella.boleto.Endereco;
-import br.com.caelum.stella.boleto.Pagador;
-import br.com.caelum.stella.boleto.bancos.BancoDoBrasil;
-import br.com.caelum.stella.boleto.transformer.GeradorDeBoleto;
+
+import modelo.Endereco;
+import modelo.Pedido;
+import servico.EnderecoServico;
+import servico.PedidoServico;
 
 public class PUC {
 
 	public static void main(String[] args) {
-		
+		/*
 		  Datas datas = Datas.novasDatas()
 	                .comDocumento(1, 5, 2008)
 	                .comProcessamento(1, 5, 2008)
@@ -22,7 +19,7 @@ public class PUC {
 	        		.comLogradouro("Av das Empresas, 555")  
 	        		.comBairro("Bairro Grande")  
 	        		.comCep("01234-555")  
-	        		.comCidade("São Paulo")  
+	        		.comCidade("Sï¿½o Paulo")  
 	        		.comUf("SP");  
 
 	        //Quem emite o boleto
@@ -40,7 +37,7 @@ public class PUC {
 	        		.comLogradouro("Av dos testes, 111 apto 333")  
 	        		.comBairro("Bairro Teste")  
 	        		.comCep("01234-111")  
-	        		.comCidade("São Paulo")  
+	        		.comCidade("Sï¿½o Paulo")  
 	        		.comUf("SP");  
 	        
 	        //Quem paga o boleto
@@ -78,6 +75,7 @@ public class PUC {
 	        System.out.println("rodei");
 	    }  
 	
-
-
+*/
+		Endereco e = EnderecoServico.bucarPorID(2); 
+	}
 }

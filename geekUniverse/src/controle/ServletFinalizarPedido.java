@@ -73,6 +73,7 @@ private String pastaBoletos = null;
 		
 		
 		FormaPagamento formaPagamento = new FormaPagamento();
+		formaPagamento.setInfo("-");
 		formaPagamento.setParcelas(1);
 		formaPagamento.setTipoPagamento(request.getParameter("formaPagamento"));
 		formaPagamento.setValor(pedido.getValor());
@@ -106,10 +107,10 @@ private String pastaBoletos = null;
                 .comVencimento(c.get(Calendar.DAY_OF_MONTH + 3), c.get(Calendar.MONTH), c.get(Calendar.YEAR));  
 
         Endereco enderecoBeneficiario = Endereco.novoEndereco()
-        		.comLogradouro("Rua Almirante Teffé, 680")  
+        		.comLogradouro("Rua Almirante Teffï¿½, 680")  
         		.comBairro("Centro")  
         		.comCep("24030-085")  
-        		.comCidade("Niterói")  
+        		.comCidade("Niterï¿½i")  
         		.comUf("RJ");  
 
         //Quem emite o boleto
@@ -145,8 +146,8 @@ private String pastaBoletos = null;
                 .comPagador(pagador)  
                 .comValorBoleto(pedido.getValor())  
                 .comNumeroDoDocumento("1234")  
-                .comInstrucoes("SR CAIXA NÃO ACEITAR PAGAMENTO EM CHEQUE")  
-                .comLocaisDePagamento("PAGAVEL EM QUALQUER BANCO ATÉ O VENCIMENTO");  
+                .comInstrucoes("SR CAIXA Nï¿½O ACEITAR PAGAMENTO EM CHEQUE")  
+                .comLocaisDePagamento("PAGAVEL EM QUALQUER BANCO ATï¿½ O VENCIMENTO");  
 
         GeradorDeBoleto gerador = new GeradorDeBoleto(boleto);  
 
