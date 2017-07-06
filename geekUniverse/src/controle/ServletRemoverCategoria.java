@@ -37,7 +37,7 @@ public class ServletRemoverCategoria extends HttpServlet {
 		}else{
 			request.getSession().removeAttribute("msgStatus");
 			request.getSession().setAttribute("msgStatus", "Não foi possivel excluir a categoria!");
-			response.sendRedirect("admin/gerenciar-categorias.jsp?categoria=falha");
+			response.sendRedirect("admin/gerenciar-categorias.jsp?categoria=erro");
 		}
 	}
 

@@ -6,6 +6,22 @@
 				<div class="row">
 					<div
 						class=" col-md-6 col-md-offset-3 col-sm-6 col-offset-3 col-xs-6 col-xs-offset-3 col-lg-6 col-lg-offset-3">
+						<c:choose>
+							<c:when test="${param.categoria == 'sucesso' }">
+								<div class="alert alert-success alert-dismissible" role="alert">
+									  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									  <strong>Sucesso!</strong> ${msgStatus}
+								</div>
+							</c:when>
+							<c:when test="${param.categoria == 'erro' }">
+								<div class="alert alert-danger alert-dismissible" role="alert">
+									  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									  <strong>Erro!</strong> ${msgStatus}
+								</div>
+							</c:when>
+						</c:choose>
+						
+						<legend>
 						<legend>
 							<center>Editar Categoria</center>
 						</legend>

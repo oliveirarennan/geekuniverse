@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import modelo.Fabricante;
 import modelo.Item;
 import servico.PedidoServico;
 import servico.ProdutoServico;
@@ -121,13 +120,15 @@ public class ItemDao {
 	         
 	            pstm.executeUpdate();
 	            pstm.close();
+	            return true;
 
 	        } catch (SQLException e) {
 	            e.printStackTrace();
+	            return false;
 	        }catch (Exception e) {
 				e.printStackTrace();
+				return false;
 			} 
-	        return true;
 	    }
 	
 	public  Item buscarPorId(int id){

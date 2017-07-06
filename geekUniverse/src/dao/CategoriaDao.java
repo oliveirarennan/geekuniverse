@@ -124,8 +124,10 @@ public class CategoriaDao {
 									
 		} catch (SQLException e){
 			e.printStackTrace();
+			return false;
 		}catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		} 
 		return retorno;
 	}
@@ -149,8 +151,10 @@ public class CategoriaDao {
 
 	        } catch (SQLException e) {
 	            e.printStackTrace();
+	            return false;
 	        }catch (Exception e) {
 				e.printStackTrace();
+				return false;
 			} 
 	        return true;
 	    }

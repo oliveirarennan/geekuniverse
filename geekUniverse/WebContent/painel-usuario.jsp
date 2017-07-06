@@ -4,6 +4,20 @@
 		<section class="container-fluid">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3" style="background-color: rgba(255, 255, 255, 0.8); margin-top: 5%; margin-bottom: 5%; padding: 3% 3% 3% 3%;">
+				<c:choose>
+							<c:when test="${param.usuario == 'sucesso' }">
+								<div class="alert alert-success alert-dismissible" role="alert">
+									  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									  <strong>Sucesso!</strong> ${msgStatus}
+								</div>
+							</c:when>
+							<c:when test="${param.usuario == 'erro' }">
+								<div class="alert alert-danger alert-dismissible" role="alert">
+									  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									  <strong>Erro!</strong>${msgStatus}
+								</div>
+							</c:when>
+						</c:choose>
 					<legend>Dados Pessoais</legend>
 						<div class="col-md-4 col-md-offset-4" style="color: rgba(192, 77, 22, 1);">
 							<strong>Nome :</strong> ${usuarioLogado.nome} <br />

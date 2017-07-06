@@ -37,7 +37,7 @@ public class ServletRemoverFabricante extends HttpServlet {
 		}else{
 			request.getSession().removeAttribute("msgStatus");
 			request.getSession().setAttribute("msgStatus", "Não foi possivel remover o fabricante!");
-			response.sendRedirect("admin/gerenciar-fabricantes.jsp?fabricante=falha");
+			response.sendRedirect("admin/gerenciar-fabricantes.jsp?fabricante=erro");
 		}
 		
 	}

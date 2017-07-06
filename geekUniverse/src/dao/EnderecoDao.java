@@ -114,14 +114,14 @@ public class EnderecoDao {
 		         
 		            pstm.executeUpdate();
 		            pstm.close();
-	
+		            return true;
 		        } catch (SQLException e) {
 		            e.printStackTrace();
 		            return false;
 		        }catch (Exception e) {
 					e.printStackTrace();
+					return false;
 				} 
-		        return true;
 		    }
 	
 	

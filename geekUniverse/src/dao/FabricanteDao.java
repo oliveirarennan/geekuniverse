@@ -151,13 +151,14 @@ public class FabricanteDao {
 	         
 	            pstm.executeUpdate();
 	            pstm.close();
-
+	            return true;
 	        } catch (SQLException e) {
 	            e.printStackTrace();
+	            return false;
 	        }catch (Exception e) {
 				e.printStackTrace();
+				return false;
 			} 
-	        return true;
 	    }
 	
 	public static Fabricante buscarPorId(int id){

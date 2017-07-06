@@ -12,13 +12,13 @@
 							<c:when test="${param.usuario == 'sucesso' }">
 								<div class="alert alert-success alert-dismissible" role="alert">
 									  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									  <strong>Sucesso!</strong> Usuário Editado com sucesso!.
+									  <strong>Sucesso!</strong> ${msgStatus}
 								</div>
 							</c:when>
 							<c:when test="${param.usuario == 'erro' }">
 								<div class="alert alert-danger alert-dismissible" role="alert">
 									  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									  <strong>Erro!</strong> Não foi possivel Editar o usuário!.
+									  <strong>Erro!</strong> ${msgStatus}
 								</div>
 							</c:when>
 						</c:choose>
