@@ -140,6 +140,7 @@ public class FreteDao {
 			
 			rs.next();
 				frete = new Frete();
+				frete.setId(rs.getInt("id"));
 				frete.setPrazo(rs.getString("prazo"));
 				frete.setValor(rs.getDouble("valor"));
 							

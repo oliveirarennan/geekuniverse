@@ -44,7 +44,7 @@
 						class="glyphicon glyphicon-user"></span>${usuarioLogado.email}<span
 						class="caret"></span></a>
 					<ul class="dropdown-menu" id="atrib">
-						<li><a href="ServletLogout?logout=true"><strong>Sair</strong></a></li>
+						<li><a href="../ServletLogout?logout=true"><strong>Sair</strong></a></li>
 					</ul></li>
 				<li><a href="../index.jsp"><span
 						class="glyphicon glyphicon-home"></span>Home da Loja</a></li>

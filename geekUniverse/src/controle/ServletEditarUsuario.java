@@ -52,98 +52,143 @@ public class ServletEditarUsuario extends HttpServlet {
 		
 		
 		Usuario usuario = ((Usuario)request.getSession().getAttribute("usuario"));
+		String compra = request.getParameter("compra");
+		if(!compra.equals("2")){
 		
-		String nome = request.getParameter("nome");
-		String sobrenome = request.getParameter("sobrenome");
-		String sexo = request.getParameter("sexo");
-		String celular = request.getParameter("celular");
-		String telefoneFixo = request.getParameter("telefoneFixo");
-		String cpf = request.getParameter("cpf");
-		String rg = request.getParameter("rg");
-		String email = request.getParameter("email");
-		String senha = null;
-		try {
-			if(request.getParameter("senha") != null){
-			senha = Util.getMd5(request.getParameter("senha"));
-			}
-		} catch (NoSuchAlgorithmException e1) {
-			e1.printStackTrace();
-		}
-		
-		String tipoUsuario = request.getParameter("tipoUsuario");
-		String status = request.getParameter("status");
-		String pais = request.getParameter("pais");
-		int estado = Integer.parseInt(request.getParameter("estado"));
-		String cidade = request.getParameter("cidade");
-		String bairro = request.getParameter("bairro");
-		String rua = request.getParameter("rua");
-		int numero = Integer.parseInt(request.getParameter("numero"));
-		String complemento = request.getParameter("complemento");
-		String cep = request.getParameter("cep");
-		String dataNascimento = request.getParameter("dataNascimento");
-		dataNascimento = dataNascimento.replaceAll("-", "/");
-		
-		usuario.setNome(nome);
-		usuario.setSobrenome(sobrenome);
-		usuario.setDataNascimento(dataNascimento);
-		usuario.setSexo(sexo);
-		usuario.setCelular(celular);
-		usuario.setTelefoneFixo(telefoneFixo);
-		usuario.setCpf(cpf);
-		usuario.setRg(rg);
-		usuario.setEmail(email);
-		if(senha != null){
-			usuario.setSenha(senha);
-		}
-		if(tipoUsuario != null){
-			usuario.setTipoUsuario(tipoUsuario);
-		}else{
-			usuario.setTipoUsuario("cliente");
-		}
-		usuario.setSexo(sexo);
-		if(status != null){
-			if(status.equals("true")){
-				usuario.setStatus(1);
-			}else{
-				usuario.setStatus(0);
-			}
-		}else{
-			usuario.setStatus(1);
-		}
-		
-		
-		usuario.getEndereco().setPais(pais);
-		usuario.getEndereco().setEstado(EstadoServico.buscarPorId(estado));
-		usuario.getEndereco().setCidade(cidade);
-		usuario.getEndereco().setBairro(bairro);
-		usuario.getEndereco().setRua(rua);
-		usuario.getEndereco().setNumero(numero);
-		usuario.getEndereco().setComplemento(complemento);
-		usuario.getEndereco().setCep(cep);
-
-		if(EnderecoServico.atualizar(usuario.getEndereco())){
-		
-			if(UsuarioServico.atualizar(usuario)){
-				if((tipoUsuario == null) && (status == null)){
-					response.sendRedirect("editar-usuario.jsp?usuario=sucesso");
-				}else{
-					response.sendRedirect("admin/editar-usuario.jsp?usuario=sucesso");
+				String nome = request.getParameter("nome");
+				String sobrenome = request.getParameter("sobrenome");
+				String sexo = request.getParameter("sexo");
+				String celular = request.getParameter("celular");
+				String telefoneFixo = request.getParameter("telefoneFixo");
+				String cpf = request.getParameter("cpf");
+				String rg = request.getParameter("rg");
+				String email = request.getParameter("email");
+				String senha = null;
+				try {
+					if(request.getParameter("senha") != ""){
+					senha = Util.getMd5(request.getParameter("senha"));
+					}
+				} catch (NoSuchAlgorithmException e1) {
+					e1.printStackTrace();
 				}
-			}else{
-				if((tipoUsuario == null) && (status == null)){
-					response.sendRedirect("editar-usuario.jsp?usuario=erro");
-				}else{
-					response.sendRedirect("admin/editar-usuario.jsp?usuario=erro");
+				
+				String tipoUsuario = request.getParameter("tipoUsuario");
+				String status = request.getParameter("status");
+				String pais = request.getParameter("pais");
+				int estado = Integer.parseInt(request.getParameter("estado"));
+				String cidade = request.getParameter("cidade");
+				String bairro = request.getParameter("bairro");
+				String rua = request.getParameter("rua");
+				int numero = Integer.parseInt(request.getParameter("numero"));
+				String complemento = request.getParameter("complemento");
+				String cep = request.getParameter("cep");
+				String dataNascimento = request.getParameter("dataNascimento");
+				dataNascimento = dataNascimento.replaceAll("-", "/");
+				
+				usuario.setNome(nome);
+				usuario.setSobrenome(sobrenome);
+				usuario.setDataNascimento(dataNascimento);
+				usuario.setSexo(sexo);
+				usuario.setCelular(celular);
+				usuario.setTelefoneFixo(telefoneFixo);
+				usuario.setCpf(cpf);
+				usuario.setRg(rg);
+				usuario.setEmail(email);
+				if(senha != null){
+					usuario.setSenha(senha);
 				}
-			}	
-		}else{
-			if((tipoUsuario == null) && (status == null)){
-				response.sendRedirect("editar-usuario.jsp?usuario=erro");
-			}else{
-				response.sendRedirect("admin/editar-usuario.jsp?usuario=erro");
-			}
-		}
+				if(tipoUsuario != null){
+					usuario.setTipoUsuario(tipoUsuario);
+				}else{
+					usuario.setTipoUsuario("cliente");
+				}
+				usuario.setSexo(sexo);
+				if(status != null){
+					if(status.equals("true")){
+						usuario.setStatus(1);
+					}else{
+						usuario.setStatus(0);
+					}
+				}else{
+					usuario.setStatus(1);
+				}
+				
+				
+				usuario.getEndereco().setPais(pais);
+				usuario.getEndereco().setEstado(EstadoServico.buscarPorId(estado));
+				usuario.getEndereco().setCidade(cidade);
+				usuario.getEndereco().setBairro(bairro);
+				usuario.getEndereco().setRua(rua);
+				usuario.getEndereco().setNumero(numero);
+				usuario.getEndereco().setComplemento(complemento);
+				usuario.getEndereco().setCep(cep);
 		
-	}
-
+				if(EnderecoServico.atualizar(usuario.getEndereco())){
+				
+					if(UsuarioServico.atualizar(usuario)){
+						if((tipoUsuario == null) && (status == null)){
+							response.sendRedirect("editar-usuario.jsp?usuario=sucesso");
+						}else{
+							response.sendRedirect("admin/editar-usuario.jsp?usuario=sucesso");
+						}
+					}else{
+						if((tipoUsuario == null) && (status == null)){
+							response.sendRedirect("editar-usuario.jsp?usuario=erro");
+						}else{
+							response.sendRedirect("admin/editar-usuario.jsp?usuario=erro");
+						}
+					}	
+				}else{
+					if((tipoUsuario == null) && (status == null)){
+						response.sendRedirect("editar-usuario.jsp?usuario=erro");
+					}else{
+						response.sendRedirect("admin/editar-usuario.jsp?usuario=erro");
+					}
+				}
+		}else{
+			
+			Usuario ul = ((Usuario)request.getSession().getAttribute("usuarioLogado"));
+			ul = UsuarioServico.buscarPorId(ul.getId());
+			String nome = request.getParameter("nome");
+			String sobrenome = request.getParameter("sobrenome");
+			String sexo = request.getParameter("sexo");
+			String celular = request.getParameter("celular");
+			String telefoneFixo = request.getParameter("telefoneFixo");
+			String cpf = request.getParameter("cpf");
+			String rg = request.getParameter("rg");
+			String email = request.getParameter("email");
+			String senha = null;
+			try {
+				if(request.getParameter("senha") != ""){
+				senha = Util.getMd5(request.getParameter("senha"));
+				}
+			} catch (NoSuchAlgorithmException e1) {
+				e1.printStackTrace();
+			}
+			
+			String dataNascimento = request.getParameter("dataNascimento");
+			dataNascimento = dataNascimento.replaceAll("-", "/");
+			
+			ul.setNome(nome);
+			ul.setSobrenome(sobrenome);
+			ul.setDataNascimento(dataNascimento);
+			ul.setSexo(sexo);
+			ul.setCelular(celular);
+			ul.setTelefoneFixo(telefoneFixo);
+			ul.setCpf(cpf);
+			ul.setRg(rg);
+			ul.setEmail(email);
+			if(senha != null){
+				ul.setSenha(senha);
+			}
+				
+			if(UsuarioServico.atualizar(ul)){
+					request.getSession().setAttribute("usuarioLogado", ul);
+					response.sendRedirect("painel-usuario.jsp?usuario=sucesso");
+				}else{
+					response.sendRedirect("painel-usuario.jsp?usuario=erro");
+				}
+			}
+			
+		}
 }

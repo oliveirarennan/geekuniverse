@@ -76,7 +76,7 @@ public class PedidoDao {
 				pedido.setCliente(UsuarioServico.buscarPorId(rs.getInt("usuario_id")));
 				pedido.setDataPedido(rs.getString("dataPedido"));
 				pedido.setFrete(FreteServico.buscarPorId(rs.getInt("frete_id")));
-				
+				pedido.setValor(rs.getDouble("valor"));
 				listaDePedidos.add(pedido);
 			}			
 		} catch (SQLException e){
@@ -129,7 +129,7 @@ public class PedidoDao {
 	            pstm.setDouble( 6, pedido.getValor());
 	            pstm.setInt( 7, pedido.getNumeroPedido());
 	            pstm.setInt(8, pedido.getId());
-	         
+	            
 	            pstm.executeUpdate();
 	            pstm.close();
 
@@ -173,4 +173,40 @@ public class PedidoDao {
 		}
 		return pedido;
 	}
+	
+	public List<Pedido> listarPorUsuario(int id){
+		Connection conexao = null;
+		
+		List<Pedido> listaDePedidos = new ArrayList<Pedido>();
+		Pedido pedido = null;
+		
+		String sql = "SELECT * FROM pedido where usuario_id = ?";
+		
+		try{
+			conexao = ConexaoFabrica.getConnection();
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setInt(1, id);
+						
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()){
+				pedido = new Pedido();
+				pedido.setId(rs.getInt("id"));
+				pedido.setNumeroPedido(rs.getInt("numeroPedido"));
+				pedido.setFormaPagamento(FormaPagamentoServico.buscarPorId(rs.getInt("formaPagamento_id")));
+				pedido.setStatusPedido(rs.getString("status"));
+				pedido.setCliente(UsuarioServico.buscarPorId(rs.getInt("usuario_id")));
+				pedido.setDataPedido(rs.getString("dataPedido"));
+				pedido.setFrete(FreteServico.buscarPorId(rs.getInt("frete_id")));
+				pedido.setValor(rs.getDouble("valor"));
+				listaDePedidos.add(pedido);
+			}			
+		} catch (SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBUtil.fechar(conexao);
+		}
+		return listaDePedidos;
+	}	
 }

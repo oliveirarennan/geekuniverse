@@ -91,10 +91,11 @@
 	    				<ul class="nav navbar-nav navbar-left">
 	    					<li><a href="index.jsp" ><span class="glyphicon glyphicon-home"></span></a></li>
 	    				</ul>
-	    				<form class="navbar-form navbar-left">
+	    				<form class="navbar-form navbar-left" action="ServletBuscaProduto">
 	      					<div class="form-group">
 	      					
-	        					<input class="form-control" type="text" placeholder="Buscar" id="input">
+	        					<input class="form-control" type="text" placeholder="Buscar" id="busca" name="busca">
+	        					<input type="text" style="display: none;" name="modo" value="1"/>
 	        				</div>	
 	        				<button class="btn btn-outline-success" type="submit" id="button">Buscar</button>
 	        				
@@ -108,7 +109,7 @@
 	           				
 	              				<ul class="dropdown-menu" id="atrib">
 	              					<c:forEach var="categoria" items="${ca.listarAtivas() }">
-							        	<li><a href="ServletProdutosCategoria?id=${categoria.id}">${categoria.nome}</a></li>
+							        	<li><a href="ServletBuscaProduto?modo=0&fabricante=0&categoria=${categoria.id}">${categoria.nome}</a></li>
 							           
 						            </c:forEach>
 	              				</ul>
@@ -119,7 +120,7 @@
 	              			<jsp:useBean id="fa" class="servico.FabricanteServico"></jsp:useBean>
 				            <ul class="dropdown-menu" id="atrib">
 				            	<c:forEach var="fabricante" items="${fa.listarAtivado() }">
-				            		<li><a href="ServletProdutosFabricante?id=${fabricante.id}">${fabricante.nome}</a></li>
+				            		<li><a href="ServletBuscaProduto?modo=0&categoria=0&fabricante=${fabricante.id}">${fabricante.nome}</a></li>
 				            	</c:forEach>	
 				                
 				              </ul>
@@ -152,7 +153,11 @@
 				            		<li class="dropdown">
 					              			<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="drop"><span class="glyphicon glyphicon-user"></span>Olá,  ${usuarioLogado.nome}<span class="caret"></span></a>
 								            <ul class="dropdown-menu" id="atrib">
-								            	<li><a href="editar-usuario.jsp" >Alterar Dados</a></li>
+								            	<li><a href="painel-usuario.jsp" >Meus Dados</a></li>
+								            	<li><a href="ServletPedidosUsuario" >Meus Pedidos</a></li>
+								            	<c:if test="${usuarioLogado.tipoUsuario ne 'cliente' }">
+								                	<li><a href="admin/index.jsp" >Painel de Administração</a></li>
+								                </c:if>
 								                <li><a href="ServletLogout?logout=true"><strong>Sair</strong></a></li>
 						             		 </ul>
 						            	</li>

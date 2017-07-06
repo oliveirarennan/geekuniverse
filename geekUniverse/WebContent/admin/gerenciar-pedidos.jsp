@@ -1,5 +1,5 @@
  <%@ include file="top.jsp" %>
- <title>Gerencia de Categorias</title>
+ <title>Gerencia de Pedidos</title>
 		<div class="fundo col-md-6 col-md-offset-3">
 			<br />
 			<div class="container-fluid">
@@ -7,10 +7,9 @@
 					<div
 						class=" col-md-12  col-sm-12  col-xs-12 col-lg-12 ">
 						<legend>
-							<center>Gerenciar Categorias</center>
+							<center>Gerenciar Pedidos</center>
 						</legend>
-						<a href="cadastrar-categoria.jsp" class="btn btn-warning btn-xs">Adicionar
-							Categoria</a><a href="index.jsp" class="btn btn-default btn-xs">Voltar</a>
+						<a href="index.jsp" class="btn btn-default btn-xs">Voltar</a>
 						<br /> <br />
 
 						<table class="table">
@@ -81,13 +80,13 @@
 						<label for="status" class="label-control">Status</label>
 						<select name="status" id="status" class="form-control">
 							<optgroup label="status">
-								<option value="cancelado">Cancelado</option>
+								<option value="cancelado" >Cancelado</option>
 								<option value="finalizado">Finalizado</option>
 								<option value="em analise">Em analise</option>
 							</optgroup>
 						</select>
 						<div style="display: none;">
-							<input type="text" value="${param.id }"/>
+							<input type="text" value="${pedido.id }"/>
 						</div>
                       </div>
                       <br/>	

@@ -30,4 +30,10 @@ public class PedidoServico {
 		PedidoDao dao = new PedidoDao();
 		return dao.buscarPorId(id);
 	}
+	
+	public static List<Pedido> lsitarPorUsuario(int id){
+		PedidoDao dao = new PedidoDao();
+		return dao.listarPorUsuario(id);
+
+	}
 }

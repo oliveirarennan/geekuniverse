@@ -31,4 +31,18 @@ public class ItemServico {
 		ItemDao dao = new ItemDao();
 		return dao.buscarPorId(id);
 	}
+	public static List<Item> listarPorPedido(int id){
+		ItemDao dao = new ItemDao();
+		return dao.listarPorPedido(id);
+	}
+	
+	public static Item buscarPorId(int id){
+		ItemDao dao = new ItemDao();
+		return dao.buscarPorId(id);
+	}
+	
+	public static Item buscarPorPedidoId(int id){
+		ItemDao dao = new ItemDao();
+		return dao.buscarPorPedidoId(id);
+	}
 }

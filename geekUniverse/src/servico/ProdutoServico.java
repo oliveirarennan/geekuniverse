@@ -6,6 +6,7 @@ import dao.CategoriaDao;
 import dao.FormaPagamentoDao;
 import dao.ProdutoDao;
 import modelo.Categoria;
+import modelo.Fabricante;
 import modelo.FormaPagamento;
 import modelo.Produto;
 
@@ -39,6 +40,12 @@ public class ProdutoServico {
 		return produtoDao.listarPorCategoria(categoria, quantidade);
 	}
 	
+	public static List<Produto> listarPorFabricante(Fabricante fabricante, int quantidade){
+		ProdutoDao produtoDao = new ProdutoDao();
+		
+		return produtoDao.listarPorFabricante(fabricante, quantidade);
+	}
+	
 	public List<Produto> listarNoEstoque(){
 		ProdutoDao produtoDao = new ProdutoDao();
 		
@@ -65,5 +72,11 @@ public class ProdutoServico {
 		ProdutoDao produtoDao = new ProdutoDao();
 		
 		produtoDao.removerDoEstoque(produto, quantidade);
+	}
+	
+	public static List<Produto> buscarPorNome(String nome){
+		ProdutoDao produtoDao = new ProdutoDao();
+		
+		return produtoDao.buscarPorNome(nome);
 	}
 }

@@ -84,7 +84,43 @@ public class ServletEditarEndereco extends HttpServlet {
 			}else{
 				response.sendRedirect("escolher-pagamento.jsp?endereco=erro");
 			}
+		}else if(compra.equals("2") ){
+			
+			String pais = request.getParameter("pais");
+			int estado = Integer.parseInt(request.getParameter("estado"));
+			String cidade = request.getParameter("cidade");
+			String bairro = request.getParameter("bairro");
+			String rua = request.getParameter("rua");
+			int numero = Integer.parseInt(request.getParameter("numero"));
+			String complemento = request.getParameter("complemento");
+			String cep = request.getParameter("cep");
+			
+			
+			
+			
+			
+			endereco.setPais(pais);
+			endereco.setEstado(EstadoServico.buscarPorId(estado));
+			endereco.setCidade(cidade);
+			endereco.setBairro(bairro);
+			endereco.setRua(rua);
+			endereco.setNumero(numero);
+			endereco.setComplemento(complemento);
+			endereco.setCep(cep);
+			
+			
+	
+			if(EnderecoServico.atualizar(endereco)){
+				Usuario ul = (Usuario) request.getSession().getAttribute("usuarioLogado");
+				ul.setEndereco(endereco);
+				request.getSession().setAttribute("usuarioLogado", ul);
+				response.sendRedirect("painel-usuario.jsp?endereco=sucesso");
+			}else{
+				response.sendRedirect("painel-usuario.jsp?endereco=erro");
+			}
+			
 		}else{
+		
 			String pais = request.getParameter("pais");
 			int estado = Integer.parseInt(request.getParameter("estado"));
 			String cidade = request.getParameter("cidade");
@@ -113,7 +149,5 @@ public class ServletEditarEndereco extends HttpServlet {
 				response.sendRedirect("admin/editar-endereco.jsp?endereco=erro");
 			}
 		}
-		
 	}
-
 }

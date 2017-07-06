@@ -151,4 +151,67 @@ public class ItemDao {
 		}
 		return item;
 	}
+	
+	public List<Item> listarPorPedido(int id){
+		Connection conexao = null;
+		
+		List<Item> listaDeItem = new ArrayList<Item>();
+		Item item = null;
+		
+		String sql = "SELECT * FROM item where pedido_id = ?";
+		
+		try{
+			conexao = ConexaoFabrica.getConnection();
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+				ps.setInt(1, id);		
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()){
+				item = new Item();
+				item.setId(rs.getInt("id"));
+				item.setPedido(PedidoServico.buscarPorId(rs.getInt("pedido_id")));
+				item.setProduto(ProdutoServico.buscarPorId(rs.getInt("produto_id")));
+				item.setQuantidade(rs.getInt("quantidade"));
+				item.setPreco(rs.getDouble("preco"));
+				
+				listaDeItem.add(item);
+			}			
+		} catch (SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBUtil.fechar(conexao);
+		}
+		return listaDeItem;
+	}
+	
+	public  Item buscarPorPedidoId(int id){
+		Connection conexao = null;
+		
+		Item item = null;
+		
+		String sql = "SELECT * FROM item where pedido_id = ?";
+		
+		try{
+			conexao = ConexaoFabrica.getConnection();
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setInt(1, id);			
+			ResultSet rs = ps.executeQuery();
+			
+			rs.next();
+				item = new Item();
+				item.setId(rs.getInt("id"));
+				item.setPedido(PedidoServico.buscarPorId(rs.getInt("pedido_id")));
+				item.setProduto(ProdutoServico.buscarPorId(rs.getInt("produto_id")));
+				item.setQuantidade(rs.getInt("quantidade"));
+				item.setPreco(rs.getDouble("preco"));
+							
+		} catch (SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBUtil.fechar(conexao);
+		}
+		return item;
+	}
 }

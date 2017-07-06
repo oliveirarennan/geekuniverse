@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelo.FormaPagamento;
-import modelo.Produto;
 import util.DBUtil;
 
 public class FormaPagamentoDao {
@@ -149,6 +148,7 @@ public class FormaPagamentoDao {
 			
 			rs.next();
 				formaPagamento = new FormaPagamento();
+				formaPagamento.setId(rs.getInt("id"));
 				formaPagamento.setTipoPagamento(rs.getString("tipoPagamento"));
 				formaPagamento.setParcelas(rs.getInt("parcelas"));
 				formaPagamento.setValor(rs.getDouble("valor"));
