@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelo.Estado;
-import modelo.Fabricante;
 import util.DBUtil;
 
 public class EstadoDao {
@@ -38,7 +37,9 @@ public class EstadoDao {
 			}			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return listaDeEstados;
@@ -66,7 +67,10 @@ public class EstadoDao {
 				
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		} 
+		finally{
 			DBUtil.fechar(conexao);
 		}
 		return estado;

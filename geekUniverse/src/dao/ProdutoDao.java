@@ -38,7 +38,9 @@ public class ProdutoDao {
 			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return retorno;
@@ -74,7 +76,9 @@ public class ProdutoDao {
 			}			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return listaDeProdutos;
@@ -110,7 +114,9 @@ public class ProdutoDao {
 			}			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return listaDeProdutos;
@@ -155,6 +161,8 @@ public class ProdutoDao {
 				listaDeProdutos.add(produto);
 			}			
 		} catch (SQLException e){
+			e.printStackTrace();
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally{
 			DBUtil.fechar(conexao);
@@ -202,7 +210,9 @@ public class ProdutoDao {
 			}			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return listaDeProdutos;
@@ -238,7 +248,9 @@ public class ProdutoDao {
 			}			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return listaDeProdutos;
@@ -264,7 +276,9 @@ public class ProdutoDao {
 									
 		} catch (SQLException e){
 			e.printStackTrace();
-		}
+		}catch (Exception e) {
+			e.printStackTrace();
+		} 
 		return retorno;
 	}
 	
@@ -291,7 +305,9 @@ public class ProdutoDao {
 
 	        } catch (SQLException e) {
 	            e.printStackTrace();
-	        }
+	        }catch (Exception e) {
+				e.printStackTrace();
+			} 
 	        return true;
 	    }
 	
@@ -322,7 +338,9 @@ public class ProdutoDao {
 			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return produto;
@@ -374,7 +392,9 @@ public class ProdutoDao {
 			}			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return listaDeProdutos;

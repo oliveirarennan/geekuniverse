@@ -34,7 +34,9 @@ public class ItemDao {
 			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return retorno;
@@ -67,6 +69,8 @@ public class ItemDao {
 			}			
 		} catch (SQLException e){
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally{
 			DBUtil.fechar(conexao);
 		}
@@ -93,7 +97,9 @@ public class ItemDao {
 									
 		} catch (SQLException e){
 			e.printStackTrace();
-		}
+		}catch (Exception e) {
+			e.printStackTrace();
+		} 
 		return retorno;
 	}
 	
@@ -118,7 +124,9 @@ public class ItemDao {
 
 	        } catch (SQLException e) {
 	            e.printStackTrace();
-	        }
+	        }catch (Exception e) {
+				e.printStackTrace();
+			} 
 	        return true;
 	    }
 	
@@ -146,7 +154,9 @@ public class ItemDao {
 							
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return item;
@@ -179,7 +189,9 @@ public class ItemDao {
 			}			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return listaDeItem;
@@ -209,7 +221,9 @@ public class ItemDao {
 							
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return item;

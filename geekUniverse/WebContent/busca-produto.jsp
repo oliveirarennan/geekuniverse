@@ -1,4 +1,6 @@
 <%@include file="top.jsp" %>
+
+
 		<title>Busca por produto</title>
 		<section class="container-fluid">
 			<div class="row">
@@ -12,7 +14,7 @@
 			<c:forEach var="produto" items="${resultadoBusca }">
 					
 				<div class="col-md-9 col-md-offset-3 " style="color: rgba(192, 77, 22, 0.1);">
-					<div class="col-md-4 col-md-4-offset-4">
+					<div class="col-md-4 col-md-4-offset-4" id="conteudo">
 		        	<div class="thumbnail">
 		        	<fmt:setLocale value="pt_br"/>
 				    	<img src="imagens-produtos/${produto.imagem}" alt="Paris" width="300" height="300">

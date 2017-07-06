@@ -102,8 +102,12 @@ public class ServletEditarProduto extends HttpServlet {
 		
 		
 		if(ProdutoServico.atualizar(produto)){
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "Produto atualizado com sucesso!");
 			response.sendRedirect("admin/editar-produto.jsp?produto=sucesso");
 		}else{
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "Não foi possivel atualizar o produto!");
 			response.sendRedirect("admin/editar-produto.jsp?produto=erro");
 		}
 	}

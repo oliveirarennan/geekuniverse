@@ -51,8 +51,12 @@ public class ServletEditarFabricante extends HttpServlet {
 		fabricante.setStatus(status);
 		
 		if(FabricanteServico.atualizar(fabricante)){
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "Fabricante atualizado com sucesso!");
 			response.sendRedirect("admin/editar-fabricante.jsp?fabricante=sucesso");
 		}else{
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "Não foi possivel atualizar o fabricante");
 			response.sendRedirect("admin/editar-fabricante.jsp?fabricante=falha");
 
 		}

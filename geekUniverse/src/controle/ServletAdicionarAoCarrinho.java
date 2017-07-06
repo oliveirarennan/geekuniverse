@@ -97,6 +97,8 @@ public class ServletAdicionarAoCarrinho extends HttpServlet {
 		response.sendRedirect("carrinho.jsp");
 		}else{
 			response.sendRedirect("carrinho.jsp?estoque=erro");
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "Não foi possivel realizar a operação");
 		}
 	}
 

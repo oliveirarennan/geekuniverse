@@ -86,7 +86,9 @@ public class UsuarioDao {
 			}			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return listaDeUsuarios;
@@ -112,7 +114,9 @@ public class UsuarioDao {
 									
 		} catch (SQLException e){
 			e.printStackTrace();
-		}
+		}catch (Exception e) {
+			e.printStackTrace();
+		} 
 		return retorno;
 	}
 	
@@ -184,7 +188,9 @@ public class UsuarioDao {
 			}			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return usuario;
@@ -226,6 +232,8 @@ public class UsuarioDao {
 		} catch (SQLException e){
 			e.printStackTrace();
 			System.out.println(e.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally{
 			DBUtil.fechar(conexao);
 		}
@@ -240,7 +248,9 @@ public class UsuarioDao {
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}catch (Exception e) {
+			e.printStackTrace();
+		} 
 		}
 		return usuario;
 	}

@@ -68,7 +68,6 @@ public class ServletCadastrarProduto extends HttpServlet {
 		
 		//Configura o caminho da pasta onde ficarï¿½o as imagens dos produtos
 		String pastaDestino = pastaProjeto + File.separator + pastaImagens;
-		System.out.println("Imagem salva em " + pastaDestino);
 		
 		//Se a pasta nï¿½o existir a cria
 		File pasta = new File(pastaDestino);
@@ -97,8 +96,12 @@ public class ServletCadastrarProduto extends HttpServlet {
 		ProdutoServico ps = new ProdutoServico();
 		int rq = ps.cadastrar(produto);
 		if(rq > 0){
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "Produto cadastrado com sucesso!");
 			response.sendRedirect("admin/cadastrar-produto.jsp?produto=sucesso");
 		}else{
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "Não foi possivel cadastrar o produto.");
 			response.sendRedirect("admin/cadastrar-produto.jsp?produto=erro");
 		}
 		

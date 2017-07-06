@@ -44,8 +44,12 @@ public class ServletEditarPedido extends HttpServlet {
 		pedido.setStatusPedido(status);
 		
 		if(PedidoServico.atualizar(pedido)){
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "Pedido atualizado com sucesso.");
 			response.sendRedirect("admin/gerenciar-pedidos.jsp?pedido=sucesso");
 		}else{
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "Não foi possivel atualizar o pedido.");
 			response.sendRedirect("admin/gerenciar-pedidos.jsp?pedido=erro");
 		}
 	}

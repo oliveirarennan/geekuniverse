@@ -46,7 +46,9 @@ public class PedidoDao {
 			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return pedido;
@@ -81,6 +83,8 @@ public class PedidoDao {
 			}			
 		} catch (SQLException e){
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally{
 			DBUtil.fechar(conexao);
 		}
@@ -107,7 +111,9 @@ public class PedidoDao {
 									
 		} catch (SQLException e){
 			e.printStackTrace();
-		}
+		}catch (Exception e) {
+			e.printStackTrace();
+		} 
 		return retorno;
 	}
 	
@@ -135,7 +141,9 @@ public class PedidoDao {
 
 	        } catch (SQLException e) {
 	            e.printStackTrace();
-	        }
+	        }catch (Exception e) {
+				e.printStackTrace();
+			} 
 	        return true;
 	    }
 	
@@ -168,7 +176,9 @@ public class PedidoDao {
 			}			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return pedido;
@@ -204,7 +214,9 @@ public class PedidoDao {
 			}			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return listaDePedidos;

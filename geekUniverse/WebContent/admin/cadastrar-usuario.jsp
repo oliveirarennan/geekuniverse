@@ -6,9 +6,26 @@
 				<div class="row">
 					<div
 						class=" col-md-6 col-md-offset-3 col-sm-6 col-offset-3 col-xs-6 col-xs-offset-3 col-lg-6 col-lg-offset-3">
+						
+						<c:choose>
+							<c:when test="${param.usuario == 'sucesso' }">
+								<div class="alert alert-success alert-dismissible" role="alert">
+									  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									  <strong>Sucesso!</strong> Usuário cadastrado com sucesso!.
+								</div>
+							</c:when>
+							<c:when test="${param.usuario == 'erro' }">
+								<div class="alert alert-danger alert-dismissible" role="alert">
+									  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									  <strong>Erro!</strong> Não foi possivel cadastrar o usuário!.
+								</div>
+							</c:when>
+						</c:choose>
+						
 						<legend>
 							<center>Cadastrar Usuario</center>
 						</legend>
+						
 						<form name="frmCadastrarUsuario" id="frmCadastrarUsuario"
 							action="../ServletCadastrarUsuario" method="POST">
 							<div class="form-group">

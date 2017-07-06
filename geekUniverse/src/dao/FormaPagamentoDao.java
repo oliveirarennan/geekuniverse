@@ -42,7 +42,9 @@ public class FormaPagamentoDao {
 			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return pagamento;
@@ -75,7 +77,9 @@ public class FormaPagamentoDao {
 			}			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return listaDeFormaPagamento;
@@ -103,7 +107,9 @@ public class FormaPagamentoDao {
 									
 		} catch (SQLException e){
 			e.printStackTrace();
-		}
+		}catch (Exception e) {
+			e.printStackTrace();
+		} 
 		return retorno;
 	}
 	
@@ -156,7 +162,9 @@ public class FormaPagamentoDao {
 				
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return formaPagamento;

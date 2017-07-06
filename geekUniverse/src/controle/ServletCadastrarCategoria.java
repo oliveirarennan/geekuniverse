@@ -53,8 +53,12 @@ public class ServletCadastrarCategoria extends HttpServlet {
 		int rq = cs.cadastrar(categoria);
 		
 		if(rq > 0){
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "Categoria cadastrada com sucesso!");
 			response.sendRedirect("admin/cadastrar-categoria.jsp?categoria=sucesso");
 		}else{
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "Não foi possivel cadastrar a categoria");
 			response.sendRedirect("admin/cadastrar-categoria.jsp?categoria=erro");
 		}
 		

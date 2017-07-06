@@ -27,7 +27,9 @@ public class ConexaoFabrica {
 			connection = DriverManager.getConnection(URL, USER, PASSWORD);
 		} catch(SQLException e){
 			System.out.println("Sem conexão com o banco de dados");
-		}
+		}catch (Exception e) {
+			e.printStackTrace();
+		} 
 		
 		return connection;
 	}

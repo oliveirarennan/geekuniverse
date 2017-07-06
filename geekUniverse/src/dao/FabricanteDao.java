@@ -31,7 +31,9 @@ public class FabricanteDao {
 		} catch (SQLException e){
 			e.printStackTrace();
 			return retorno;
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 			
 		}
@@ -64,7 +66,9 @@ public class FabricanteDao {
 			}			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return listaDeFabricantes;
@@ -96,7 +100,9 @@ public class FabricanteDao {
 			}			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return listaDeFabricantes;
@@ -122,7 +128,9 @@ public class FabricanteDao {
 									
 		} catch (SQLException e){
 			e.printStackTrace();
-		}
+		}catch (Exception e) {
+			e.printStackTrace();
+		} 
 		return retorno;
 	}
 	
@@ -146,7 +154,9 @@ public class FabricanteDao {
 
 	        } catch (SQLException e) {
 	            e.printStackTrace();
-	        }
+	        }catch (Exception e) {
+				e.printStackTrace();
+			} 
 	        return true;
 	    }
 	
@@ -173,7 +183,9 @@ public class FabricanteDao {
 				
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return fabricante;

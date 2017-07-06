@@ -30,8 +30,12 @@ public class ServletRemoverProduto extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		if(ProdutoServico.excluir(id)){
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "Dados atualizados com sucesso!");
 				response.sendRedirect("admin/gerenciar-produtos.jsp?produto=sucesso");
 			}else{
+				request.getSession().removeAttribute("msgStatus");
+				request.getSession().setAttribute("msgStatus", "Falha ao remover o produto!");
 				response.sendRedirect("admin/gerenciar-produtos.jsp?produto=erro");
 		}
 	}

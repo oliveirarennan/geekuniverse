@@ -41,7 +41,9 @@ public class FreteDao {
 			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return frete;
@@ -72,7 +74,9 @@ public class FreteDao {
 			}			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return listaDeFrete;
@@ -98,7 +102,9 @@ public class FreteDao {
 									
 		} catch (SQLException e){
 			e.printStackTrace();
-		}
+		}catch (Exception e) {
+			e.printStackTrace();
+		} 
 		return retorno;
 	}
 	
@@ -120,7 +126,9 @@ public class FreteDao {
 
 	        } catch (SQLException e) {
 	            e.printStackTrace();
-	        }
+	        }catch (Exception e) {
+				e.printStackTrace();
+			} 
 	        return true;
 	    }
 	
@@ -146,7 +154,9 @@ public class FreteDao {
 							
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return frete;

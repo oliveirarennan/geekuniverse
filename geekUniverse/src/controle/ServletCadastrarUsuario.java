@@ -102,14 +102,23 @@ public class ServletCadastrarUsuario extends HttpServlet {
 		
 		if(UsuarioServico.cadastrarUsuario(usuario)){
 			if((tipoUsuario == null) && (status == null)){
+				request.getSession().removeAttribute("msgStatus");
+				request.getSession().setAttribute("msgStatus", "Usuário Cadastrado com sucesso");
 				response.sendRedirect("cadastrar-usuario.jsp?usuario=sucesso");
+				
 			}else{
+				request.getSession().removeAttribute("msgStatus");
+				request.getSession().setAttribute("msgStatus", "Usuário Cadastrado com sucesso");
 				response.sendRedirect("admin/cadastrar-usuario.jsp?usuario=sucesso");
 			}
 		}else{
 			if((tipoUsuario == null) && (status == null)){
+				request.getSession().removeAttribute("msgStatus");
+				request.getSession().setAttribute("msgStatus", "Não foi possivel realizar o cadastro do usuário");
 				response.sendRedirect("cadastrar-usuario.jsp?usuario=erro");
 			}else{
+				request.getSession().removeAttribute("msgStatus");
+				request.getSession().setAttribute("msgStatus", "Não foi possivel realizar o cadastro do usuário");
 				response.sendRedirect("admin/cadastrar-usuario.jsp?usuario=erro");
 			}
 		}	

@@ -56,8 +56,12 @@ public class ServletCadastrarFabricante extends HttpServlet {
 		
 		int rq = fs.cadastrar(fabricante);
 		if(rq > 0){
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "Categoria cadastrada com sucesso!");
 			response.sendRedirect("admin/cadastrar-fabricante.jsp?fabricante=sucesso");
 		}else{
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "Não foi possivel cadastrar a categoria!");
 			response.sendRedirect("admin/cadastrar-fabricante.jsp?fabricante=erro");
 		}
 		

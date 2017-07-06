@@ -29,7 +29,9 @@ public class CategoriaDao {
 			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return retorno;
@@ -59,6 +61,8 @@ public class CategoriaDao {
 				listaDeCategorias.add(categoria);
 			}			
 		} catch (SQLException e){
+			e.printStackTrace();
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally{
 			DBUtil.fechar(conexao);
@@ -91,6 +95,8 @@ public class CategoriaDao {
 			}			
 		} catch (SQLException e){
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally{
 			DBUtil.fechar(conexao);
 		}
@@ -118,7 +124,9 @@ public class CategoriaDao {
 									
 		} catch (SQLException e){
 			e.printStackTrace();
-		}
+		}catch (Exception e) {
+			e.printStackTrace();
+		} 
 		return retorno;
 	}
 	
@@ -141,7 +149,9 @@ public class CategoriaDao {
 
 	        } catch (SQLException e) {
 	            e.printStackTrace();
-	        }
+	        }catch (Exception e) {
+				e.printStackTrace();
+			} 
 	        return true;
 	    }
 	
@@ -167,6 +177,8 @@ public class CategoriaDao {
 				
 			
 		} catch (SQLException e){
+			e.printStackTrace();
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally{
 			DBUtil.fechar(conexao);

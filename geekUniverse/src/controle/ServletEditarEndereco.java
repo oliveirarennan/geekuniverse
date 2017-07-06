@@ -82,6 +82,8 @@ public class ServletEditarEndereco extends HttpServlet {
 				response.sendRedirect("escolher-pagamento.jsp");
 				
 			}else{
+				request.getSession().removeAttribute("msgStatus");
+				request.getSession().setAttribute("msgStatus", "Erro ao atualizar o endereço.");
 				response.sendRedirect("escolher-pagamento.jsp?endereco=erro");
 			}
 		}else if(compra.equals("2") ){
@@ -114,8 +116,12 @@ public class ServletEditarEndereco extends HttpServlet {
 				Usuario ul = (Usuario) request.getSession().getAttribute("usuarioLogado");
 				ul.setEndereco(endereco);
 				request.getSession().setAttribute("usuarioLogado", ul);
+				request.getSession().removeAttribute("msgStatus");
+				request.getSession().setAttribute("msgStatus", "Endereço atualizado com sucesso!");
 				response.sendRedirect("painel-usuario.jsp?endereco=sucesso");
 			}else{
+				request.getSession().removeAttribute("msgStatus");
+				request.getSession().setAttribute("msgStatus", "Falha ao atualizar o endereço!");
 				response.sendRedirect("painel-usuario.jsp?endereco=erro");
 			}
 			
@@ -144,8 +150,12 @@ public class ServletEditarEndereco extends HttpServlet {
 			endereco.setCep(cep);
 	
 			if(EnderecoServico.atualizar(endereco)){
+				request.getSession().removeAttribute("msgStatus");
+				request.getSession().setAttribute("msgStatus", "Endereço atualizado com sucesso!");
 				response.sendRedirect("admin/editar-endereco.jsp?endereco=sucesso");
 			}else{
+				request.getSession().removeAttribute("msgStatus");
+				request.getSession().setAttribute("msgStatus", "Falha ao atualizar o endereço!");
 				response.sendRedirect("admin/editar-endereco.jsp?endereco=erro");
 			}
 		}

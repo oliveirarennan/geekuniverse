@@ -31,8 +31,12 @@ public class ServletRemoverUsuario extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		
 		if(UsuarioServico.remover(id)){
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "Usuário removido com sucesso!");
 			response.sendRedirect("admin/gerenciar-usuarios.jsp?usuario=sucesso");
 		}else{
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "Não foi possivel remover o usuário!");
 			response.sendRedirect("admin/gerenciar-usuarios.jsp?usuario=erro");
 
 		}

@@ -127,21 +127,33 @@ public class ServletEditarUsuario extends HttpServlet {
 				
 					if(UsuarioServico.atualizar(usuario)){
 						if((tipoUsuario == null) && (status == null)){
+							request.getSession().removeAttribute("msgStatus");
+							request.getSession().setAttribute("msgStatus", "Dados atualizados com sucesso!");
 							response.sendRedirect("editar-usuario.jsp?usuario=sucesso");
 						}else{
+							request.getSession().removeAttribute("msgStatus");
+							request.getSession().setAttribute("msgStatus", "Dados atualizados com sucesso!");
 							response.sendRedirect("admin/editar-usuario.jsp?usuario=sucesso");
 						}
 					}else{
 						if((tipoUsuario == null) && (status == null)){
+							request.getSession().removeAttribute("msgStatus");
+							request.getSession().setAttribute("msgStatus", "Não foi possivel atualizar os dados!");
 							response.sendRedirect("editar-usuario.jsp?usuario=erro");
 						}else{
+							request.getSession().removeAttribute("msgStatus");
+							request.getSession().setAttribute("msgStatus", "Não foi possivel atualizar os dados.");
 							response.sendRedirect("admin/editar-usuario.jsp?usuario=erro");
 						}
 					}	
 				}else{
 					if((tipoUsuario == null) && (status == null)){
+						request.getSession().removeAttribute("msgStatus");
+						request.getSession().setAttribute("msgStatus", "Não foi possivel atualizar os dados!");
 						response.sendRedirect("editar-usuario.jsp?usuario=erro");
 					}else{
+						request.getSession().removeAttribute("msgStatus");
+						request.getSession().setAttribute("msgStatus", "Não foi possivel atualizar os dados!");
 						response.sendRedirect("admin/editar-usuario.jsp?usuario=erro");
 					}
 				}
@@ -184,8 +196,12 @@ public class ServletEditarUsuario extends HttpServlet {
 				
 			if(UsuarioServico.atualizar(ul)){
 					request.getSession().setAttribute("usuarioLogado", ul);
+					request.getSession().removeAttribute("msgStatus");
+					request.getSession().setAttribute("msgStatus", "Dados atualizado com sucesso!");
 					response.sendRedirect("painel-usuario.jsp?usuario=sucesso");
 				}else{
+					request.getSession().removeAttribute("msgStatus");
+					request.getSession().setAttribute("msgStatus", "Não foi possivel atualizar os dados");
 					response.sendRedirect("painel-usuario.jsp?usuario=erro");
 				}
 			}

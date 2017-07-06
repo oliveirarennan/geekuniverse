@@ -1,6 +1,5 @@
 package dao;
 
-import java.lang.Thread.State;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -48,7 +47,9 @@ public class EnderecoDao {
 			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return endereco;
@@ -85,7 +86,9 @@ public class EnderecoDao {
 			}
 		}catch (SQLException e){
 			e.printStackTrace();
-		}
+		}catch (Exception e) {
+			e.printStackTrace();
+		} 
 		return endereco;
 	}
 	
@@ -115,7 +118,9 @@ public class EnderecoDao {
 		        } catch (SQLException e) {
 		            e.printStackTrace();
 		            return false;
-		        }
+		        }catch (Exception e) {
+					e.printStackTrace();
+				} 
 		        return true;
 		    }
 	
@@ -151,7 +156,9 @@ public class EnderecoDao {
 			}			
 		} catch (SQLException e){
 			e.printStackTrace();
-		} finally{
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
 			DBUtil.fechar(conexao);
 		}
 		return listaDeEnderecos;
@@ -176,7 +183,9 @@ public class EnderecoDao {
 									
 		} catch (SQLException e){
 			e.printStackTrace();
-		}
+		}catch (Exception e) {
+			e.printStackTrace();
+		} 
 		return retorno;
 	}
 }

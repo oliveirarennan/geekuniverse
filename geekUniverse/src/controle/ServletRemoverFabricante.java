@@ -31,8 +31,12 @@ public class ServletRemoverFabricante extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		
 		if(FabricanteServico.excluir(id)){
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "Fabricante removido com sucesso!");
 			response.sendRedirect("admin/gerenciar-fabricantes.jsp?fabricante=sucesso");
 		}else{
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "Não foi possivel remover o fabricante!");
 			response.sendRedirect("admin/gerenciar-fabricantes.jsp?fabricante=falha");
 		}
 		

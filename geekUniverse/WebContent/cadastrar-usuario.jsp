@@ -6,7 +6,23 @@
 				<div class="row">
 					<div
 						class=" col-md-10 col-md-offset-1 col-sm-10 col-offset-1 col-xs-10 col-xs-offset-1 col-lg-10 col-lg-offset-1">
-				<section class="jumbotron"> 
+				<section class="jumbotron">
+				
+				<c:choose>
+							<c:when test="${param.usuario == 'sucesso' }">
+								<div class="alert alert-success alert-dismissible" role="alert">
+									  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									  <strong>Sucesso!</strong> Usuário cadastrado com sucesso!.
+								</div>
+							</c:when>
+							<c:when test="${param.usuario == 'erro' }">
+								<div class="alert alert-danger alert-dismissible" role="alert">
+									  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									  <strong>Erro!</strong> Não foi possivel cadastrar o usuário!.
+								</div>
+							</c:when>
+						</c:choose>
+				 
 						<legend>
 							<center>Formulario de Cadastro</center>
 						</legend>

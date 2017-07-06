@@ -31,8 +31,12 @@ public class ServletRemoverCategoria extends HttpServlet {
 		// TODO Auto-generated method stub
 		int id = Integer.parseInt(request.getParameter("id"));
 		if(CategoriaServico.excluir(id)){
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "Exclusão realizada com sucesso!");
 			response.sendRedirect("admin/gerenciar-categorias.jsp?categoria=sucesso");
 		}else{
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "Não foi possivel excluir a categoria!");
 			response.sendRedirect("admin/gerenciar-categorias.jsp?categoria=falha");
 		}
 	}

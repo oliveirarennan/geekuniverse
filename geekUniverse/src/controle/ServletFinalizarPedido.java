@@ -169,11 +169,6 @@ private String pastaBoletos = null;
         gerador.geraPDF(pastaDestino + File.separator +pedido.getFormaPagamento().getInfo());  
 
 
-
-        
-        System.out.println("rodei");
-		
-		//
 		
 		request.getSession().removeAttribute("ItensCarrinho");
 		request.getSession().removeAttribute("pedido");

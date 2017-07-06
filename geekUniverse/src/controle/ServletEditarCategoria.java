@@ -53,8 +53,12 @@ public class ServletEditarCategoria extends HttpServlet {
 		categoria.setStatus(status);
 		
 		if(CategoriaServico.atualizar(categoria)){
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "Categoria editada com sucesso!");
 			response.sendRedirect("admin/editar-categoria.jsp?categoria=sucesso");
 		}else{
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "Não foi possivel editar a categoria!");
 			response.sendRedirect("admin/editar-categoria.jsp?categoria=erro");
 		}
 	}

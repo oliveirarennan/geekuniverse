@@ -5,6 +5,22 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class=" col-md-12  col-sm-12  col-xs-12  col-lg-12 ">
+					
+					<c:choose>
+							<c:when test="${param.usuario == 'sucesso' }">
+								<div class="alert alert-success alert-dismissible" role="alert">
+									  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									  <strong>Sucesso!</strong> Usuário removido com sucesso!.
+								</div>
+							</c:when>
+							<c:when test="${param.usuario == 'erro' }">
+								<div class="alert alert-danger alert-dismissible" role="alert">
+									  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									  <strong>Erro!</strong> Não foi possivel remover o usuário!.
+								</div>
+							</c:when>
+						</c:choose>
+					
 						<legend>
 							<center>Gerenciar Usuários</center>
 						</legend>
