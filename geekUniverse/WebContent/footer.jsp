@@ -25,25 +25,28 @@
               </div>
            </div>
           </div>
-        </div>
-        
-<footer class="col-md-12 footer">
+        </div>  
+	<footer class="col-md-12 footer">
 			<div class="col-md-5 col-md-offset-5">
 				<img src="img/logo2.png" class="img-responsive">
 			</div>
 			<div>
 				<div class="social col-md-4 col-md-offset-2">
-				    <ul class="social-network social-circle">
+				    <h3 class="texto">Redes Sociais</h3>
+				    <ul class="social-network social-circle redes">
 				      <li><a href="#" class="icoInstagram" title="Instagram"><i class="fa fa-instagram"></i></a></li>
 				      <li><a href="#" class="icoFacebook" title="Facebook" data-toggle="modal" data-target="#modal2"><i class="fa fa-facebook"></i></a></li>
 				      <li><a href="#" class="icoTwitter" title="Twitter"  data-toggle="modal" data-target="#modal1"><i class="fa fa-twitter"></i></a></li>
 				      <li><a href="#" class="icoWhatsapp" title="Whatsapp" data-toggle="modal" data-target="#modalwpp"><i class="fa fa-whatsapp"></i></a></li>
-				      <li class="boleto"><i class="fa fa-barcode" aria-hidden="true"></i></li>
 				    </ul>
 				</div>
 			</div>
-			
-			
+			<div class="formas col-md-4">
+				<h3 class="">Formas de Pagamento</h3>
+					<ul class="social-network social-circle" id="pg">
+						<li><a href="#" class="icoBarcode" title="barcode"><i class="fa fa-barcode"></i></a></li>
+					</ul>	
+			</div>
 		</footer>
 	</body>
 </html>

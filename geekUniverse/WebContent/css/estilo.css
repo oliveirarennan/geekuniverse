@@ -83,9 +83,8 @@ button[type=submit]{
 
 .tipo1{
   margin-left: 17.5%;
-  margin-top: 3%;  
+  margin-top: 3%;
 }
-
 .img{
   margin-left: 1%;
 }
@@ -127,6 +126,9 @@ ul.social-network li {
 }
 .social-network a.icoWhatsapp:hover {
   background-color:#32CD32;
+}
+.social-network a.icoBarcode:hover{
+  background-color:#ffaa00;
 }
 .social-network a.icoRss:hover i, .social-network a.icoFacebook:hover i, .social-network a.icoTwitter:hover i,
 .social-network a.icoGoogle:hover i, .social-network a.icoVimeo:hover i, .social-network a.icoLinkedin:hover i {
@@ -188,14 +190,11 @@ a {
   margin-top: -10%;
   color: #fff;
 }
-.boleto{
-  margin-left: 500px;
+.texto{
+  margin-left: 9%;
 }
-
-#fonte{
-	color: white;
-}
-
-#conteudo{
-	margin-left: 35%;
+.formas{
+  color: #fff;
+  margin-left: 90%;
+  margin-top: -9.5%;
 }

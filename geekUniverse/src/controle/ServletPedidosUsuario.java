@@ -37,10 +37,14 @@ public class ServletPedidosUsuario extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Item> itens = new ArrayList<Item>() ;
 		Usuario usuario = (Usuario) request.getSession().getAttribute("usuarioLogado");
-		List<Pedido> pedidos = PedidoServico.lsitarPorUsuario(usuario.getId());
+		List<Pedido> pedidos = PedidoServico.listarPorUsuario(usuario.getId());
 		request.getSession().setAttribute("pedidosUsuario", pedidos);
 		for (Pedido pedido : pedidos) {
-			itens.add(ItemServico.buscarPorPedidoId(pedido.getId()));
+			List<Item> lp = ItemServico.listarPorPedido(pedido.getId());
+			for (Item item : lp) {
+				itens.add(item);
+			}
+			
 		}
 		request.getSession().setAttribute("itensPedido", itens);
 		response.sendRedirect("pedidos-usuario.jsp");

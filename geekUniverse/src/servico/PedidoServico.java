@@ -31,7 +31,7 @@ public class PedidoServico {
 		return dao.buscarPorId(id);
 	}
 	
-	public static List<Pedido> lsitarPorUsuario(int id){
+	public static List<Pedido> listarPorUsuario(int id){
 		PedidoDao dao = new PedidoDao();
 		return dao.listarPorUsuario(id);
 
