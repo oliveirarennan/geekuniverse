@@ -1,54 +1,24 @@
  <%@ include file="top.jsp" %>
  <title>Pagina de Administração</title>
-		<div class="fundo col-md-6 col-md-offset-3">
-			<br />
-			<div class="container-fluid">
+		<section class="container">
+		<div class="jumbotron jumbotron-fluid">
 				<div class="row">
 					<div
-						class=" col-md-6 col-md-offset-3 col-sm-6 col-offset-3 col-xs-6 col-xs-offset-3 col-lg-6 col-lg-offset-3">
+						class=" col-md-4 col-md-offset-4 col-sm-4 col-offset-4 col-xs-4 col-xs-offset-4 col-lg-4 col-lg-offset-4">
 						<legend>
 							<center>Painel Administrativo</center>
 						</legend>
-
-						<br />
-
-						<div class="well">
-							<center>
-								<a href="gerenciar-usuarios.jsp" class="btn btn-warning">Gerenciar
-									Usuários</a>
-							</center>
-						</div>
-
-						<div class="well">
-							<center>
-								<a href="gerenciar-categorias.jsp" class="btn btn-warning">Gerenciar
-									Categorias</a>
-							</center>
-						</div>
-
-						<div class="well">
-							<center>
-								<a href="gerenciar-fabricantes.jsp" class="btn btn-warning">Gerenciar
-									Fabricantes</a>
-							</center>
-						</div>
-
-						<div class="well">
-							<center>
-								<a href="gerenciar-produtos.jsp" class="btn btn-warning">Gerenciar
-									Produtos</a>
-							</center>
-						</div>
-
-						<div class="well">
-							<center>
-								<a href="gerenciar-pedidos.jsp" class="btn btn-warning">Gerenciar
-									Pedidos</a>
-							</center>
-						</div>
-
-
+						
+						<center>
+					<div class="btn-group-vertical">
+						<a href="gerenciar-usuarios.jsp">     <button type="button" class="btn btn-warning">Gerenciar Usuários</button></a><br><br>
+						<a href="gerenciar-categorias.jsp">   <button type="button" class="btn btn-warning">Gerenciar Categoria</button></a><br><br>
+						<a href="gerenciar-fabricantes.jsp">  <button type="button" class="btn btn-warning">Gerenciar Fabricante</button></a><br><br>
+						<a href="gerenciar-produtos.jsp">     <button type="button" class="btn btn-warning">Gerenciar Produtos</button></a><br><br>
+						<a href="gerenciar-pedidos.jsp">      <button type="button" class="btn btn-warning">Gerenciar Pedidos</button></a> <br><br>
 					</div>
+						
+						</center>
 				</div>
 			</div>
 		</div>

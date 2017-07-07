@@ -1,7 +1,7 @@
  <%@ include file="top.jsp" %>
  <title>Gerencia de Categorias</title>
-		<div class="fundo col-md-6 col-md-offset-3">
-			<br />
+		<section class="container">
+		<div class="jumbotron jumbotron-fluid">
 			<div class="container-fluid">
 				<div class="row">
 					<div

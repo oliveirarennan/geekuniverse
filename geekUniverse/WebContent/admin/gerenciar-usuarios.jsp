@@ -1,10 +1,13 @@
  <%@ include file="top.jsp" %>
- <title>Gerencia de Usuários</title>
-		<div class="fundo col-md-6 col-md-offset-3">
+
+       <title>Gerencia de Usuários</title>
+ 	<section class="container">
+		<div class="jumbotron jumbotron-fluid">
 			<br />
 			<div class="container-fluid">
+			
 				<div class="row">
-					<div class=" col-md-12  col-sm-12  col-xs-12  col-lg-12 ">
+					<div class=" col-md-4  col-sm-12  col-xs-4  col-lg-12 ">
 					
 					<c:choose>
 							<c:when test="${param.usuario == 'sucesso' }">
@@ -20,7 +23,7 @@
 								</div>
 							</c:when>
 						</c:choose>
-					
+			
 						<legend>
 							<center>Gerenciar Usuários</center>
 						</legend>
@@ -67,5 +70,6 @@
 			</div>
 		</div>
 	</section>
+	
   <script src="resources/js/jquery-3.2.1.min.js"></script>
  <%@ include file="footer.jsp" %>
