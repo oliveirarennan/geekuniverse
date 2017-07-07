@@ -51,13 +51,13 @@
 			    	<!-- Wrapper for slides -->
 			    	<div class="carousel-inner conf" role="listbox">
 			      		<div class="item active">
-			        		<img  class="img-responsive" src="img/pesquisa.jpg" alt="Chania">
+			        		<img  class="img-responsive" src="img/game.png" alt="Chania">
 			      		</div>
 			      		<div class="item">
-			        		<img class="img-responsive" src="http://via.placeholder.com/2048x500" alt="Chania">
+			        		<img class="img-responsive" src="img/Gamesporate.png" alt="Chania">
 			      		</div>
 			      		<div class="item">
-			        		<img class="img-responsive" src="http://via.placeholder.com/2048x500" alt="Flower">
+			        		<img class="img-responsive" src="img/prevenda.png" alt="Flower">
 			      		</div>
 			    	</div>
 			    	<!-- Left and right controls -->
