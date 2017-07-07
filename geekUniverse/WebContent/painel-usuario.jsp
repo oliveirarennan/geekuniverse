@@ -3,7 +3,7 @@
 		<title>Painel do Usuário</title>
 		<section class="container-fluid">
 			<div class="row">
-				<div class="col-md-6 col-md-offset-3" style="background-color: rgba(255, 255, 255, 0.8); margin-top: 5%; margin-bottom: 5%; padding: 3% 3% 3% 3%;">
+				<div class="col-md-6 col-md-offset-3" style="background-color: rgba(42, 42, 42, 0.9); margin-top: 5%; margin-bottom: 5%; padding: 3% 3% 3% 3%;">
 				<c:choose>
 							<c:when test="${param.usuario == 'sucesso' }">
 								<div class="alert alert-success alert-dismissible" role="alert">
@@ -18,7 +18,8 @@
 								</div>
 							</c:when>
 						</c:choose>
-					<legend>Dados Pessoais</legend>
+						
+					<legend><center>Dados Pessoais</center></legend>
 						<div class="col-md-4 col-md-offset-4" style="color: rgba(192, 77, 22, 1);">
 							<strong>Nome :</strong> ${usuarioLogado.nome} <br />
 							<strong>Sobrenome :</strong> ${usuarioLogado.sobrenome}<br />
@@ -30,13 +31,13 @@
 							<strong>RG :</strong>${usuarioLogado.rg}<br />
 							<strong>E-mail :</strong>${usuarioLogado.email}<br />
 							<br />
-							<a href="#" data-toggle="modal" data-target="#usuarioModal" class="btn btn-warning">Editar</a>
+						<center><a href="#" data-toggle="modal" data-target="#usuarioModal" class="btn btn-warning">Editar</a></center>
 							
 						</div>	
+					
 						
 						
-						
-					<legend>Endereço</legend>
+					<legend><center>Endereço</center></legend>
 						<div class="col-md-4 col-md-offset-4" style="color: rgba(192, 77, 22, 1);">
 							<strong>País :</strong>${usuarioLogado.endereco.pais}<br />
 							<strong>Estado :</strong>${usuarioLogado.endereco.estado.descricao}<br />
@@ -47,12 +48,12 @@
 							<strong>Cidade :</strong>${usuarioLogado.endereco.cidade}<br />
 							<strong>CEP :</strong>${usuarioLogado.endereco.cep}<br />
 							<br/>
-							<a href="#" data-toggle="modal" data-target="#enderecoModal" class="btn btn-warning">Editar</a>
+							<center><a href="#" data-toggle="modal" data-target="#enderecoModal" class="btn btn-warning">Editar</a></center>
 						</div>	
 					
 					</div>
 				</div>
-							
+						<hr>		
 		</section>
 		
 		<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="enderecoModal">
@@ -137,7 +138,6 @@
            </div>
           </div>
         </div>
-        
         
         <!-- Modal  Usuario  -->
         
