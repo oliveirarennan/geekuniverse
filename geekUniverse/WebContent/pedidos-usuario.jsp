@@ -31,13 +31,13 @@
 														class="glyphicon glyphicon-search"></span></a> <strong>Quantidade:
 													</strong>${item.quantidade} <strong>Preço Unitario :</strong>
 													<fmt:formatNumber value="${item.produto.valor}" type="currency" /><br>
-													<a href="boletos/${pedido.formaPagamento.info }" class="btn btn-success">Visualizar Boleto</a>
+													
 													
 												</div>
 											</c:if>	
 										
 										</c:forEach>
-										
+										<a href="boletos/${pedido.formaPagamento.info }" class="btn btn-success">Visualizar Boleto</a>
 									</div>
 						</div>
 				</div>

@@ -1,8 +1,7 @@
  <%@ include file="top.jsp" %>
  <title>Gerencia de Pedidos</title>
-		<div class="fundo col-md-6 col-md-offset-3">
-			<br />
-			<div class="container-fluid">
+	<section class="container">
+		<div class="jumbotron jumbotron-fluid">
 				<div class="row">
 					<div
 						class=" col-md-12  col-sm-12  col-xs-12 col-lg-12 ">
