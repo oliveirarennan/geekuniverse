@@ -126,16 +126,7 @@
 				              </ul>
 				            </li>
 				            
-				            <li class="dropdown">
-	              			<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="drop">DROP1<span class="caret"></span></a>
-				            <ul class="dropdown-menu" id="atrib">
-				            	<li><a href="#">atributo1</a></li>
-				                <li><a href="#">atributo2</a></li>
-				                <li><a href="#">atributo3</a></li>
-				                <li><a href="#">atributo4</a></li>
-				                <li><a href="#">atributo5</a></li>
-				              </ul>
-				            </li>
+				            
 	      				</ul>
 	      				<div> 
 	      					<ul class="nav navbar-nav navbar-right">

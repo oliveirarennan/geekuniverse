@@ -41,4 +41,18 @@ public class CategoriaServico {
 	public static Categoria buscarPorId(int id){
 		return CategoriaDao.buscarPorId(id);
 	}
+	public static List<Categoria> listarQuadrinhos(){
+		CategoriaDao categoriaDao = new CategoriaDao();
+		return categoriaDao.listarQuadrinhos();
+	}
+	
+	public static List<Categoria> listarLivros(){
+		CategoriaDao categoriaDao = new CategoriaDao();
+		return categoriaDao.listarLivros();
+	}
+	
+	public static List<Categoria> listarActionFigures(){
+		CategoriaDao categoriaDao = new CategoriaDao();
+		return categoriaDao.listarActionFigures();
+	}
 }
