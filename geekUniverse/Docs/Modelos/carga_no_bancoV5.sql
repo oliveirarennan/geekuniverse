@@ -31,13 +31,15 @@ insert into endereco value
 (null,"Brasil",1,"Maricá", "Itaipuaçu", "Rua 16", 57,"apt 201", "24.935.595");
 
 insert into usuario value
-(null, 1,"Pedro Victor","Abreu de Andrade","2017-06-21","Masculino","(21)9934-99919","(21) 2222-2222","123.456.789-00", "00.123.456-7","teste@teste.com","admin123","administrador",true);
+(null, 1,"Pedro Victor","Abreu de Andrade","2017-06-21","Masculino","(21)9934-99919","(21) 2222-2222","123.456.789-00", "00.123.456-7","admin@gmail.com","25f9e794323b453885f5181f1b624d0b","administrador",true);
 
 insert into fabricante value
 (null, "Sony", "16.574.333/0001-64", true);
 
 insert into categoria value
-(null, "VideoGames", true);
+(null, "Quadrinho", true),
+(null, "Livro", true),
+(null, "Action Figure", true);
 
 insert into formaPagamento value
 (null, "cartão", 10, "1200,00","teste.teste.com");

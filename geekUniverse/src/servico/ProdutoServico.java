@@ -79,4 +79,19 @@ public class ProdutoServico {
 		
 		return produtoDao.buscarPorNome(nome);
 	}
+	
+	public static List<Produto> listarQuadrinhos(){
+		ProdutoDao produtoDao = new ProdutoDao();
+		return produtoDao.listarQuadrinhos();
+	}
+	
+	public static List<Produto> listarLivros(){
+		ProdutoDao produtoDao = new ProdutoDao();
+		return produtoDao.listarLivros();
+	}
+	
+	public static List<Produto> listarActionFigures(){
+		ProdutoDao produtoDao = new ProdutoDao();
+		return produtoDao.listarActionFigures();
+	}
 }

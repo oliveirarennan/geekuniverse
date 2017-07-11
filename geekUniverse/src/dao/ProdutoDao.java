@@ -400,6 +400,120 @@ public class ProdutoDao {
 		}
 		return listaDeProdutos;
 	}
+	
+	public List<Produto> listarQuadrinhos(){
+		Connection conexao = null;
+		
+		List<Produto> listaDeProdutos = new ArrayList<Produto>();
+		Produto produto = null;
+		
+		String sql = "SELECT * FROM produto where categoria_id  = 1 limit 4";
+		
+		try{
+			conexao = ConexaoFabrica.getConnection();
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+						
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()){
+				produto = new Produto();
+				produto.setId(rs.getInt("id"));
+				produto.setNome(rs.getString("nome"));
+				produto.setDescricao(rs.getString("descricao"));
+				produto.setValor(rs.getDouble("valor"));
+				produto.setEstoque(rs.getInt("estoque"));
+				produto.setImagem(rs.getString("imagem"));
+				produto.setCategoria(CategoriaServico.buscarPorId(rs.getInt("categoria_id")));
+				produto.setFabricante(FabricanteServico.buscarPorId(rs.getInt("fabricante_id")));
+				
+				listaDeProdutos.add(produto);
+			}			
+		} catch (SQLException e){
+			e.printStackTrace();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
+			DBUtil.fechar(conexao);
+		}
+		return listaDeProdutos;
+	}
+	
+	public List<Produto> listarLivros(){
+		Connection conexao = null;
+		
+		List<Produto> listaDeProdutos = new ArrayList<Produto>();
+		Produto produto = null;
+		
+		String sql = "SELECT * FROM produto where categoria_id  = 2 limit 4";
+		
+		try{
+			conexao = ConexaoFabrica.getConnection();
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+						
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()){
+				produto = new Produto();
+				produto.setId(rs.getInt("id"));
+				produto.setNome(rs.getString("nome"));
+				produto.setDescricao(rs.getString("descricao"));
+				produto.setValor(rs.getDouble("valor"));
+				produto.setEstoque(rs.getInt("estoque"));
+				produto.setImagem(rs.getString("imagem"));
+				produto.setCategoria(CategoriaServico.buscarPorId(rs.getInt("categoria_id")));
+				produto.setFabricante(FabricanteServico.buscarPorId(rs.getInt("fabricante_id")));
+				
+				listaDeProdutos.add(produto);
+			}			
+		} catch (SQLException e){
+			e.printStackTrace();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
+			DBUtil.fechar(conexao);
+		}
+		return listaDeProdutos;
+	}
+	
+	public List<Produto> listarActionFigures(){
+		Connection conexao = null;
+		
+		List<Produto> listaDeProdutos = new ArrayList<Produto>();
+		Produto produto = null;
+		
+		String sql = "SELECT * FROM produto where categoria_id  = 3 limit 4";
+		
+		try{
+			conexao = ConexaoFabrica.getConnection();
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+						
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()){
+				produto = new Produto();
+				produto.setId(rs.getInt("id"));
+				produto.setNome(rs.getString("nome"));
+				produto.setDescricao(rs.getString("descricao"));
+				produto.setValor(rs.getDouble("valor"));
+				produto.setEstoque(rs.getInt("estoque"));
+				produto.setImagem(rs.getString("imagem"));
+				produto.setCategoria(CategoriaServico.buscarPorId(rs.getInt("categoria_id")));
+				produto.setFabricante(FabricanteServico.buscarPorId(rs.getInt("fabricante_id")));
+				
+				listaDeProdutos.add(produto);
+			}			
+		} catch (SQLException e){
+			e.printStackTrace();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally{
+			DBUtil.fechar(conexao);
+		}
+		return listaDeProdutos;
+	}
 
 	
 }

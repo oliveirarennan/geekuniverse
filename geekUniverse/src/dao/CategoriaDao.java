@@ -189,4 +189,102 @@ public class CategoriaDao {
 		}
 		return categoria;
 	}
+	
+	public List<Categoria> listarLivros(){
+		Connection conexao = null;
+		
+		List<Categoria> listaDeCategorias = new ArrayList<Categoria>();
+		Categoria categoria = null;
+		
+		String sql = "SELECT * FROM categoria where nome = ? limit 4";
+		
+		try{
+			conexao = ConexaoFabrica.getConnection();
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setString(1, "Livro");
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()){
+				categoria = new Categoria();
+				categoria.setId(rs.getInt("id"));
+				categoria.setNome(rs.getString("nome"));
+				categoria.setStatus(rs.getInt("status"));
+				
+				listaDeCategorias.add(categoria);
+			}			
+		} catch (SQLException e){
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			DBUtil.fechar(conexao);
+		}
+		return listaDeCategorias;
+	}
+	public List<Categoria> listarQuadrinhos(){
+		Connection conexao = null;
+		
+		List<Categoria> listaDeCategorias = new ArrayList<Categoria>();
+		Categoria categoria = null;
+		
+		String sql = "SELECT * FROM categoria where nome = ? limit 4";
+		
+		try{
+			conexao = ConexaoFabrica.getConnection();
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setString(1, "Quadrinho");
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()){
+				categoria = new Categoria();
+				categoria.setId(rs.getInt("id"));
+				categoria.setNome(rs.getString("nome"));
+				categoria.setStatus(rs.getInt("status"));
+				
+				listaDeCategorias.add(categoria);
+			}			
+		} catch (SQLException e){
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			DBUtil.fechar(conexao);
+		}
+		return listaDeCategorias;
+	}
+	
+	public List<Categoria> listarActionFigures(){
+		Connection conexao = null;
+		
+		List<Categoria> listaDeCategorias = new ArrayList<Categoria>();
+		Categoria categoria = null;
+		
+		String sql = "SELECT * FROM categoria where nome = ? limit 4";
+		
+		try{
+			conexao = ConexaoFabrica.getConnection();
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setString(1, "Action Figure	");
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()){
+				categoria = new Categoria();
+				categoria.setId(rs.getInt("id"));
+				categoria.setNome(rs.getString("nome"));
+				categoria.setStatus(rs.getInt("status"));
+				
+				listaDeCategorias.add(categoria);
+			}			
+		} catch (SQLException e){
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			DBUtil.fechar(conexao);
+		}
+		return listaDeCategorias;
+	}
 }
