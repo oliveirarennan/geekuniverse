@@ -164,9 +164,12 @@
 									class="btn btn-warning"> <input type="reset"
 									name="btnLimpar" value="Limpar" class="btn btn-default" />
 							</div>
-
-						</form>
-						<a href="index.jsp" class="btn btn-default">Pagina Principal</a>
+						   
+						   <div class="form-group">
+						   		<a href="index.jsp" class="btn btn-default">Pagina Principal</a>
+						   </div>
+					</form>
+						
 					</div>
 				</div>
 			</div>

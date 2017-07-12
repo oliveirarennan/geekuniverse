@@ -5,7 +5,9 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div
-						class=" col-md-6 col-md-offset-3 col-sm-6 col-offset-3 col-xs-6 col-xs-offset-3 col-lg-6 col-lg-offset-3">
+						class=" col-md-10 col-md-offset-1 col-sm-10 col-offset-1 col-xs-10 col-xs-offset-1 col-lg-10 col-lg-offset-1">
+						
+						<section class="jumbotron">
 						
 						<c:choose>
 							<c:when test="${param.usuario == 'sucesso' }">
@@ -181,9 +183,11 @@
 									class="btn btn-warning"> <input type="reset"
 									name="btnLimpar" value="Limpar" class="btn btn-default" />
 							</div>
-
+							
+							 <div class="form-group">
+						   		<a href="gerenciar-usuarios.jsp" class="btn btn-default">Voltar</a>
+						   </div>
 						</form>
-						<a href="gerenciar-usuarios.jsp" class="btn btn-default">Voltar</a>
 					</div>
 				</div>
 			</div>
