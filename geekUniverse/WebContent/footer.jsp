@@ -41,10 +41,10 @@
 				    </ul>
 				</div>
 			</div>
-			<div class="formas col-md-4">
-				<h3 class="">Formas de Pagamento</h3>
-					<ul class="social-network social-circle" id="pg">
-						<li><a href="#" class="icoBarcode" title="barcode"><i class="fa fa-barcode"></i></a></li>
+			<div class="formas">
+				<h3 class="formas">Formas de Pagamento</h3>
+					<ul class="social-network social-circle pg">
+						<li><a href="#" class="icoBarcode" title="barcode"><i class="fa fa-barcode pg"></i></a></li>
 					</ul>	
 			</div>
 		</footer>

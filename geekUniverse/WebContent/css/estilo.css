@@ -73,12 +73,14 @@ button[type=submit]{
   color: #f1f1f1;
   border-radius: 0;
   transition: .2s;
+  text-decoration:none;
 }
 
 .btn:hover, .btn:focus {
   border: 1px solid #333;
   background-color: #fff;
   color: #000;
+  text-decoration:none;
 }
 
 .tipo1{
@@ -195,6 +197,33 @@ a {
 }
 .formas{
   color: #fff;
-  margin-left: 90%;
-  margin-top: -9.5%;
+  margin-left:48%;
+  margin-top: -7%;
+}
+.pg{
+	margin-top:100px;
+}
+.botao {
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #333;
+  border-radius: 0;
+  transition: .2s;
+}
+
+.botao:hover, .botao:focus {
+  border: 1px solid #ffaa00;
+  background-color: #ffaa00;
+  color: #333;
+  text-decoration:none;
+}
+.fonte{
+	color:#fff;
+}
+.fgroup{
+	margin-left: 50px;
+}
+.enviar{
+	margin-left: 285px;
+	margin-top:-56px;
 }
