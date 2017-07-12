@@ -1,7 +1,9 @@
 package controle;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ServiceConfigurationError;
 
 import javax.servlet.ServletException;
@@ -101,7 +103,7 @@ public class ServletCadastrarProduto extends HttpServlet {
 			response.sendRedirect("admin/cadastrar-produto.jsp?produto=sucesso");
 		}else{
 			request.getSession().removeAttribute("msgStatus");
-			request.getSession().setAttribute("msgStatus", "Não foi possivel cadastrar o produto.");
+			request.getSession().setAttribute("msgStatus", "Nï¿½o foi possivel cadastrar o produto.");
 			response.sendRedirect("admin/cadastrar-produto.jsp?produto=erro");
 		}
 		
