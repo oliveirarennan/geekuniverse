@@ -104,5 +104,5 @@
     
     
 <script src="resources/js/jquery-3.2.1.min.js" charset="UTF-8"></script> 
- <script src="resources/js/validate-editar-produto.js" charset="UTF-8"></script>
+ <script src="resources/js/validate-editar-produtos.js" charset="UTF-8"></script>
  <%@ include file="footer.jsp" %>

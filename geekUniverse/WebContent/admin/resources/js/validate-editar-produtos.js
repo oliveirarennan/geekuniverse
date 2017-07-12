@@ -15,8 +15,7 @@ $(function(){
                         rangelength:[3,255],
                     },
                     valor:{
-                        required: true,
-                        number: true
+                        required: true
                     },
                     estoque:{
                         required: true,
