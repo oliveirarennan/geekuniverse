@@ -1,13 +1,13 @@
  <%@ include file="top.jsp" %>
  <title>Cadastro de Usuários</title>
-		<div class="fundo col-md-6 col-md-offset-3">
+		<div class="container">
 			<br />
-			<div class="container-fluid">
+			
 				<div class="row">
 					<div
-						class=" col-md-10 col-md-offset-1 col-sm-10 col-offset-1 col-xs-10 col-xs-offset-1 col-lg-10 col-lg-offset-1">
+						class=" jumbotron col-md-10 col-md-offset-1 col-sm-10 col-offset-1 col-xs-10 col-xs-offset-1 col-lg-10 col-lg-offset-1">
 						
-						<section class="jumbotron">
+						
 						
 						<c:choose>
 							<c:when test="${param.usuario == 'sucesso' }">
@@ -191,8 +191,8 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
+		
+	
   <script src="resources/js/jquery-3.2.1.min.js" charset="UTF-8"></script>
    <script src="resources/js/validate-cadastrar-usuario.js" charset="UTF-8"></script>
  <%@ include file="footer.jsp" %>
