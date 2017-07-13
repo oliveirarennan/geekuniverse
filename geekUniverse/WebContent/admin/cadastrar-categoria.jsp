@@ -1,10 +1,10 @@
  <%@ include file="top.jsp" %>
  <title>Cadastro de Categoria</title>
-  <div class="fundo col-md-6 col-md-offset-3">
+  <div class="container">
     <br/>
-      <div class="container-fluid">
+     
           <div class="row">
-            <div class=" col-md-6 col-md-offset-3 col-sm-6 col-offset-3 col-xs-6 col-xs-offset-3 col-lg-6 col-lg-offset-3">
+            <div class="jumbotron col-md-6 col-md-offset-3 col-sm-6 col-offset-3 col-xs-6 col-xs-offset-3 col-lg-6 col-lg-offset-3">
             <c:choose>
 							<c:when test="${param.categoria == 'sucesso' }">
 								<div class="alert alert-success alert-dismissible" role="alert">
@@ -51,7 +51,7 @@
           
           </div>
       </div>   
-  </div>
+  
 </section>
   <script src="resources/js/jquery-3.2.1.min.js" charset="UTF-8"></script>
   <script src="resources/js/validate-cadastrar-categoria.js" charset="UTF-8"></script>
