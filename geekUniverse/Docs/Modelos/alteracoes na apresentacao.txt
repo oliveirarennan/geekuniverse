@@ -1,0 +1,3 @@
+alinhar o text
+colocar letras minúsculas em alguns pontos dos parágrafos
+colocar orientador no lugar de  responsável pelo projeto
