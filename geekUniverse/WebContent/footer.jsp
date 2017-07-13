@@ -17,10 +17,12 @@
                           <span class="input-group-addon" id="basic-addon1">#</span>
                           <input type="password" class="form-control" placeholder="Senha" id="senhaid" name="senha">
                       </div><br>
+                      
                       <div class="input-group">
                           <button type="submit" class="btn btn-warning">Entrar</button>
-                          <a href="#"> Esqueci a senha</a>
+                        <!--   <a href="#"> Esqueci a senha</a> -->
                       </div>
+                     
                   </form>
               </div>
            </div>

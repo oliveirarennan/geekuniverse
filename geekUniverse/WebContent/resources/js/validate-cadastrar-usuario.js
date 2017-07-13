@@ -61,6 +61,7 @@ $(function(){
                     },
                     email:{  
                         required:true,
+                        email: true
                     },
                     senha:{  
                         required:true,
@@ -126,16 +127,14 @@ $(function(){
                     },
                     email:{  
                         required:"Você precisa digitar seu email",
+                        email:"Você precisa digitar um email valido."
                     },
                     senha:{  
                         required:"Você precisa digitar sua senha",
                         rangelength:"Você precisa digitar no mínimo 3 caracteres",
                     },
-                    status:{
-                        required: true,
-                    },
                    status:{
-                        required: "Você precisa escolher um fabricante",
+                        required: "Você precisa escolher o status da conta.",
                     }
                 },errorElement: "em",
     				errorPlacement: function ( error, element ) {
