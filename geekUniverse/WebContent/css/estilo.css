@@ -69,18 +69,17 @@ button[type=submit]{
 
 .btn {
   padding: 10px 20px;
-  background-color: #333;
+  background-color: #ffaa00;
   color: #f1f1f1;
   border-radius: 0;
   transition: .2s;
-  text-decoration:none;
+  text-decoration: none;
 }
 
 .btn:hover, .btn:focus {
-  border: 1px solid #333;
+  border: 1px solid #ffaa00;
   background-color: #fff;
   color: #000;
-  text-decoration:none;
 }
 
 .tipo1{
@@ -195,25 +194,23 @@ a {
 .texto{
   margin-left: 9%;
 }
-.formas{
-  color: #fff;
-  margin-left:48%;
-  margin-top: -7%;
+#teste1{
+	color: #fff;
 }
 .pg{
 	margin-top:100px;
 }
 .botao {
   padding: 10px 20px;
-  background-color: #fff;
+  background-color: #ffaa00;
   color: #333;
-  border-radius: 0;
+  border-radius: 5px;;
   transition: .2s;
 }
 
 .botao:hover, .botao:focus {
   border: 1px solid #ffaa00;
-  background-color: #ffaa00;
+  background-color: #fff;
   color: #333;
   text-decoration:none;
 }
@@ -226,4 +223,18 @@ a {
 .enviar{
 	margin-left: 285px;
 	margin-top:-56px;
+}
+.botao1{
+  padding: 10px 20px;
+  background-color: #ffaa00;
+  color: #fff;
+  border-radius: 5px;
+  transition: .2s;
+}
+
+.botao1:hover, .botao1:focus {
+  border: 1px solid #333;
+  background-color: #fff;
+  color: #333;
+  text-decoration:none;
 }
