@@ -43,10 +43,10 @@
 				    </ul>
 				</div>
 			</div>
-			<div class="formas col-md-4">
-				<h3 class="">Formas de Pagamento</h3>
-					<ul class="social-network social-circle" id="pg">
-						<li><a href="#" class="icoBarcode" title="barcode"><i class="fa fa-barcode"></i></a></li>
+			<div class="col-md-4" style="color:#fff; margin-left:60%; margin-top:-9.8%;">
+				<h3>Formas de Pagamento</h3>
+					<ul class="social-network social-circle">
+						<li style="margin-left: 15%;"><a href="#" class="icoBarcode" title="barcode"><i class="fa fa-barcode"></i></a></li>
 					</ul>	
 			</div>
 		</footer>

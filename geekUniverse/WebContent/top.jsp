@@ -89,7 +89,7 @@
 	    			</div>
 	    			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	    				<ul class="nav navbar-nav navbar-left">
-	    					<li><a href="index.jsp" ><span class="glyphicon glyphicon-home"></span></a></li>
+	    					<li><a href="index.jsp"><span class="glyphicon glyphicon-home"></span></a></li>
 	    				</ul>
 	    				<form class="navbar-form navbar-left" action="ServletBuscaProduto">
 	      					<div class="form-group">

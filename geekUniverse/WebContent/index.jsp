@@ -37,7 +37,7 @@
 				    	<img src="imagens-produtos/${produto.imagem}" alt="Paris" width="300" height="300">
 				        <center><p><strong>${produto.nome} </strong></p></center>
 				        <center><p><i><fmt:formatNumber value="${produto.valor}" type="currency"/></i></p></center>
-				        <center><button class="btn"><a href="ServletDetalharProduto?id=${produto.id }">Ver Detalhes</a></button></center> 
+				        <center><a href="ServletDetalharProduto?id=${produto.id }" class="btn">Ver Detalhes</a></center> 
 				    </div>
 		      	</div>
 		      	</c:forEach>

@@ -19,38 +19,55 @@
 							</c:when>
 						</c:choose>
 						
-					<legend><center>Dados Pessoais</center></legend>
-						<div class="col-md-4 col-md-offset-4" style="color: rgba(192, 77, 22, 1);">
-							<strong>Nome :</strong> ${usuarioLogado.nome} <br />
-							<strong>Sobrenome :</strong> ${usuarioLogado.sobrenome}<br />
-							<strong>Sexo :</strong> ${usuarioLogado.sexo}<br />
-							<strong>Data de Nascimento :</strong>${usuarioLogado.dataNascimento}<br />
-							<strong>Celular :</strong> ${usuarioLogado.celular}<br />
-							<strong>Telefone Fixo :</strong> ${usuarioLogado.telefoneFixo}<br />
-							<strong>CPF :</strong>${usuarioLogado.cpf}<br />
-							<strong>RG :</strong>${usuarioLogado.rg}<br />
-							<strong>E-mail :</strong>${usuarioLogado.email}<br />
+					<legend><center style="color: #fff;">Dados Pessoais</center></legend>
+						<div class="col-md-8 col-md-offset-2">
+						<div class="alert alert-warning" role="alert">
+							<strong style="color: #ffaa00;">Nome: </strong><strong  style="color: #000;">${usuarioLogado.nome}</strong>
+							<br/>
+							<strong style="color: #ffaa00;">Sobrenome :</strong><strong  style="color: #000;"> ${usuarioLogado.sobrenome}</strong>
 							<br />
-						<center><a href="#" data-toggle="modal" data-target="#usuarioModal" class="btn btn-warning">Editar</a></center>
+							<strong style="color: #ffaa00;">Sexo :</strong><strong  style="color: #000;"> ${usuarioLogado.sexo}</strong>
+							<br />
+							<strong style="color: #ffaa00;">Data de Nascimento :</strong><strong  style="color: #000;"> ${usuarioLogado.dataNascimento}</strong>
+							<br />
+							<strong style="color: #ffaa00;">Celular :</strong><strong  style="color: #000;"> ${usuarioLogado.celular}</strong>
+							<br />
+							<strong style="color: #ffaa00;">Telefone Fixo :</strong><strong  style="color: #000;"> ${usuarioLogado.telefoneFixo}</strong>
+							<br />
+							<strong style="color: #ffaa00;">CPF :</strong><strong  style="color: #000;"> ${usuarioLogado.cpf}</strong>
+							<br />
+							<strong style="color: #ffaa00;">RG :</strong><strong  style="color: #000;"> ${usuarioLogado.rg}</strong>
+							<br />
+							<strong style="color: #ffaa00;">E-mail :</strong><strong  style="color: #000;"> ${usuarioLogado.email}</strong>
+							<br />
+							<br />
+						<center><a href="#" data-toggle="modal" data-target="#usuarioModal" class="botao1">Editar</a></center>
 							
 						</div>	
-					
-						
-						
-					<legend><center>Endereço</center></legend>
-						<div class="col-md-4 col-md-offset-4" style="color: rgba(192, 77, 22, 1);">
-							<strong>País :</strong>${usuarioLogado.endereco.pais}<br />
-							<strong>Estado :</strong>${usuarioLogado.endereco.estado.descricao}<br />
-							<strong>Rua :</strong>${usuarioLogado.endereco.rua}<br />
-							<strong>Número :</strong>${usuarioLogado.endereco.numero}<br />
-							<strong>Complemento :</strong>${usuarioLogado.endereco.complemento}<br />
-							<strong>Bairro :</strong>${usuarioLogado.endereco.bairro}<br />
-							<strong>Cidade :</strong>${usuarioLogado.endereco.cidade}<br />
-							<strong>CEP :</strong>${usuarioLogado.endereco.cep}<br />
+					</div>	
+					<legend><center  style="color: #fff;">Endereço</center></legend>
+						<div class="col-md-8 col-md-offset-2">
+						<div class="alert alert-warning" role="alert">
+							<strong style="color: #ffaa00;">País: </strong><strong  style="color: #000;">${usuarioLogado.endereco.pais}</strong>
+							<br />
+							<strong style="color: #ffaa00;">Estado: </strong><strong  style="color: #000;">${usuarioLogado.endereco.estado.descricao}</strong>
+							<br />
+							<strong style="color: #ffaa00;">Rua: </strong><strong  style="color: #000;">${usuarioLogado.endereco.rua}</strong>
+							<br />
+							<strong style="color: #ffaa00;">Número: </strong><strong  style="color: #000;">${usuarioLogado.endereco.numero}</strong>
+							<br />
+							<strong style="color: #ffaa00;">Complemento: </strong><strong  style="color: #000;">${usuarioLogado.endereco.complemento}</strong>
+							<br />
+							<strong style="color: #ffaa00;">Bairro: </strong><strong  style="color: #000;">${usuarioLogado.endereco.bairro}</strong>
+							<br />
+							<strong style="color: #ffaa00;">Cidade: </strong><strong  style="color: #000;">${usuarioLogado.endereco.cidade}</strong>
+							<br />
+							<strong style="color: #ffaa00;">CEP: </strong><strong  style="color: #000;">${usuarioLogado.endereco.cep}</strong>
+							<br />
 							<br/>
-							<center><a href="#" data-toggle="modal" data-target="#enderecoModal" class="btn btn-warning">Editar</a></center>
+							<center><a href="#" data-toggle="modal" data-target="#enderecoModal" class="botao1">Editar</a></center>
 						</div>	
-					
+						</div>
 					</div>
 				</div>
 						<hr>		
