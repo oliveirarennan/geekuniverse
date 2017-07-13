@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ServiceConfigurationError;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -58,12 +59,15 @@ public class ServletCadastrarProduto extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int comprimento = 600;
+		int largura = 600;
 		String nome = request.getParameter("nome");
 		String descricao = request.getParameter("descricao");
 		Double valor = Util.getDoubleFromRealString(request.getParameter("valor"));
 		int estoque = Integer.parseInt(request.getParameter("estoque"));
 		int categoria = Integer.parseInt(request.getParameter("categoria"));
 		int fabricante = Integer.parseInt(request.getParameter("fabricante"));
+		Boolean imgSize = true;
 		
 		//Pega o caminho da Pasta do projeto
 		String  pastaProjeto = getServletContext().getRealPath("");
@@ -81,11 +85,20 @@ public class ServletCadastrarProduto extends HttpServlet {
 		Part arquivo = request.getPart("arquivo");
 		String nomeArquivo = arquivo.getSubmittedFileName();
 		
+		InputStream is = arquivo.getInputStream();
+		BufferedImage bi = ImageIO.read(is);
+		
+		Produto produto = new Produto();
+		if((bi.getHeight() !=  comprimento) || (bi.getWidth() != largura)){
+			request.getSession().removeAttribute("msgStatus");
+			request.getSession().setAttribute("msgStatus", "O tamanho exato da imagem tem que ser de 600x600.");
+			imgSize = false;
+		}else{
+		
 		//grava o arquivo na pasta
 		arquivo.write(pastaDestino + File.separator + nomeArquivo);
 		
 		//Prepara o objeto Produto
-		Produto produto = new Produto();
 		
 		produto.setNome(nome);
 		produto.setDescricao(descricao);
@@ -97,15 +110,21 @@ public class ServletCadastrarProduto extends HttpServlet {
 		
 		ProdutoServico ps = new ProdutoServico();
 		int rq = ps.cadastrar(produto);
-		if(rq > 0){
-			request.getSession().removeAttribute("msgStatus");
-			request.getSession().setAttribute("msgStatus", "Produto cadastrado com sucesso!");
-			response.sendRedirect("admin/cadastrar-produto.jsp?produto=sucesso");
-		}else{
-			request.getSession().removeAttribute("msgStatus");
-			request.getSession().setAttribute("msgStatus", "N�o foi possivel cadastrar o produto.");
-			response.sendRedirect("admin/cadastrar-produto.jsp?produto=erro");
 		}
+		if(imgSize){
+			if(ProdutoServico.atualizar(produto)){
+				request.getSession().removeAttribute("msgStatus");
+				request.getSession().setAttribute("msgStatus", "Produto atualizado com sucesso!");
+				response.sendRedirect("admin/editar-produto.jsp?produto=sucesso");
+			}else{
+				
+				request.getSession().removeAttribute("msgStatus");
+				request.getSession().setAttribute("msgStatus", "Não foi possivel atualizar o produto!");
+				response.sendRedirect("admin/editar-produto.jsp?produto=erro");
+				}
+			}else{
+				response.sendRedirect("admin/editar-produto.jsp?produto=erro");
+			}
 		
 		
 	
