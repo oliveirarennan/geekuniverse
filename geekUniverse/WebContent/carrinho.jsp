@@ -19,17 +19,26 @@
 					<div class="row">
 					<c:forEach var="item" items="${ItensCarrinho}">
 						<div class="col-md-8 col-md-offset-2 ">
-							<div class="thumbnail">
-								 <strong>Nome: </strong>${item.produto.nome } <a href="ServletDetalharProduto?id=${item.produto.id }"><span class="glyphicon glyphicon-search"></span></a> | <strong>Quantidade: </strong>${item.quantidade} | <strong>Preço Unitario: </strong><fmt:formatNumber value="${item.produto.valor}" type="currency"/> | <c:if test="${item.produto.estoque > 0 }" > <a
-									href="ServletAdicionarAoCarrinho?id=${item.produto.id}"><span
-										class="glyphicon glyphicon-plus"></span></a> </c:if> <a
-									href="ServletRemoverDoCarrinho?id=${item.produto.id}&rl=0">
-										<span class="glyphicon glyphicon-minus"></span>
-								</a> <a
-									href="ServletRemoverDoCarrinho?id=${item.produto.id }&rl=1">
-										<span class="glyphicon glyphicon-remove"></span>
-								</a>
-							</div>
+							<table class="table">
+								 <td class="col-md-4">Nome: ${item.produto.nome }
+								 	<td>
+								 		<a href="ServletDetalharProduto?id=${item.produto.id }"><span class="glyphicon glyphicon-search"></span></a>
+								 	</td>
+								 	<td >Quantidade: ${item.quantidade}</td>
+								 	<td>
+								 		<c:if test="${item.produto.estoque > 0 }" >
+								  			<a href="ServletAdicionarAoCarrinho?id=${item.produto.id}"><span class="glyphicon glyphicon-plus"></span></a> 
+								  		</c:if>
+								  		<a href="ServletRemoverDoCarrinho?id=${item.produto.id}&rl=0"><span class="glyphicon glyphicon-minus"></span></a>
+								  	</td>  
+								  	<td>Preço Unitario: <fmt:formatNumber value="${item.produto.valor}" type="currency"/></td>
+								  	<td>
+										<a href="ServletRemoverDoCarrinho?id=${item.produto.id }&rl=1">
+											<span class="glyphicon glyphicon-remove"></span>
+										</a>
+									</td>
+								</td>
+							</table>
 						</div>
 					</c:forEach>
 					

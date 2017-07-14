@@ -1,6 +1,3 @@
 erro de design na pagina de cadastro de usuario(o botão voltar)
 
 Falta de descrição nos detalhes do produto
-
-tela de busca mal organizada
-e com design ruim
