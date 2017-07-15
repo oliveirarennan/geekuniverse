@@ -1,61 +1,82 @@
-INSERT INTO estados(sigla, descricao) VALUES('AC', 'Acre');
-INSERT INTO estados(sigla, descricao) VALUES('AL', 'Alagoas');
-INSERT INTO estados(sigla, descricao) VALUES('AP', 'Amap√°');
-INSERT INTO estados(sigla, descricao) VALUES('AM', 'Amazonas');
-INSERT INTO estados(sigla, descricao) VALUES('BA', 'Bahia');
-INSERT INTO estados(sigla, descricao) VALUES('CE', 'Cear√°');
-INSERT INTO estados(sigla, descricao) VALUES('DF', 'Distrito Federal');
-INSERT INTO estados(sigla, descricao) VALUES('ES', 'Esp√≠rito Santo');
-INSERT INTO estados(sigla, descricao) VALUES('GO', 'Goi√°s');
-INSERT INTO estados(sigla, descricao) VALUES('MA', 'Maranh√£o');
-INSERT INTO estados(sigla, descricao) VALUES('MT', 'Mato Grosso');
-INSERT INTO estados(sigla, descricao) VALUES('MS', 'Mato Grosso do Sul');
-INSERT INTO estados(sigla, descricao) VALUES('MG', 'Minas Gerais');
-INSERT INTO estados(sigla, descricao) VALUES('PA', 'Par√°');
-INSERT INTO estados(sigla, descricao) VALUES('PB', 'Para√≠ba');
-INSERT INTO estados(sigla, descricao) VALUES('PR', 'Paran√°');
-INSERT INTO estados(sigla, descricao) VALUES('PE', 'Pernambuco');
-INSERT INTO estados(sigla, descricao) VALUES('PI', 'Piau√≠');
-INSERT INTO estados(sigla, descricao) VALUES('RJ', 'Rio de Janeiro');
-INSERT INTO estados(sigla, descricao) VALUES('RN', 'Rio Grande do Norte');
-INSERT INTO estados(sigla, descricao) VALUES('RS', 'Rio Grande do Sul');
-INSERT INTO estados(sigla, descricao) VALUES('RO', 'Rond√¥nia');
-INSERT INTO estados(sigla, descricao) VALUES('RR', 'Roraima');
-INSERT INTO estados(sigla, descricao) VALUES('SC', 'Santa Catarina');
-INSERT INTO estados(sigla, descricao) VALUES('SP', 'S√£o Paulo');
-INSERT INTO estados(sigla, descricao) VALUES('SE', 'Sergipe');
-INSERT INTO estados(sigla, descricao) VALUES('TO', 'Tocantins');
+/*ARQUIVO DE CARGA NO BANCO DE DADOS - PROJETO GEEKUNIVERSE - TURMA 2016.1
+Erro Na query de endereÁo...
+**/
 
+insert into estados value
+(null,"AC", "ACRE"),
+(null,"AL", "ALAGOAS"),
+(null,"AP", "AMAP¡"),
+(null,"AM", "AMAZONAS"),
+(null,"BA", "BAHIA"),
+(null,"CE", "CEAR¡"),
+(null,"DF", "DISTRITO FEDERAL"),
+(null,"ES", "ESPIRITO SANTO"),
+(null,"GO", "GOI¡S"),
+(null,"MA", "MARANH√O"),
+(null,"MT", "MATO GROSSO"),
+(null,"MS", "MATO GROSSO DO SUL"),
+(null,"MG", "MINAS GERAIS"),
+(null,"PA", "PAR¡"),
+(null,"PB", "PARAÕBA"),
+(null,"PR", "PARAN¡"),
+(null,"PE", "PERNAMBUCO"),
+(null,"PI", "PIAUÕ"),
+(null,"RJ", "RIO DE JANEIRO"),
+(null,"RN", "RIO GRANDE DO NORTE"),
+(null,"RS", "RIO GRANDE DO SUL"),
+(null,"RO", "ROND‘NIA"),
+(null,"RR", "RORAIMA"),
+(null,"SC", "SANTA CATARINA"),
+(null,"SP", "S√O PAULO"),
+(null,"SE", "SERGIPE"),
+(null,"TO", "TOCANTINS");
 
 insert into endereco value
-(null,"Brasil",1,"Maric√°", "Itaipua√ßu", "Rua 16", 57,"apt 201", "24.935.595");
+(null,"Brasil",19,"NiterÛi","Almirante TeffÈ","Atr·s do Plaza",680,"Centro","24030-085"),
+(null,"Brasil",19,"Maric·","ItaipuaÁu","Rua 16",57,"Apt 201","249355-95");
 
 insert into usuario value
-(null, 1,"Pedro Victor","Abreu de Andrade","2017-06-21","Masculino","(21)9934-99919","(21) 2222-2222","123.456.789-00", "00.123.456-7","admin@gmail.com","25f9e794323b453885f5181f1b624d0b","administrador",true);
+(null,1,"Administrador","Administrador","1999-03-09","Masculino","(21)9934-99919","(21)2222-2222","123.456.789-00","00.123.456-7","admin@admin.com","25f9e794323b453885f5181f1b624d0b", "administrador,",true),
+(null,2,"Cliente","Cliente","2017-25-21","Feminino","(21)9934-99666","(21)3322-2222","123.456.789-12","00.123.458-9","cliente@cliente.com","25f9e794323b453885f5181f1b624d0b", "cliente",true);
 
 insert into fabricante value
-(null, "Sony", "16.574.333/0001-64", true);
+(null,"Marvel", "16.574.333/0001-64", true),
+(null,"Saraiva","33.999.666/0001-95", true),
+(null,"Fantoy","55.789.652/0001-52", true);
 
 insert into categoria value
 (null, "Quadrinho", true),
 (null, "Livro", true),
 (null, "Action Figure", true);
 
-insert into formaPagamento value
-(null, "cart√£o", 10, "1200,00","teste.teste.com");
-
-insert into frete value
-(null,"10 dias", "17.20");
-
 insert into produto value
-(null, 1, 1, "Playstation 4", "VideoGames da Marca Sony","1.200", 10,"imagem.jpg");
-
-insert into pedido value
-(null, 1, 1, 1, 123, "Em An√°lise","2017-06-21","1500");
-
-insert into item value
-(null, 1, 1, 2,"2400.00");
-
-select i.pedido_id, p.numeroPedido,pr.nome, u.nome  
-from pedido p, item i, produto pr, usuario u
-where i.pedido_id=p.id and i.produto_id=pr.id and u.id=p.usuario_id;
+(null,1,1,"Cavaleiro Negro"," HerÛis mais Poderosos da Marvel","19.90",10,""),
+(null,1,1,"Homem Aranha","Entre os Mortos","25.00",9,""),
+(null,1,1,"Vingadores","Infinito","59.90",8,""),
+(null,1,1,"Guardiıes da Gal·xia","Angela","56.52",7,""),
+(null,1,1,"Magnum","HerÛis mais Poderosos da Marvel","21.50",6,""),
+(null,1,1,"Hulk","Terra Arrasada","49.00",5,""),
+(null,1,1,"Thor","HerÛis mais Poderosos da Marvel","49.90",4,""),
+(null,1,1,"Vingadores Iluminati","Novos Vingadores","63.50",3,""),
+(null,1,1,"Logan","Do outro lado da Lei","37.50",2,""),
+(null,1,1,"Fera","HerÛis mais Poderosos da Marvel","32.50",1,""),
+(null,2,2,"Harry Potter","O PrincÌpe MestiÁo","39.90",1,""),
+(null,2,2,"O senhor Dos Aneis","Segunda Torre","25.50",2,""),
+(null,2,2,"Percy Jackson","Os Olimpianos","35.69",3,""),
+(null,2,2,"American Gods","Best-Seller","45.68",4,""),
+(null,2,2,"Shadow Hunters","Instrumentos Mortais","96.65",5,""),
+(null,2,2,"The Originals","Ascens„o","85.52",6,""),
+(null,2,2,"The Vampire Diaries","Sede de Sangue","25.45",7,""),
+(null,2,2,"Supernatural","CoraÁ„o de Drag„o","32.35",8,""),
+(null,2,2,"A Cabana","Petalas do CoraÁ„o","12.69",9,""),
+(null,2,2,"Star Wars","O despertar das ForÁas","58.60",10,""),
+(null,3,3,"Juggernaut","1/10","300.00",121,""),
+(null,3,3,"Mickey","Disney","150.00",2311,""),
+(null,3,3,"Magneto","X-men","200.00",1312,""),
+(null,3,3,"Lobo","Unknow","250.00",95,""),
+(null,3,3,"Groot","Guardiıes da Gal·xia","260.00",61,""),
+(null,3,3,"Gamora","Guardiıes da Gal·xia","270.00",15,""),
+(null,3,3,"Hulk Cinza","Os Vingadores","490.00",14,""),
+(null,3,3,"ThorAF","Os Vingadores","132.30",14,""),
+(null,3,3,"Rhino","Homem Aranha","23.65",13,""),
+(null,3,3,"Rocket","Guardiıes da Gal·xia","256.20",12,"");
