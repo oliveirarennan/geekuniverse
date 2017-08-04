@@ -32,12 +32,20 @@
  	<style type="text/css">
   		.carousel-inner > .item > 
     		.carousel-inner > .item > a > {
-    		}	
+    		}
+    		body{
+					background:url('img/imagemFundo.png') center center no-repeat fixed;
+					-webkit-background-size:cover;
+					-moz-background-size:cover;
+					-o-background-size:cover;
+					background-size: cover;
+				}	
   	</style>
 		<title>GEEK UNIVERSE</title>
 		<link rel="shortcut icon" type="image/x-png" href="img/icone.png">
 	</head>
-	<body background="img/body.jpg">
+	<body >
+	
 		<section>
 			<div class="container1" id="inicio">
 				<br>
@@ -51,13 +59,13 @@
 			    	<!-- Wrapper for slides -->
 			    	<div class="carousel-inner conf" role="listbox">
 			      		<div class="item active">
-			        		<img  class="img-responsive" src="img/game.png" alt="Chania">
+			        		<img  class="img-responsive" src="img/slider1.jpg" alt="Chania">
 			      		</div>
 			      		<div class="item">
-			        		<img class="img-responsive" src="img/Gamesporate.png" alt="Chania">
+			        		<img class="img-responsive" src="img/slider2.jpg" alt="Chania">
 			      		</div>
 			      		<div class="item">
-			        		<img class="img-responsive" src="img/prevenda.png" alt="Flower">
+			        		<img class="img-responsive" src="img/slider3.jpg" alt="Flower">
 			      		</div>
 			    	</div>
 			    	<!-- Left and right controls -->
@@ -72,7 +80,7 @@
 		  		</div>
 			</div>
 	    	<div>
-	      		<img class="img-responsive fundo" src="img/fundo.png" >
+	      		<img class="img-responsive fundo" src="img/fundo-pb.png" >
 	      		<img class="img-responsive logo" src="img/logo.png">
 	    	</div>
 		</section>

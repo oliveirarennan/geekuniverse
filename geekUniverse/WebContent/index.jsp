@@ -2,7 +2,7 @@
 		<section class="container-fluid">
 			<div class="col-md-3 tipo1">
 			
-				<img src="img/produtos.jpg" class="img-responsive"> 
+				<img src="img/teste3.jpg" class="img-responsive"> 
 			<jsp:useBean id="pr" class="servico.ProdutoServico"></jsp:useBean>
 			<jsp:useBean id="converter" class="util.Util"></jsp:useBean>
 			 	
@@ -26,7 +26,7 @@
 		   		<img src="img/voorgamers.jpg" class="img-responsive img">
 		  	</div>
 	  		<div class="col-md-3 tipo">
-				<img src="http://via.placeholder.com/260x50" class="img-responsive"> 
+				<img src="img/teste.jpg" class="img-responsive"> 
 			</div>
 			<!-- //Divs da IMAGEM central e do tipo de venda seguinte -->
 			<div class="gamb col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2 col-lg-8 col-lg-offset-2">
@@ -44,7 +44,7 @@
 		      	
 			</div>
 				<div class="col-md-3 tipo">
-				<img src="http://via.placeholder.com/260x50" class="img-responsive"> 
+				<img src="img/teste2.jpg" class="img-responsive"> 
 			</div>
 			<!-- //Divs da IMAGEM central e do tipo de venda seguinte -->
 			<div class="gamb col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2 col-lg-8 col-lg-offset-2">
