@@ -8,7 +8,7 @@
 					<hr>
 					<br>
 					<div class="col-md-4">
-				    	<img src="imagens-produtos/${produtoSelecionado.imagem}" alt="Imagem de ${produtoSelecionado.nome }" width="300" height="300">
+				    	<img src="imagens-produtos/${produtoSelecionado.imagem}" class="img-responsive" alt="Imagem de ${produtoSelecionado.nome }" width="300" height="300" margin-left="-5%">
 				    </div>
 					<h4>Descrição : ${produtoSelecionado.descricao}</h4>
 					<hr>

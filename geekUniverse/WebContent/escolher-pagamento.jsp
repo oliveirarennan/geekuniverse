@@ -4,7 +4,7 @@
 		<section class="container-fluid">
 			<div class="row">
 			<c:if test="${ItensCarrinho.size() == null }">
-				<div class="col-md-8 col-md-offset-2" style="background-color: rgba(255, 255, 255, 0.8); margin-top: 5%; margin-bottom: 5%; padding: 3% 3% 3% 3%;">
+				<div class="col-md-8 col-md-offset-2" style="background-color: rgba(42, 42, 42, 0.9); margin-top: 5%; margin-bottom: 5%; padding: 3% 3% 3% 3%;">
 					<div class="col-md-8 col-md-offset-2 ">
 						<h3>Erro ... </h3>
 					
@@ -13,7 +13,7 @@
 				</div>
 			</c:if>
 			<c:if test="${ItensCarrinho.size() > 0 }">
-				<div class="col-md-8 col-md-offset-2" style="background-color: rgba(255, 255, 255, 0.8); margin-top: 5%; margin-bottom: 5%; padding: 3% 3% 3% 3%;">
+				<div class="col-md-8 col-md-offset-2" style="background-color: rgba(42, 42, 42, 0.9); margin-top: 5%; margin-bottom: 5%; padding: 3% 3% 3% 3%;">
 					<div class="row">
 					<legend>Resumo do Pedido</legend>
 							<br>
