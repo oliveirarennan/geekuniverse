@@ -1,6 +1,6 @@
 <%@include file="top.jsp" %>
 		
-		<section class="container-fluid">
+		<section class="container-fluid" id="visao">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2" style="background-color: rgba(42, 42, 42, 0.9); margin-top: 5%; margin-bottom: 5%; padding: 3% 3% 3% 3%; color:#fff;">
 					
@@ -26,5 +26,10 @@
 					
 			</div>
 		</section>
+		<script type="text/javascript">
+		$(document).ready(function() { 
+			window.location.href='#visao';
+			});
+		</script>
 <%@include file="footer.jsp" %>		
 

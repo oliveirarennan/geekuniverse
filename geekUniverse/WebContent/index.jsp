@@ -2,7 +2,7 @@
 		<section class="container-fluid">
 			<div class="col-md-3 tipo1">
 			
-				<img src="img/teste3.jpg" class="img-responsive"> 
+				<img src="img/novidades.jpg" class="img-responsive"> 
 			<jsp:useBean id="pr" class="servico.ProdutoServico"></jsp:useBean>
 			<jsp:useBean id="converter" class="util.Util"></jsp:useBean>
 			 	
